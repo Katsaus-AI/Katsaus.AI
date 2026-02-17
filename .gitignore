@@ -1,0 +1,26 @@
+# Frontend (React / Vite)
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.*
+!frontend/.env.example
+
+# Functions (Node.js / TypeScript)
+functions/node_modules/
+functions/lib/
+functions/.env
+*.tsbuildinfo
+
+# Scraper (Python)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Yleinen
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
