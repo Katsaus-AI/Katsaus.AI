@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infoähkyn eliminaattori</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link id="theme-light" rel="stylesheet" href="css/style-light.css">
+    <link id="theme-teletext" rel="stylesheet" href="css/style-minimal.css" disabled>
+    <link id="theme-youth" rel="stylesheet" href="css/style-youth.css" disabled>
+    <link id="theme-business" rel="stylesheet" href="css/style-business.css" disabled>
+</head>
+<body>
+    <div class="theme-selector">
+        <button class="theme-selector-btn" data-theme="light" aria-label="Vaalea teema">Vaalea</button>
+        <button class="theme-selector-btn" data-theme="teletext" aria-label="Teksti-TV teema">Teksti-TV</button>
+        <button class="theme-selector-btn" data-theme="youth" aria-label="Nuorisoversio teema">Nuorisoversio</button>
+        <button class="theme-selector-btn" data-theme="business" aria-label="Business teema">Business</button>
+    </div>
+    <div class="app-container">
+        <header class="app-header">
+            <span class="app-logo">Firma Oy</span>
+            <button class="viewing-mode-btn" id="viewing-mode-btn" aria-label="Katselutila">👁</button>
+            <button class="fullscreen-btn" id="fullscreen-btn" aria-label="Fullscreen-näkymä">⛶</button>
+            <div class="header-time">
+                <span class="time" id="current-time"></span>
+                <span class="date" id="current-date"></span>
+            </div>
+        </header>
+
+        <div class="teletext-screen" role="application" aria-label="Teksti-TV">
+            <div class="teletext-topbar" aria-hidden="true">
+                <span class="teletext-topbar-left">Yle</span>
+                <span class="teletext-topbar-center">100 - UUTISET</span>
+                <span class="teletext-topbar-right">FI</span>
+            </div>
+
+            <main class="app-main" id="main-content"></main>
+
+            <div class="teletext-bottombar" aria-hidden="true">
+                <span class="teletext-bottombar-left">AAKKOSELLINEN HAKEMISTO</span>
+                <span class="teletext-bottombar-right">196 - 198</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="fab-container">
+        <button class="fab-btn" id="fab-add" aria-label="Lisää viesti">+</button>
+    </div>
+
+    <div class="modal" id="message-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Lisää viesti</h2>
+                <button class="modal-close" id="modal-close-btn" aria-label="Sulje">&times;</button>
+            </div>
+            <form id="message-form">
+                <input type="hidden" id="message-id">
+                <div class="form-group">
+                    <label for="message-title">OTSIKKO</label>
+                    <input type="text" id="message-title" maxlength="100" required placeholder="Viestin otsikko">
+                </div>
+                <div class="form-group">
+                    <label for="message-content">Sisältö</label>
+                    <textarea id="message-content" rows="4" maxlength="500" required placeholder="Viestin sisältö"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="message-category">Kategoria</label>
+                    <select id="message-category">
+                        <option value="uutisia">Uutisia</option>
+                        <option value="tutkimus">Tutkimus</option>
+                        <option value="yritysyhteistyö">Yritysyhteistyö</option>
+                        <option value="opintohallinto">Opintohallinto</option>
+                        <option value="hr">HR</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" id="cancel-btn">Peruuta</button>
+                    <button type="submit" class="btn-submit">Tallenna</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="infobox-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Muokkaa tiivistelmää</h2>
+                <button class="modal-close" id="infobox-close-btn" aria-label="Sulje">&times;</button>
+            </div>
+            <form id="infobox-form">
+                <div class="form-group">
+                    <label for="infobox-text">Tiivistelmä</label>
+                    <textarea id="infobox-text" rows="4" maxlength="500" required placeholder="Tiivistelmän teksti"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" id="infobox-cancel-btn">Peruuta</button>
+                    <button type="submit" class="btn-submit">Tallenna</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app-minimal.js"></script>
+</body>
+</html>
