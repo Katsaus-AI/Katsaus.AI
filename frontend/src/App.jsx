@@ -18,7 +18,7 @@ export default function App() {
 
   return (
     <>
-      <ThemeSelector theme={state.theme} setTheme={state.setTheme} />
+      {/* <ThemeSelector theme={state.theme} setTheme={state.setTheme} /> */}
 
       <div className="app-container">
         <Header
