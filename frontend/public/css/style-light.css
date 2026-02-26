@@ -1,3 +1,15 @@
+body.fullscreen-mode .main-topics-title {
+    font-size: 2.2rem;
+    padding: 24px 16px 16px;
+    letter-spacing: 0.12em;
+}
+/* Fullscreen mode: kaartuva reunus kuten katselutilassa */
+body.fullscreen-mode .app-container {
+    border-radius: 16px;
+    box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
+    overflow: hidden;
+    margin: 24px auto;
+}
 /* InfoAHKY Minimal CSS - News-focused, Fresh Design */
 
 /* Reset and base styles */
@@ -836,84 +848,129 @@ body {
 }
 
 /* Fullscreen mode */
+
 body.fullscreen-mode {
-    background: #000;
-    color: #fff;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
 }
 
 body.fullscreen-mode .app-container {
-    background: #000;
+    background: var(--bg-primary);
     max-width: 100%;
 }
 
 body.fullscreen-mode .app-header {
-    background: #000;
-    border-bottom: 1px solid #333;
-    padding: 8px 16px;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-light);
+    padding: 12px 16px;
 }
 
 body.fullscreen-mode .app-logo {
-    font-size: 0.9rem;
-    color: #fff;
+    font-size: 1.1rem;
+    color: var(--primary);
 }
 
 body.fullscreen-mode .fullscreen-btn,
 body.fullscreen-mode .theme-btn {
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.35);
+    color: var(--text-secondary);
+    border-color: var(--border-light);
 }
 
 body.fullscreen-mode .header-time,
 body.fullscreen-mode .fab-container,
-body.fullscreen-mode .filter-tabs,
-body.fullscreen-mode .stats-bar,
-body.fullscreen-mode .news-actions,
-body.fullscreen-mode .info-box,
 body.fullscreen-mode .teletext-topbar,
 body.fullscreen-mode .teletext-bottombar {
     display: none;
 }
 
+body.fullscreen-mode .filter-tabs,
+body.fullscreen-mode .stats-bar {
+    display: flex;
+}
+
 body.fullscreen-mode .news-item {
-    background: #000 !important;
-    border-bottom: 1px solid #333;
-    padding: 24px 20px;
+    background: var(--bg-primary) !important;
+    border-bottom: 1px solid var(--border-light);
+    padding: 4px 16px;
 }
 
 body.fullscreen-mode .news-item:hover {
-    background: #111 !important;
+    background: var(--bg-secondary) !important;
 }
 
 body.fullscreen-mode .news-title {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #fff;
-    line-height: 1.3;
-    margin-bottom: 12px;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--primary);
+    line-height: 1.1;
+    margin: 40px 0 40px 0;
+    text-align: center;
 }
 
-body.fullscreen-mode .news-content {
-    display: block;
-    font-size: 1.4rem;
-    color: #ddd;
-    line-height: 1.6;
-    padding: 0;
+body.fullscreen-mode .news-content,
+body.fullscreen-mode .news-content,
+body.fullscreen-mode .news-meta {
+    display: none !important;
+}
+
+/* Fullscreen: näytä kategoria värillisenä, otsikko pienempänä, piilota teema-valitsin ja filter-tabs */
+body.fullscreen-mode .news-title {
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: #000;
+    line-height: 1.15;
+    margin: 24px 0 8px 0;
+    text-align: left;
+    display: inline;
+}
+body.fullscreen-mode .news-item:nth-child(even) {
+    background: #f1f5f9 !important;
 }
 
 body.fullscreen-mode .news-category {
-    display: none;
+    display: inline-block !important;
+    margin-left: 12px;
+    vertical-align: middle;
+    font-size: 1.2rem;
+    padding: 6px 16px;
+    font-weight: 700;
+}
+
+body.fullscreen-mode .info-box {
+    font-size: 1.25rem;
+    padding: 20px 24px;
+    margin: 32px 40px 32px 40px;
+}
+
+body.fullscreen-mode .info-box-text {
+    font-size: 1.25em;
+}
+body.fullscreen-mode .news-header {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+body.fullscreen-mode .theme-selector {
+    display: none !important;
+}
+body.fullscreen-mode .filter-tabs,
+body.fullscreen-mode .stats-bar {
+    display: none !important;
+}
+body.fullscreen-mode .news-category {
+    display: inline-block;
 }
 
 body.fullscreen-mode .news-meta {
-    display: none;
-}
-
-body.fullscreen-mode .news-header {
     display: block;
 }
 
+body.fullscreen-mode .news-header {
+    display: flex;
+}
+
 body.fullscreen-mode .main-topics-title {
-    display: none;
+    display: block;
 }
 
 /* Exit fullscreen button */

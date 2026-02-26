@@ -55,6 +55,7 @@ export default function App() {
                 <InfoBox
                   text={state.infoBoxText}
                   onEdit={() => state.setInfoboxModalOpen(true)}
+                  hideEditButton={state.fullscreenMode}
                 />
               </>
             )}
