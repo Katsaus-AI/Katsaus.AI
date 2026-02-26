@@ -1,3 +1,15 @@
+body.fullscreen-mode .main-topics-title {
+    font-size: 2.2rem;
+    padding: 24px 16px 16px;
+    letter-spacing: 0.12em;
+}
+/* Fullscreen mode: kaartuva reunus kuten katselutilassa */
+body.fullscreen-mode .app-container {
+    border-radius: 16px;
+    box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
+    overflow: hidden;
+    margin: 24px auto;
+}
 /* InfoAHKY Minimal CSS - News-focused, Fresh Design */
 
 /* Reset and base styles */
@@ -866,7 +878,6 @@ body.fullscreen-mode .theme-btn {
 
 body.fullscreen-mode .header-time,
 body.fullscreen-mode .fab-container,
-body.fullscreen-mode .info-box,
 body.fullscreen-mode .teletext-topbar,
 body.fullscreen-mode .teletext-bottombar {
     display: none;
@@ -906,16 +917,33 @@ body.fullscreen-mode .news-meta {
 body.fullscreen-mode .news-title {
     font-size: 2.1rem;
     font-weight: 700;
-    color: var(--primary);
+    color: #000;
     line-height: 1.15;
     margin: 24px 0 8px 0;
     text-align: left;
     display: inline;
 }
+body.fullscreen-mode .news-item:nth-child(even) {
+    background: #f1f5f9 !important;
+}
+
 body.fullscreen-mode .news-category {
     display: inline-block !important;
     margin-left: 12px;
     vertical-align: middle;
+    font-size: 1.2rem;
+    padding: 6px 16px;
+    font-weight: 700;
+}
+
+body.fullscreen-mode .info-box {
+    font-size: 1.25rem;
+    padding: 20px 24px;
+    margin: 32px 40px 32px 40px;
+}
+
+body.fullscreen-mode .info-box-text {
+    font-size: 1.25em;
 }
 body.fullscreen-mode .news-header {
     display: flex;
