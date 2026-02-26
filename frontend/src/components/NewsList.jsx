@@ -1,6 +1,6 @@
 import React from 'react';
 import { formatDate, getCategoryLabel, escapeHtml } from '../utils';
-
+// Drag-and-drop import poistettu
 function NewsItemMainTopic({ msg, isExpanded, onToggle }) {
   return (
     <li
@@ -54,6 +54,11 @@ function NewsItemFull({ msg, isExpanded, onToggle, onEdit, onDelete, onToggleMai
         </div>
         <div className="news-right">
           <span className={`news-category ${msg.category}`}>{getCategoryLabel(msg.category)}</span>
+          {msg.deadline && (
+            <div className="news-deadline-highlight">
+              <span>Määräaika: {msg.deadline}</span>
+            </div>
+          )}
           <div className="news-meta">{formatDate(msg.created)}</div>
         </div>
       </div>
@@ -121,6 +126,7 @@ export function NewsList({
   editMessage,
   deleteMessage,
   toggleMainTopic,
+  onReorder,
 }) {
   if (currentFilter === 'aloitus') {
     return (
