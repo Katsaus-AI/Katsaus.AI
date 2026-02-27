@@ -69,6 +69,16 @@ export default function App() {
                 editMessage={state.editMessage}
                 deleteMessage={state.deleteMessage}
                 toggleMainTopic={state.toggleMainTopic}
+                onReorder={(from, to) => {
+                  // Päivitä järjestys vain kategoriasivuilla
+                  if (state.currentFilter === 'aloitus') return;
+                  const catMsgs = state.filtered.slice();
+                  const [moved] = catMsgs.splice(from, 1);
+                  catMsgs.splice(to, 0, moved);
+                  // Päivitä messages-järjestys
+                  const otherMsgs = state.messages.filter(m => m.category !== state.currentFilter);
+                  state.setMessages([...otherMsgs, ...catMsgs]);
+                }}
               />
             )}
 
@@ -93,6 +103,7 @@ export default function App() {
         editingId={state.editingId}
         onClose={state.closeMessageModal}
         onSubmit={state.handleMessageSubmit}
+        defaultCategory={state.currentFilter}
       />
 
       <InfoboxModal
