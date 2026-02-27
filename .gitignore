@@ -12,6 +12,9 @@ functions/lib/
 functions/.env
 *.tsbuildinfo
 
+# Environment files
+.env
+
 # Scraper (Python)
 __pycache__/
 *.py[cod]
@@ -24,3 +27,7 @@ Thumbs.db
 *.log
 .idea/
 .vscode/
+
+node_modules/
+frontend/node_modules/
+backend/node_modules/

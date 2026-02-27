@@ -173,10 +173,9 @@ body::before {
 
 .company-name-input:focus {
     outline: none;
-    border-color: var(--primary-purple);
+    border-color: rgba(102, 126, 234, 0.5);
     box-shadow: var(--shadow-glow);
 }
-
 .header-time {
     margin-left: auto;
     display: flex;
