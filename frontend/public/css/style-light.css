@@ -143,6 +143,24 @@ body {
     color: var(--primary);
 }
 
+.company-name-input {
+    height: 32px;
+    min-width: 140px;
+    max-width: 220px;
+    padding: 4px 10px;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+}
+
+.company-name-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
 .theme-btn {
     background: none;
     border: 1px solid var(--border-light);
