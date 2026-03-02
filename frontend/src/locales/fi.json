@@ -1,0 +1,102 @@
+{
+  "app": {
+    "teletext": "Teksti-TV",
+    "topbar": {
+      "yle": "Yle",
+      "news": "100 - UUTISET",
+      "lang": "FI"
+    },
+    "bottombar": {
+      "index": "AAKKOSELLINEN HAKEMISTO",
+      "pages": "196 - 198"
+    }
+  },
+  "header": {
+    "loading": "Ladataan...",
+    "notFound": "Ei löytynyt",
+    "noName": "Ei nimeä",
+    "permissionDenied": "Luku estetty (rules)",
+    "firestoreUnavailable": "Firestore ei tavoitettavissa",
+    "error": "Virhe haussa",
+    "errorCode": "Virhe: {{code}}",
+    "companyPlaceholder": "Firma Oy",
+    "viewingMode": "Katselutila",
+    "fullscreen": "Fullscreen-näkymä",
+    "companyNameAria": "Yrityksen nimi Firestoresta"
+  },
+  "filters": {
+    "home": "Aloitus",
+    "all": "Kaikki"
+  },
+  "categories": {
+    "news": "Uutisia",
+    "research": "Tutkimus",
+    "corporateCooperation": "Yritysyhteistyö",
+    "academicAdmin": "Opintohallinto",
+    "hr": "HR",
+    "management": "Johto",
+    "productDevelopment": "Tuotekehitys",
+    "itSupport": "IT-tuki",
+    "security": "Turvallisuus"
+  },
+  "news": {
+    "deadline": "Määräaika: {{deadline}}",
+    "removeMainTopic": "Poista pääaihe",
+    "setMainTopic": "Aseta pääaiheeksi",
+    "edit": "Muokkaa",
+    "delete": "Poista",
+    "noMessages": "Ei viestejä",
+    "noMainTopics": "Ei pääaiheita",
+    "mainTopicsTitle": "Pääaiheet"
+  },
+  "infobox": {
+    "editAria": "Muokkaa tiivistelmää",
+    "editTitle": "Muokkaa tiivistelmää",
+    "summary": "Tiivistelmä",
+    "summaryPlaceholder": "Tiivistelmän teksti",
+    "defaultText": "Tervetuloa organisaation tiedotuskanavalle. Tältä sivulta löydät ajankohtaiset uutiset ja tärkeimmät tiedotteet eri kategorioista. Pysy ajan tasalla!"
+  },
+  "stats": {
+    "total": "Yhteensä"
+  },
+  "fab": {
+    "addMessage": "Lisää viesti"
+  },
+  "messageModal": {
+    "editTitle": "Muokkaa viestiä",
+    "addTitle": "Lisää viesti",
+    "close": "Sulje",
+    "formTitle": "OTSIKKO",
+    "titlePlaceholder": "Viestin otsikko",
+    "content": "Sisältö",
+    "contentPlaceholder": "Viestin sisältö",
+    "category": "Kategoria",
+    "deadline": "Määräaika (valinnainen)",
+    "cancel": "Peruuta",
+    "save": "Tallenna"
+  },
+  "exitButtons": {
+    "exitFullscreenAria": "Poistu fullscreen-näkymästä",
+    "exitFullscreen": "Poistu fullscreen",
+    "exitViewingAria": "Poistu katselutilasta",
+    "exitViewing": "Poistu katselutilasta"
+  },
+  "themes": {
+    "light": "Vaalea",
+    "teletext": "Teksti-TV",
+    "youth": "Nuorisoversio",
+    "business": "Business",
+    "lightAria": "Vaalea teema",
+    "teletextAria": "Teksti-TV teema",
+    "youthAria": "Nuorisoversio teema",
+    "businessAria": "Business teema"
+  },
+  "time": {
+    "justNow": "Juuri nyt",
+    "minutesAgo": "{{count}} min sitten",
+    "hoursAgo": "{{count}} h sitten"
+  },
+  "confirm": {
+    "deleteMessage": "Haluatko poistaa tämän viestin?"
+  }
+}

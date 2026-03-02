@@ -1,0 +1,102 @@
+{
+  "app": {
+    "teletext": "Teletext",
+    "topbar": {
+      "yle": "Yle",
+      "news": "100 - NEWS",
+      "lang": "EN"
+    },
+    "bottombar": {
+      "index": "ALPHABETICAL INDEX",
+      "pages": "196 - 198"
+    }
+  },
+  "header": {
+    "loading": "Loading...",
+    "notFound": "Not found",
+    "noName": "No name",
+    "permissionDenied": "Read blocked (rules)",
+    "firestoreUnavailable": "Firestore unavailable",
+    "error": "Error in fetch",
+    "errorCode": "Error: {{code}}",
+    "companyPlaceholder": "Company Ltd",
+    "viewingMode": "Viewing mode",
+    "fullscreen": "Fullscreen view",
+    "companyNameAria": "Company name from Firestore"
+  },
+  "filters": {
+    "home": "Home",
+    "all": "All"
+  },
+  "categories": {
+    "news": "News",
+    "research": "Research",
+    "corporateCooperation": "Corporate cooperation",
+    "academicAdmin": "Academic admin",
+    "hr": "HR",
+    "management": "Management",
+    "productDevelopment": "Product development",
+    "itSupport": "IT support",
+    "security": "Security"
+  },
+  "news": {
+    "deadline": "Deadline: {{deadline}}",
+    "removeMainTopic": "Remove main topic",
+    "setMainTopic": "Set as main topic",
+    "edit": "Edit",
+    "delete": "Delete",
+    "noMessages": "No messages",
+    "noMainTopics": "No main topics",
+    "mainTopicsTitle": "Main topics"
+  },
+  "infobox": {
+    "editAria": "Edit summary",
+    "editTitle": "Edit summary",
+    "summary": "Summary",
+    "summaryPlaceholder": "Summary text",
+    "defaultText": "Welcome to the organization's information channel. This page contains current news and important announcements from different categories. Stay up to date!"
+  },
+  "stats": {
+    "total": "Total"
+  },
+  "fab": {
+    "addMessage": "Add message"
+  },
+  "messageModal": {
+    "editTitle": "Edit message",
+    "addTitle": "Add message",
+    "close": "Close",
+    "formTitle": "TITLE",
+    "titlePlaceholder": "Message title",
+    "content": "Content",
+    "contentPlaceholder": "Message content",
+    "category": "Category",
+    "deadline": "Deadline (optional)",
+    "cancel": "Cancel",
+    "save": "Save"
+  },
+  "exitButtons": {
+    "exitFullscreenAria": "Exit fullscreen view",
+    "exitFullscreen": "Exit fullscreen",
+    "exitViewingAria": "Exit viewing mode",
+    "exitViewing": "Exit viewing mode"
+  },
+  "themes": {
+    "light": "Light",
+    "teletext": "Teletext",
+    "youth": "Youth version",
+    "business": "Business",
+    "lightAria": "Light theme",
+    "teletextAria": "Teletext theme",
+    "youthAria": "Youth version theme",
+    "businessAria": "Business theme"
+  },
+  "time": {
+    "justNow": "Just now",
+    "minutesAgo": "{{count}} min ago",
+    "hoursAgo": "{{count}} h ago"
+  },
+  "confirm": {
+    "deleteMessage": "Do you want to delete this message?"
+  }
+}

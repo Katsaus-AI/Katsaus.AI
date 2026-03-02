@@ -1,14 +1,13 @@
 import { useState, useEffect, useCallback } from 'react';
+import i18n from '../i18n';
 import {
   getStoredTheme,
   setStoredTheme,
   getStoredMessages,
   setStoredMessages,
-  getStoredInfoBoxText,
-  setStoredInfoBoxText,
   generateId,
   parseDate,
-  DEFAULT_INFOBOX_TEXT,
+  getDefaultInfoBoxText,
   CATEGORIES,
 } from '../utils';
 
@@ -25,7 +24,7 @@ function applyThemeToDom(theme) {
 export function useAppState() {
   const [messages, setMessages] = useState([]);
   const [currentFilter, setCurrentFilter] = useState('aloitus');
-  const [infoBoxText, setInfoBoxText] = useState(DEFAULT_INFOBOX_TEXT);
+  const [infoBoxText, setInfoBoxText] = useState(() => getDefaultInfoBoxText());
   const [theme, setThemeState] = useState(getStoredTheme);
   const [editingId, setEditingId] = useState(null);
   const [messageModalOpen, setMessageModalOpen] = useState(false);
@@ -85,29 +84,33 @@ export function useAppState() {
   }, []);
 
   useEffect(() => {
-    setInfoBoxText(getStoredInfoBoxText() || DEFAULT_INFOBOX_TEXT);
-  }, []);
-
-  useEffect(() => {
     setStoredMessages(messages);
   }, [messages]);
 
   useEffect(() => {
+    const locale = i18n.language === 'fi' ? 'fi-FI' : 'en-GB';
     const update = () => {
       const now = new Date();
       setDateTime({
-        time: now.toLocaleTimeString('fi-FI', { hour: '2-digit', minute: '2-digit' }),
-        date: now.toLocaleDateString('fi-FI', { weekday: 'short', day: 'numeric', month: 'numeric' }),
+        time: now.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' }),
+        date: now.toLocaleDateString(locale, { weekday: 'short', day: 'numeric', month: 'numeric' }),
       });
     };
     update();
     const id = setInterval(update, 60000);
     return () => clearInterval(id);
+  }, [i18n.language]);
+
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      setInfoBoxText(getDefaultInfoBoxText());
+    };
+    i18n.on('languageChanged', handleLanguageChange);
+    return () => i18n.off('languageChanged', handleLanguageChange);
   }, []);
 
   const saveInfoBox = useCallback((text) => {
     setInfoBoxText(text);
-    setStoredInfoBoxText(text);
   }, []);
 
   const openMessageModal = useCallback((message = null) => {
@@ -187,7 +190,7 @@ export function useAppState() {
   );
 
   const deleteMessage = useCallback((id) => {
-    if (window.confirm('Haluatko poistaa tämän viestin?')) {
+    if (window.confirm(i18n.t('confirm.deleteMessage'))) {
       setMessages((prev) => prev.filter((m) => m.id !== id));
       setExpandedIds((prev) => {
         const next = new Set(prev);

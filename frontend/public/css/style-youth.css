@@ -140,7 +140,7 @@ body::before {
     letter-spacing: -0.5px;
 }
 
-.fullscreen-btn, .viewing-mode-btn, .theme-btn {
+.fullscreen-btn, .viewing-mode-btn, .theme-btn, .lang-btn {
     padding: 0.5rem 1rem;
     background: var(--bg-card);
     color: var(--text-primary);
@@ -152,7 +152,7 @@ body::before {
     transition: all 0.3s ease;
 }
 
-.fullscreen-btn:hover, .viewing-mode-btn:hover, .theme-btn:hover {
+.fullscreen-btn:hover, .viewing-mode-btn:hover, .theme-btn:hover, .lang-btn:hover {
     background: var(--primary-gradient);
     border-color: transparent;
     box-shadow: var(--shadow-glow);
@@ -217,17 +217,30 @@ body::before {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Filter Tabs */
+/* Filter Tabs - horizontally scrollable */
 .filter-tabs {
     display: flex;
     gap: 0.5rem;
     margin-bottom: 1rem;
     flex-wrap: nowrap;
-    padding: 0.25rem;
+    padding: 0.25rem 0.25rem 0.5rem;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
+}
+
+.filter-tabs::-webkit-scrollbar {
+    height: 6px;
+}
+
+.filter-tabs::-webkit-scrollbar-thumb {
+    background: var(--text-muted);
+    border-radius: 3px;
+}
+
+.filter-tabs::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
 }
 
 .filter-tab {

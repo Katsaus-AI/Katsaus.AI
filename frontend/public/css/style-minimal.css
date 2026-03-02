@@ -101,7 +101,8 @@ body {
 .header-time .time { color: var(--tt-white); }
 
 .fullscreen-btn,
-.viewing-mode-btn {
+.viewing-mode-btn,
+.lang-btn {
     background: transparent;
     border: 2px solid var(--tt-blue);
     color: var(--tt-cyan);
@@ -115,7 +116,8 @@ body {
 }
 
 .fullscreen-btn:hover,
-.viewing-mode-btn:hover {
+.viewing-mode-btn:hover,
+.lang-btn:hover {
     background: rgba(0, 255, 255, 0.10);
     border-color: var(--tt-cyan);
     transform: translateY(-1px);
@@ -611,14 +613,22 @@ body {
     overflow-y: hidden;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    scrollbar-width: thin;
     flex-wrap: nowrap;
     min-height: 44px;
 }
 
 .filter-tabs::-webkit-scrollbar {
-    display: none;
+    height: 6px;
+}
+
+.filter-tabs::-webkit-scrollbar-thumb {
+    background: var(--tt-blue);
+    border-radius: 3px;
+}
+
+.filter-tabs::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .filter-tab {
