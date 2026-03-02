@@ -24,7 +24,7 @@ export function MessageModal({
   const { t, i18n } = useTranslation();
   const [deadlineDate, setDeadlineDate] = useState(null);
 
-  const lang = i18n.language === 'en' ? 'en' : 'fi';
+  const lang = (i18n.language || '').startsWith('en') ? 'en' : 'fi';
   const dateFormat = DATE_FORMATS[lang];
 
   useEffect(() => {
@@ -34,7 +34,8 @@ export function MessageModal({
       setDeadlineDate(null);
       return;
     }
-    const parsed = new Date(raw);
+    const parts = raw.split('-').map(Number);
+    const parsed = parts.length === 3 ? new Date(parts[0], parts[1] - 1, parts[2]) : new Date(raw);
     setDeadlineDate(isNaN(parsed.getTime()) ? null : parsed);
   }, [isOpen, editingId, editingMessage?.deadline]);
 

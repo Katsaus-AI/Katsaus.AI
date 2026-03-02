@@ -17,7 +17,7 @@
     "noName": "No name",
     "permissionDenied": "Read blocked (rules)",
     "firestoreUnavailable": "Firestore unavailable",
-    "error": "Error in fetch",
+    "error": "Error fetching data",
     "errorCode": "Error: {{code}}",
     "companyPlaceholder": "Company Ltd",
     "viewingMode": "Viewing mode",

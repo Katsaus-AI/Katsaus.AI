@@ -153,8 +153,13 @@ body {
 
 .fullscreen-btn:hover,
 .viewing-mode-btn:hover,
-.lang-btn:hover {
+.lang-btn:not(.active):hover {
     color: var(--primary);
+}
+
+.lang-btn.active:hover {
+    color: white;
+    border-color: var(--primary);
 }
 
 .company-name-input {
