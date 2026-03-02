@@ -128,7 +128,8 @@ body {
 }
 
 .fullscreen-btn,
-.viewing-mode-btn {
+.viewing-mode-btn,
+.lang-btn {
     background: none;
     border: none;
     font-size: 1.2rem;
@@ -138,9 +139,27 @@ body {
     transition: color 0.15s;
 }
 
+.lang-btn {
+    font-size: 0.75rem;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+}
+
+.lang-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
 .fullscreen-btn:hover,
-.viewing-mode-btn:hover {
+.viewing-mode-btn:hover,
+.lang-btn:not(.active):hover {
     color: var(--primary);
+}
+
+.lang-btn.active:hover {
+    color: white;
+    border-color: var(--primary);
 }
 
 .company-name-input {
@@ -615,7 +634,7 @@ body {
 /* Category filter tabs - horizontally scrollable */
 .filter-tabs {
     display: flex;
-    padding: 5px 16px 5px;
+    padding: 5px 16px 8px;
     gap: 8px;
     background: var(--bg-primary);
     border-bottom: 1px solid var(--border-light);
@@ -623,14 +642,22 @@ body {
     overflow-y: hidden;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    scrollbar-width: thin;
     flex-wrap: nowrap;
     min-height: 44px;
 }
 
 .filter-tabs::-webkit-scrollbar {
-    display: none;
+    height: 6px;
+}
+
+.filter-tabs::-webkit-scrollbar-thumb {
+    background: var(--text-muted);
+    border-radius: 3px;
+}
+
+.filter-tabs::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
 }
 
 .filter-tab {

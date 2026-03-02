@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 
 export function Header({ dateTime, onToggleViewingMode, onToggleFullscreen }) {
-  const [companyName, setCompanyName] = useState('Ladataan...');
+  const { t, i18n } = useTranslation();
+  const [companyName, setCompanyName] = useState(t('header.loading'));
 
   useEffect(() => {
     let cancelled = false;
@@ -15,25 +17,25 @@ export function Header({ dateTime, onToggleViewingMode, onToggleFullscreen }) {
 
         if (cancelled) return;
         if (!snap.exists()) {
-          setCompanyName('Ei löytynyt');
+          setCompanyName(i18n.t('header.notFound'));
           return;
         }
 
         const data = snap.data();
-        setCompanyName(data.company_name || 'Ei nimeä');
+        setCompanyName(data.company_name || i18n.t('header.noName'));
       } catch (error) {
         console.error('Firestore fetch failed:', error);
         if (cancelled) return;
         const code = error?.code || '';
         if (code === 'permission-denied') {
-          setCompanyName('Luku estetty (rules)');
+          setCompanyName(i18n.t('header.permissionDenied'));
           return;
         }
         if (code === 'unavailable') {
-          setCompanyName('Firestore ei tavoitettavissa');
+          setCompanyName(i18n.t('header.firestoreUnavailable'));
           return;
         }
-        setCompanyName(code ? `Virhe: ${code}` : 'Virhe haussa');
+        setCompanyName(code ? i18n.t('header.errorCode', { code }) : i18n.t('header.error'));
       }
     };
 
@@ -42,15 +44,33 @@ export function Header({ dateTime, onToggleViewingMode, onToggleFullscreen }) {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [i18n.language]);
 
   return (
     <header className="app-header">
-      <span className="app-logo">Firma Oy</span>
+      <span className="app-logo">{t('header.companyPlaceholder')}</span>
+      <div className="lang-switcher">
+        <button
+          type="button"
+          className={`lang-btn ${i18n.language === 'fi' ? 'active' : ''}`}
+          onClick={() => i18n.changeLanguage('fi')}
+          aria-label="Suomi"
+        >
+          FI
+        </button>
+        <button
+          type="button"
+          className={`lang-btn ${i18n.language === 'en' ? 'active' : ''}`}
+          onClick={() => i18n.changeLanguage('en')}
+          aria-label="English"
+        >
+          EN
+        </button>
+      </div>
       <button
         type="button"
         className="viewing-mode-btn"
-        aria-label="Katselutila"
+        aria-label={t('header.viewingMode')}
         onClick={onToggleViewingMode}
       >
         👁
@@ -58,7 +78,7 @@ export function Header({ dateTime, onToggleViewingMode, onToggleFullscreen }) {
       <button
         type="button"
         className="fullscreen-btn"
-        aria-label="Fullscreen-näkymä"
+        aria-label={t('header.fullscreen')}
         onClick={onToggleFullscreen}
       >
         ⛶
@@ -66,7 +86,7 @@ export function Header({ dateTime, onToggleViewingMode, onToggleFullscreen }) {
       <input
         type="text"
         className="company-name-input"
-        aria-label="Yrityksen nimi Firestoresta"
+        aria-label={t('header.companyNameAria')}
         value={companyName}
         onChange={(e) => setCompanyName(e.target.value)}
       />

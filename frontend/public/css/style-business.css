@@ -99,7 +99,8 @@ body {
 
 .fullscreen-btn,
 .viewing-mode-btn,
-.theme-btn {
+.theme-btn,
+.lang-btn {
     background: transparent;
     color: var(--business-white);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -114,7 +115,8 @@ body {
 
 .fullscreen-btn:hover,
 .viewing-mode-btn:hover,
-.theme-btn:hover {
+.theme-btn:hover,
+.lang-btn:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.5);
 }
@@ -180,13 +182,32 @@ body {
     min-height: calc(100vh - 200px);
 }
 
-/* Filter tabs with professional styling */
+/* Filter tabs with professional styling - horizontally scrollable */
 .filter-tabs {
     display: flex;
     gap: 8px;
     margin-bottom: 24px;
     border-bottom: 2px solid var(--business-border);
     padding-bottom: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    flex-wrap: nowrap;
+}
+
+.filter-tabs::-webkit-scrollbar {
+    height: 6px;
+}
+
+.filter-tabs::-webkit-scrollbar-thumb {
+    background: var(--business-dark-gray);
+    border-radius: 3px;
+}
+
+.filter-tabs::-webkit-scrollbar-track {
+    background: var(--business-light-gray);
 }
 
 .filter-tab {
@@ -202,6 +223,7 @@ body {
     transition: all 0.2s ease;
     font-family: inherit;
     letter-spacing: -0.1px;
+    flex-shrink: 0;
 }
 
 .filter-tab:hover {
@@ -767,7 +789,7 @@ textarea {
     }
     
     .filter-tabs {
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
     }
     
     .filter-tab {

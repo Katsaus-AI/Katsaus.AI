@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAppState } from './hooks/useAppState';
 import {
   ThemeSelector,
@@ -14,6 +15,7 @@ import {
 } from './components';
 
 export default function App() {
+  const { t } = useTranslation();
   const state = useAppState();
 
   return (
@@ -27,11 +29,11 @@ export default function App() {
           onToggleFullscreen={state.toggleFullscreen}
         />
 
-        <div className="teletext-screen" role="application" aria-label="Teksti-TV">
+        <div className="teletext-screen" role="application" aria-label={t('app.teletext')}>
           <div className="teletext-topbar" aria-hidden="true">
-            <span className="teletext-topbar-left">Yle</span>
-            <span className="teletext-topbar-center">100 - UUTISET</span>
-            <span className="teletext-topbar-right">FI</span>
+            <span className="teletext-topbar-left">{t('app.topbar.yle')}</span>
+            <span className="teletext-topbar-center">{t('app.topbar.news')}</span>
+            <span className="teletext-topbar-right">{t('app.topbar.lang')}</span>
           </div>
 
           <main className="app-main">
@@ -89,8 +91,8 @@ export default function App() {
           </main>
 
           <div className="teletext-bottombar" aria-hidden="true">
-            <span className="teletext-bottombar-left">AAKKOSELLINEN HAKEMISTO</span>
-            <span className="teletext-bottombar-right">196 - 198</span>
+            <span className="teletext-bottombar-left">{t('app.bottombar.index')}</span>
+            <span className="teletext-bottombar-right">{t('app.bottombar.pages')}</span>
           </div>
         </div>
       </div>
