@@ -1,0 +1,14 @@
+{
+  "name": "katsaus-ai",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "preview": "npm --prefix frontend run preview",
+    "setup": "npm --prefix frontend install && npm --prefix functions install && npm --prefix backend install",
+    "functions:build": "npm --prefix functions run build",
+    "functions:serve": "npm --prefix functions run serve",
+    "backend:check": "node -e \"import('./backend/firebase.js').then(() => console.log('firebase init module loaded'))\""
+  }
+}

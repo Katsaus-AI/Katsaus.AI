@@ -1,3 +1,19 @@
+/* Korostettu määräaika uutisessa */
+.news-deadline-highlight {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 4px;
+    background: #dbeafe;
+    color: #2563eb;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.12);
+}
 /* InfoAHKY Minimal CSS - News-focused, Fresh Design */
 
 /* Reset and base styles */
@@ -125,6 +141,24 @@ body {
 .fullscreen-btn:hover,
 .viewing-mode-btn:hover {
     color: var(--primary);
+}
+
+.company-name-input {
+    height: 32px;
+    min-width: 140px;
+    max-width: 220px;
+    padding: 4px 10px;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+}
+
+.company-name-input:focus {
+    outline: none;
+    border-color: var(--primary);
 }
 
 .theme-btn {

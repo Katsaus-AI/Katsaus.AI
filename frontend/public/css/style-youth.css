@@ -159,6 +159,23 @@ body::before {
     transform: translateY(-2px);
 }
 
+.company-name-input {
+    min-width: 150px;
+    max-width: 240px;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 0.8125rem;
+    font-weight: 500;
+}
+
+.company-name-input:focus {
+    outline: none;
+    border-color: rgba(102, 126, 234, 0.5);
+    box-shadow: var(--shadow-glow);
+}
 .header-time {
     margin-left: auto;
     display: flex;

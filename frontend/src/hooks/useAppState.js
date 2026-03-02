@@ -138,12 +138,13 @@ export function useAppState() {
       const title = form.messageTitle?.value?.trim();
       const content = form.messageContent?.value?.trim();
       const category = form.messageCategory?.value;
+      const deadline = form.messageDeadline?.value || null;
       if (!title || !content) return;
       if (editingId) {
         setMessages((prev) =>
           prev.map((m) =>
             m.id === editingId
-              ? { ...m, title, content, category, updated: new Date().toISOString() }
+              ? { ...m, title, content, category, deadline, updated: new Date().toISOString() }
               : m
           )
         );
@@ -155,6 +156,7 @@ export function useAppState() {
             title,
             content,
             category,
+            deadline,
             created: new Date().toISOString(),
             updated: new Date().toISOString(),
           },

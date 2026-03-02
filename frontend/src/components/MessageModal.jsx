@@ -6,6 +6,7 @@ export function MessageModal({
   editingId,
   onClose,
   onSubmit,
+  defaultCategory,
 }) {
   if (!isOpen) return null;
 
@@ -55,7 +56,7 @@ export function MessageModal({
             <select
               id="message-category"
               name="messageCategory"
-              defaultValue={editingMessage?.category || 'uutisia'}
+              defaultValue={editingMessage?.category || defaultCategory || 'uutisia'}
             >
               <option value="uutisia">Uutisia</option>
               <option value="tutkimus">Tutkimus</option>
@@ -63,6 +64,15 @@ export function MessageModal({
               <option value="opintohallinto">Opintohallinto</option>
               <option value="hr">HR</option>
             </select>
+          </div>
+          <div className="form-group">
+            <label htmlFor="message-deadline">Määräaika (valinnainen)</label>
+            <input
+              id="message-deadline"
+              name="messageDeadline"
+              type="date"
+              defaultValue={editingMessage?.deadline || ''}
+            />
           </div>
           <div className="form-actions">
             <button type="button" className="btn-cancel" onClick={onClose}>

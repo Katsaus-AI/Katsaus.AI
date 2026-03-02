@@ -121,6 +121,22 @@ body {
     transform: translateY(-1px);
 }
 
+.company-name-input {
+    min-width: 140px;
+    max-width: 220px;
+    padding: 3px 8px;
+    border: 2px solid var(--tt-blue);
+    background: var(--tt-black);
+    color: var(--tt-white);
+    font-family: inherit;
+    font-size: 0.9em;
+}
+
+.company-name-input:focus {
+    outline: none;
+    border-color: var(--tt-cyan);
+}
+
 .theme-btn {
     background: transparent;
     border: 2px solid var(--tt-blue);
