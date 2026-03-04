@@ -18,7 +18,11 @@ export default function App() {
 
   return (
     <>
-      <ThemeSelector theme={state.theme} setTheme={state.setTheme} />
+      <ThemeSelector 
+        theme={state.theme} 
+        setTheme={state.setTheme}
+        themeSelectorVisible={state.themeSelectorVisible}
+      />
 
       <div className="app-container">
         <Header
@@ -93,6 +97,34 @@ export default function App() {
             <span className="teletext-bottombar-right">196 - 198</span>
           </div>
         </div>
+        
+        {state.theme === 'default' && (
+          <div className="theme-toggle-footer">
+            {!state.themeSelectorVisible ? (
+              <a
+                href="#"
+                className="theme-toggle-link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  state.toggleThemeSelector();
+                }}
+              >
+                Aiemmin demonstroidut teemat
+              </a>
+            ) : (
+              <a
+                href="#"
+                className="theme-toggle-link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  state.toggleThemeSelector();
+                }}
+              >
+                Piilota teemat
+              </a>
+            )}
+          </div>
+        )}
       </div>
 
       <Fab onAdd={() => state.openMessageModal()} />

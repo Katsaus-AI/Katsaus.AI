@@ -17,7 +17,12 @@ const ARIA_LABELS = {
   business: 'Business teema',
 };
 
-export function ThemeSelector({ theme, setTheme }) {
+export function ThemeSelector({ theme, setTheme, themeSelectorVisible }) {
+  // Piilotetaan kokonaan default-teemassa jos ei ole avattu
+  if (theme === 'default' && !themeSelectorVisible) {
+    return null;
+  }
+
   return (
     <div className="theme-selector">
       {Object.entries(THEMES).map(([, value]) => (

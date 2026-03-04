@@ -34,6 +34,7 @@ export function useAppState() {
   const [fullscreenMode, setFullscreenMode] = useState(false);
   const [expandedIds, setExpandedIds] = useState(() => new Set());
   const [dateTime, setDateTime] = useState({ time: '', date: '' });
+  const [themeSelectorVisible, setThemeSelectorVisible] = useState(false);
 
   const setTheme = useCallback((t) => {
     setThemeState(t);
@@ -231,6 +232,10 @@ export function useAppState() {
     });
   }, [messages.length]);
 
+  const toggleThemeSelector = useCallback(() => {
+    setThemeSelectorVisible((v) => !v);
+  }, []);
+
   const categoryCounts = messages.reduce((acc, m) => {
     acc[m.category] = (acc[m.category] || 0) + 1;
     return acc;
@@ -284,5 +289,7 @@ export function useAppState() {
     categoryCounts,
     filtered,
     mainTopics,
+    themeSelectorVisible,
+    toggleThemeSelector,
   };
 }

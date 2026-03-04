@@ -83,6 +83,26 @@ body {
     border-color: var(--primary);
 }
 
+/* Theme toggle footer link */
+.theme-toggle-footer {
+    padding: 16px;
+    text-align: center;
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-light);
+}
+
+.theme-toggle-link {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.theme-toggle-link:hover {
+    color: var(--primary);
+}
+
 /* Main container - full width on mobile */
 .app-container {
     max-width: 600px;
@@ -904,7 +924,8 @@ body.fullscreen-mode .stats-bar,
 body.fullscreen-mode .news-actions,
 body.fullscreen-mode .info-box,
 body.fullscreen-mode .teletext-topbar,
-body.fullscreen-mode .teletext-bottombar {
+body.fullscreen-mode .teletext-bottombar,
+body.fullscreen-mode .theme-toggle-footer {
     display: none;
 }
 
@@ -982,7 +1003,8 @@ body.viewing-mode .fab-container,
 body.viewing-mode .info-box,
 body.viewing-mode .main-topics-title,
 body.viewing-mode .header-time,
-body.viewing-mode .stats-bar {
+body.viewing-mode .stats-bar,
+body.viewing-mode .theme-toggle-footer {
     display: none;
 }
 
