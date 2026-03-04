@@ -1091,3 +1091,24 @@ body.admin-mode[data-theme="default"] .footer-control-btn.active {
     color: #00ff00;
 }
 
+/* Show company name input in admin mode */
+body.admin-mode[data-theme="default"] .company-name-input {
+    display: block;
+    height: 32px;
+    min-width: 140px;
+    max-width: 220px;
+    padding: 4px 10px;
+    border: 1px solid #333333;
+    border-radius: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: #ffffff;
+    background: #000000;
+    transition: border-color 0.2s;
+}
+
+body.admin-mode[data-theme="default"] .company-name-input:focus {
+    outline: none;
+    border-color: #00ff00;
+}
+
