@@ -128,7 +128,7 @@ export default function App() {
                 className="footer-control-btn"
                 onClick={state.toggleFullscreen}
               >
-                KOKO NÄYTTÖ
+                {state.fullscreenMode ? 'PALUU PERUSNÄKYMÄÄN' : 'KOKO NÄYTTÖ'}
               </button>
             </div>
             <div className="theme-toggle-footer">
