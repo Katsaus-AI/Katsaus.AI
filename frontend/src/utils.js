@@ -2,7 +2,7 @@ const THEME_STORAGE_KEY = 'infoahky_theme';
 const MESSAGES_STORAGE_KEY = 'infoahky_messages';
 const INFOBOX_STORAGE_KEY = 'infoahky_infobox_text';
 
-export const THEMES = { LIGHT: 'light', TELETEXT: 'teletext', YOUTH: 'youth', BUSINESS: 'business' };
+export const THEMES = { DEFAULT: 'default', LIGHT: 'light', TELETEXT: 'teletext', YOUTH: 'youth', BUSINESS: 'business' };
 
 export function getStoredTheme() {
   const saved = localStorage.getItem(THEME_STORAGE_KEY);

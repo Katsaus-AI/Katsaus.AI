@@ -2,6 +2,7 @@ import React from 'react';
 import { THEMES } from '../utils';
 
 const LABELS = {
+  default: 'Default',
   light: 'Vaalea',
   teletext: 'Teksti-TV',
   youth: 'Nuorisoversio',
@@ -9,6 +10,7 @@ const LABELS = {
 };
 
 const ARIA_LABELS = {
+  default: 'Default teema',
   light: 'Vaalea teema',
   teletext: 'Teksti-TV teema',
   youth: 'Nuorisoversio teema',

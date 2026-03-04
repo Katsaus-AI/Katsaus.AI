@@ -14,8 +14,8 @@ import {
 
 function applyThemeToDom(theme) {
   document.body.dataset.theme = theme;
-  const ids = ['theme-light', 'theme-teletext', 'theme-youth', 'theme-business'];
-  const map = { light: 0, teletext: 1, youth: 2, business: 3 };
+  const ids = ['theme-default', 'theme-light', 'theme-teletext', 'theme-youth', 'theme-business'];
+  const map = { default: 0, light: 1, teletext: 2, youth: 3, business: 4 };
   ids.forEach((id, i) => {
     const link = document.getElementById(id);
     if (link) link.disabled = map[theme] !== i;
