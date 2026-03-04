@@ -57,6 +57,21 @@ export function useAppState() {
     return () => document.body.classList.remove('fullscreen-mode');
   }, [fullscreenMode]);
 
+  // Kuuntele selaimen fullscreen-tilan muutoksia (esim. ESC-näppäin)
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      if (!document.fullscreenElement) {
+        setFullscreenMode(false);
+        setExpandedIds(new Set());
+      }
+    };
+    
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    };
+  }, []);
+
   useEffect(() => {
     document.body.classList.toggle('admin-mode', adminMode);
     return () => document.body.classList.remove('admin-mode');
@@ -232,8 +247,23 @@ export function useAppState() {
   const toggleFullscreen = useCallback(() => {
     setFullscreenMode((f) => {
       const next = !f;
-      if (next) setExpandedIds(() => new Set(messages.map((m) => m.id)));
-      else setExpandedIds(new Set());
+      if (next) {
+        setExpandedIds(() => new Set(messages.map((m) => m.id)));
+        // Pyydä selaimen fullscreen-tila
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen().catch((err) => {
+            console.error('Fullscreen-tilaan siirtyminen epäonnistui:', err);
+          });
+        }
+      } else {
+        setExpandedIds(new Set());
+        // Poistu selaimen fullscreen-tilasta
+        if (document.fullscreenElement && document.exitFullscreen) {
+          document.exitFullscreen().catch((err) => {
+            console.error('Fullscreen-tilasta poistuminen epäonnistui:', err);
+          });
+        }
+      }
       return next;
     });
   }, [messages.length]);
