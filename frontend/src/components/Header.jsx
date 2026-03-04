@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 
-export function Header({ dateTime, onToggleViewingMode, onToggleFullscreen }) {
+export function Header({ dateTime, onToggleViewingMode, onToggleFullscreen, adminMode, onToggleAdminMode }) {
   const [companyName, setCompanyName] = useState('Ladataan...');
 
   useEffect(() => {

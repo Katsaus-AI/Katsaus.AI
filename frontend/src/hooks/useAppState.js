@@ -32,6 +32,7 @@ export function useAppState() {
   const [infoboxModalOpen, setInfoboxModalOpen] = useState(false);
   const [viewingMode, setViewingMode] = useState(false);
   const [fullscreenMode, setFullscreenMode] = useState(false);
+  const [adminMode, setAdminMode] = useState(false);
   const [expandedIds, setExpandedIds] = useState(() => new Set());
   const [dateTime, setDateTime] = useState({ time: '', date: '' });
   const [themeSelectorVisible, setThemeSelectorVisible] = useState(false);
@@ -55,6 +56,11 @@ export function useAppState() {
     document.body.classList.toggle('fullscreen-mode', fullscreenMode);
     return () => document.body.classList.remove('fullscreen-mode');
   }, [fullscreenMode]);
+
+  useEffect(() => {
+    document.body.classList.toggle('admin-mode', adminMode);
+    return () => document.body.classList.remove('admin-mode');
+  }, [adminMode]);
 
   useEffect(() => {
     let cancelled = false;
@@ -236,6 +242,10 @@ export function useAppState() {
     setThemeSelectorVisible((v) => !v);
   }, []);
 
+  const toggleAdminMode = useCallback(() => {
+    setAdminMode((a) => !a);
+  }, []);
+
   const categoryCounts = messages.reduce((acc, m) => {
     acc[m.category] = (acc[m.category] || 0) + 1;
     return acc;
@@ -264,6 +274,7 @@ export function useAppState() {
     theme,
     setTheme,
     messages,
+    setMessages,
     currentFilter,
     setCurrentFilter,
     infoBoxText,
@@ -278,8 +289,10 @@ export function useAppState() {
     handleInfoboxSubmit,
     viewingMode,
     fullscreenMode,
+    adminMode,
     toggleViewingMode,
     toggleFullscreen,
+    toggleAdminMode,
     expandedIds,
     toggleExpanded,
     editMessage,

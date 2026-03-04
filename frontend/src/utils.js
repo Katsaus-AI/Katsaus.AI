@@ -7,7 +7,7 @@ export const THEMES = { DEFAULT: 'default', LIGHT: 'light', TELETEXT: 'teletext'
 export function getStoredTheme() {
   const saved = localStorage.getItem(THEME_STORAGE_KEY);
   if (Object.values(THEMES).includes(saved)) return saved;
-  return THEMES.LIGHT;
+  return THEMES.DEFAULT;
 }
 
 export function setStoredTheme(theme) {
@@ -92,6 +92,6 @@ export function escapeHtml(text) {
 }
 
 export const DEFAULT_INFOBOX_TEXT =
-  'Tervetuloa organisaation tiedotuskanavalle. Tältä sivulta löydät ajankohtaiset uutiset ja tärkeimmät tiedotteet eri kategorioista. Pysy ajan tasalla!';
+  'Hei! Tämä on organisaatiossasi pilotoitava tilanneikkuna, jonka tarjoaa Katsaus.AI-kurssiyritys. Ikkuna näyttää älykkään koosteen päivän tärkeimmistä aiheista ja tapahtumista.';
 
 export const CATEGORIES = ['uutisia', 'tutkimus', 'yritysyhteistyö', 'opintohallinto', 'hr'];

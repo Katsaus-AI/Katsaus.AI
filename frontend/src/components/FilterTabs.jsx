@@ -3,6 +3,16 @@ import { getCategoryLabel, CATEGORIES } from '../utils';
 
 const FILTERS = ['aloitus', 'all', ...CATEGORIES];
 
+const FILTER_NUMBERS = {
+  'aloitus': '100',
+  'all': '150',
+  'uutisia': '200',
+  'tutkimus': '300',
+  'yritysyhteistyö': '400',
+  'opintohallinto': '500',
+  'hr': '600',
+};
+
 function filterLabel(f) {
   if (f === 'aloitus') return 'Aloitus';
   if (f === 'all') return 'Kaikki';
@@ -20,7 +30,7 @@ export function FilterTabs({ currentFilter, onFilterChange }) {
           data-filter={f}
           onClick={() => onFilterChange(f)}
         >
-          {filterLabel(f)}
+          <span className="filter-tab-number">{FILTER_NUMBERS[f]}</span> {filterLabel(f).toUpperCase()}
         </button>
       ))}
     </div>
