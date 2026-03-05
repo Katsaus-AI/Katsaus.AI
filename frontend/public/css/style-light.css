@@ -194,6 +194,11 @@ body {
     box-shadow: none;
 }
 
+/* Hide page category title in light theme */
+.page-category-title {
+    display: none;
+}
+
 /* Main content - news first */
 .app-main {
     padding: 0;
@@ -201,6 +206,7 @@ body {
 
 /* Page title - minimal */
 .page-title {
+    display: none;
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 600;
     font-size: 0.8rem;

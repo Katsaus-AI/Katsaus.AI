@@ -207,6 +207,11 @@ body::before {
     display: none;
 }
 
+/* Hide page category title in youth theme */
+.page-category-title {
+    display: none;
+}
+
 /* Main Content */
 .app-main {
     animation: fadeIn 0.5s ease-in;

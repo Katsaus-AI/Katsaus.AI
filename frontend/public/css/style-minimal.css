@@ -191,8 +191,14 @@ body {
 
 .app-main { padding: 0.5rem 0 0; }
 
+/* Hide page category title in minimal theme */
+.page-category-title {
+    display: none;
+}
+
 /* Page title - minimal */
 .page-title {
+    display: none;
     font-weight: 700;
     font-size: 0.95em;
     color: var(--tt-cyan);
