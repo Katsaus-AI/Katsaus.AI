@@ -27,7 +27,7 @@ body {
     min-height: 100vh;
     line-height: 1.15;
     font-family: ui-monospace, "Cascadia Mono", Consolas, "Courier New", monospace;
-    font-size: clamp(14px, 2.0vw, 18px);
+    font-size: clamp(0.875rem, 2.0vw, 1.125rem);
 }
 
 /* Theme selector at top */
@@ -70,7 +70,7 @@ body {
     max-width: 980px;
     margin: 0 auto;
     min-height: 100vh;
-    padding: 10px 12px 60px;
+    padding: 0.625rem 0.75rem 3.75rem;
     background: var(--tt-black);
 }
 
