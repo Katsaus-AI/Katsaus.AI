@@ -29,10 +29,10 @@
     --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
     --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.3);
     
-    --radius-sm: 12px;
-    --radius-md: 16px;
-    --radius-lg: 24px;
-    --radius-xl: 32px;
+    --radius-sm: 0.75rem;
+    --radius-md: 1rem;
+    --radius-lg: 1.5rem;
+    --radius-xl: 2rem;
 }
 
 * {
@@ -53,8 +53,8 @@ body {
 .theme-selector {
     display: flex;
     justify-content: center;
-    gap: 12px;
-    padding: 16px;
+    gap: 0.75rem;
+    padding: 1rem;
     background: var(--bg-secondary);
     border-bottom: 2px solid var(--border-color);
     flex-wrap: wrap;
@@ -64,9 +64,9 @@ body {
     background: var(--bg-card);
     color: var(--text-primary);
     border: 1px solid var(--border-color);
-    padding: 8px 20px;
+    padding: 0.5rem 1.25rem;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 600;
     border-radius: var(--radius-sm);
     transition: all 0.3s ease;
@@ -110,7 +110,7 @@ body::before {
 .app-container {
     position: relative;
     z-index: 1;
-    max-width: 1400px;
+    max-width: 87.5rem;
     margin: 0 auto;
     padding: 0.5rem;
 }
@@ -137,7 +137,7 @@ body::before {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.03rem;
 }
 
 .fullscreen-btn, .viewing-mode-btn, .theme-btn {
@@ -160,8 +160,8 @@ body::before {
 }
 
 .company-name-input {
-    min-width: 150px;
-    max-width: 240px;
+    min-width: 9.375rem;
+    max-width: 15rem;
     padding: 0.5rem 0.75rem;
     background: var(--bg-card);
     color: var(--text-primary);
@@ -213,7 +213,7 @@ body::before {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(1.25rem); }
     to { opacity: 1; transform: translateY(0); }
 }
 
@@ -406,8 +406,8 @@ body::before {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
     background: var(--success-gradient);
     border-radius: 50%;
     font-size: 0.875rem;
@@ -472,7 +472,7 @@ body::before {
 }
 
 .news-item.expanded .news-content {
-    max-height: 500px;
+    max-height: 31.25rem;
     opacity: 1;
     margin-top: 0.625rem;
 }
@@ -489,7 +489,7 @@ body::before {
 
 .news-item.expanded .news-actions {
     opacity: 1;
-    max-height: 100px;
+    max-height: 6.25rem;
 }
 
 .btn-action {
@@ -653,7 +653,7 @@ body::before {
     font-size: 0.625rem;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.01875rem;
     font-weight: 600;
 }
 
@@ -683,8 +683,8 @@ body::before {
 }
 
 .fab-btn {
-    width: 56px;
-    height: 56px;
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: 50%;
     background: var(--primary-gradient);
     color: white;
