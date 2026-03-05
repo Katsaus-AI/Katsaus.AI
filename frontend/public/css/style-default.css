@@ -1142,8 +1142,8 @@ body.admin-mode[data-theme="default"] .fab-container {
     display: block;
     position: fixed;
     bottom: 1.5rem;
-    right: 1.5rem;
-    z-index: 100;
+    right: max(calc((100vw - 60rem) / 2 + 1.5rem), 3.375rem);
+    z-index: 500;
 }
 
 body.admin-mode[data-theme="default"] .fab-btn {
