@@ -14,8 +14,8 @@ import {
 
 function applyThemeToDom(theme) {
   document.body.dataset.theme = theme;
-  const ids = ['theme-light', 'theme-teletext', 'theme-youth', 'theme-business'];
-  const map = { light: 0, teletext: 1, youth: 2, business: 3 };
+  const ids = ['theme-default', 'theme-light', 'theme-teletext', 'theme-youth', 'theme-business'];
+  const map = { default: 0, light: 1, teletext: 2, youth: 3, business: 4 };
   ids.forEach((id, i) => {
     const link = document.getElementById(id);
     if (link) link.disabled = map[theme] !== i;
@@ -32,8 +32,10 @@ export function useAppState() {
   const [infoboxModalOpen, setInfoboxModalOpen] = useState(false);
   const [viewingMode, setViewingMode] = useState(false);
   const [fullscreenMode, setFullscreenMode] = useState(false);
+  const [adminMode, setAdminMode] = useState(false);
   const [expandedIds, setExpandedIds] = useState(() => new Set());
   const [dateTime, setDateTime] = useState({ time: '', date: '' });
+  const [themeSelectorVisible, setThemeSelectorVisible] = useState(false);
 
   const setTheme = useCallback((t) => {
     setThemeState(t);
@@ -54,6 +56,26 @@ export function useAppState() {
     document.body.classList.toggle('fullscreen-mode', fullscreenMode);
     return () => document.body.classList.remove('fullscreen-mode');
   }, [fullscreenMode]);
+
+  // Kuuntele selaimen fullscreen-tilan muutoksia (esim. ESC-näppäin)
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      if (!document.fullscreenElement) {
+        setFullscreenMode(false);
+        setExpandedIds(new Set());
+      }
+    };
+    
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    document.body.classList.toggle('admin-mode', adminMode);
+    return () => document.body.classList.remove('admin-mode');
+  }, [adminMode]);
 
   useEffect(() => {
     let cancelled = false;
@@ -225,11 +247,34 @@ export function useAppState() {
   const toggleFullscreen = useCallback(() => {
     setFullscreenMode((f) => {
       const next = !f;
-      if (next) setExpandedIds(() => new Set(messages.map((m) => m.id)));
-      else setExpandedIds(new Set());
+      if (next) {
+        setExpandedIds(() => new Set(messages.map((m) => m.id)));
+        // Pyydä selaimen fullscreen-tila
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen().catch((err) => {
+            console.error('Fullscreen-tilaan siirtyminen epäonnistui:', err);
+          });
+        }
+      } else {
+        setExpandedIds(new Set());
+        // Poistu selaimen fullscreen-tilasta
+        if (document.fullscreenElement && document.exitFullscreen) {
+          document.exitFullscreen().catch((err) => {
+            console.error('Fullscreen-tilasta poistuminen epäonnistui:', err);
+          });
+        }
+      }
       return next;
     });
   }, [messages.length]);
+
+  const toggleThemeSelector = useCallback(() => {
+    setThemeSelectorVisible((v) => !v);
+  }, []);
+
+  const toggleAdminMode = useCallback(() => {
+    setAdminMode((a) => !a);
+  }, []);
 
   const categoryCounts = messages.reduce((acc, m) => {
     acc[m.category] = (acc[m.category] || 0) + 1;
@@ -259,6 +304,7 @@ export function useAppState() {
     theme,
     setTheme,
     messages,
+    setMessages,
     currentFilter,
     setCurrentFilter,
     infoBoxText,
@@ -273,8 +319,10 @@ export function useAppState() {
     handleInfoboxSubmit,
     viewingMode,
     fullscreenMode,
+    adminMode,
     toggleViewingMode,
     toggleFullscreen,
+    toggleAdminMode,
     expandedIds,
     toggleExpanded,
     editMessage,
@@ -284,5 +332,7 @@ export function useAppState() {
     categoryCounts,
     filtered,
     mainTopics,
+    themeSelectorVisible,
+    toggleThemeSelector,
   };
 }

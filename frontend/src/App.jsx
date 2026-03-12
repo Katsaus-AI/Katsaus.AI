@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAppState } from './hooks/useAppState';
+import { getCategoryLabel } from './utils';
 import {
   ThemeSelector,
   Header,
@@ -13,18 +14,30 @@ import {
   ExitButtons,
 } from './components';
 
+function getFilterTitle(filter) {
+  if (filter === 'aloitus') return 'PÄÄSIVU';
+  if (filter === 'all') return 'KAIKKI UUTISET';
+  return getCategoryLabel(filter).toUpperCase();
+}
+
 export default function App() {
   const state = useAppState();
 
   return (
     <>
-      <ThemeSelector theme={state.theme} setTheme={state.setTheme} />
+      <ThemeSelector 
+        theme={state.theme} 
+        setTheme={state.setTheme}
+        themeSelectorVisible={state.themeSelectorVisible}
+      />
 
       <div className="app-container">
         <Header
           dateTime={state.dateTime}
           onToggleViewingMode={state.toggleViewingMode}
           onToggleFullscreen={state.toggleFullscreen}
+          adminMode={state.adminMode}
+          onToggleAdminMode={state.toggleAdminMode}
         />
 
         <div className="teletext-screen" role="application" aria-label="Teksti-TV">
@@ -35,11 +48,7 @@ export default function App() {
           </div>
 
           <main className="app-main">
-            <FilterTabs
-              currentFilter={state.currentFilter}
-              onFilterChange={state.setCurrentFilter}
-            />
-
+            <h1 className="page-category-title">{getFilterTitle(state.currentFilter)}</h1>
             {state.currentFilter === 'aloitus' && (
               <>
                 <NewsList
@@ -52,6 +61,10 @@ export default function App() {
                   deleteMessage={state.deleteMessage}
                   toggleMainTopic={state.toggleMainTopic}
                 />
+                <FilterTabs
+                  currentFilter={state.currentFilter}
+                  onFilterChange={state.setCurrentFilter}
+                />
                 <InfoBox
                   text={state.infoBoxText}
                   onEdit={() => state.setInfoboxModalOpen(true)}
@@ -60,15 +73,16 @@ export default function App() {
             )}
 
             {state.currentFilter !== 'aloitus' && (
-              <NewsList
-                currentFilter={state.currentFilter}
-                mainTopics={state.mainTopics}
-                filtered={state.filtered}
-                expandedIds={state.expandedIds}
-                toggleExpanded={state.toggleExpanded}
-                editMessage={state.editMessage}
-                deleteMessage={state.deleteMessage}
-                toggleMainTopic={state.toggleMainTopic}
+              <>
+                <NewsList
+                  currentFilter={state.currentFilter}
+                  mainTopics={state.mainTopics}
+                  filtered={state.filtered}
+                  expandedIds={state.expandedIds}
+                  toggleExpanded={state.toggleExpanded}
+                  editMessage={state.editMessage}
+                  deleteMessage={state.deleteMessage}
+                  toggleMainTopic={state.toggleMainTopic}
                 onReorder={(from, to) => {
                   // Päivitä järjestys vain kategoriasivuilla
                   if (state.currentFilter === 'aloitus') return;
@@ -80,6 +94,11 @@ export default function App() {
                   state.setMessages([...otherMsgs, ...catMsgs]);
                 }}
               />
+                <FilterTabs
+                  currentFilter={state.currentFilter}
+                  onFilterChange={state.setCurrentFilter}
+                />
+              </>
             )}
 
             <StatsBar
@@ -93,6 +112,52 @@ export default function App() {
             <span className="teletext-bottombar-right">196 - 198</span>
           </div>
         </div>
+        
+        {state.theme === 'default' && (
+          <>
+            <div className="footer-controls">
+              <button
+                type="button"
+                className={`footer-control-btn ${state.adminMode ? 'active' : ''}`}
+                onClick={state.toggleAdminMode}
+              >
+                {state.adminMode ? 'POISTU HALLINNASTA' : 'HALLINTA'}
+              </button>
+              <button
+                type="button"
+                className="footer-control-btn"
+                onClick={state.toggleFullscreen}
+              >
+                {state.fullscreenMode ? 'PALUU PERUSNÄKYMÄÄN' : 'KOKO NÄYTTÖ'}
+              </button>
+            </div>
+            <div className="theme-toggle-footer">
+              {!state.themeSelectorVisible ? (
+                <a
+                  href="#"
+                  className="theme-toggle-link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    state.toggleThemeSelector();
+                  }}
+                >
+                  Aiemmin demonstroidut teemat
+                </a>
+              ) : (
+                <a
+                  href="#"
+                  className="theme-toggle-link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    state.toggleThemeSelector();
+                  }}
+                >
+                  Piilota teemat
+                </a>
+              )}
+            </div>
+          </>
+        )}
       </div>
 
       <Fab onAdd={() => state.openMessageModal()} />
