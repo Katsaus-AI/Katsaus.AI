@@ -3,12 +3,12 @@ import i18n from './i18n';
 const THEME_STORAGE_KEY = 'infoahky_theme';
 const MESSAGES_STORAGE_KEY = 'infoahky_messages';
 
-export const THEMES = { LIGHT: 'light', TELETEXT: 'teletext', YOUTH: 'youth', BUSINESS: 'business' };
+export const THEMES = { DEFAULT: 'default', LIGHT: 'light', TELETEXT: 'teletext', YOUTH: 'youth', BUSINESS: 'business' };
 
 export function getStoredTheme() {
   const saved = localStorage.getItem(THEME_STORAGE_KEY);
   if (Object.values(THEMES).includes(saved)) return saved;
-  return THEMES.LIGHT;
+  return THEMES.DEFAULT;
 }
 
 export function setStoredTheme(theme) {

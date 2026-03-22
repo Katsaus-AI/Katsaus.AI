@@ -82,10 +82,12 @@
     "exitViewing": "Poistu katselutilasta"
   },
   "themes": {
+    "default": "Oletus",
     "light": "Vaalea",
     "teletext": "Teksti-TV",
     "youth": "Nuorisoversio",
     "business": "Business",
+    "defaultAria": "Oletusteema",
     "lightAria": "Vaalea teema",
     "teletextAria": "Teksti-TV teema",
     "youthAria": "Nuorisoversio teema",

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 
-export function Header({ dateTime, onToggleViewingMode, onToggleFullscreen }) {
+export function Header({ dateTime, onToggleViewingMode, onToggleFullscreen, adminMode, onToggleAdminMode }) {
   const { t, i18n } = useTranslation();
   const [companyName, setCompanyName] = useState(t('header.loading'));
 

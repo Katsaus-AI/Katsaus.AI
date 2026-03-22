@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { THEMES } from '../utils';
 
 const THEME_KEYS = {
+  default: 'themes.default',
   light: 'themes.light',
   teletext: 'themes.teletext',
   youth: 'themes.youth',
@@ -10,14 +11,19 @@ const THEME_KEYS = {
 };
 
 const THEME_ARIA_KEYS = {
+  default: 'themes.defaultAria',
   light: 'themes.lightAria',
   teletext: 'themes.teletextAria',
   youth: 'themes.youthAria',
   business: 'themes.businessAria',
 };
 
-export function ThemeSelector({ theme, setTheme }) {
+export function ThemeSelector({ theme, setTheme, themeSelectorVisible }) {
   const { t } = useTranslation();
+  if (theme === 'default' && !themeSelectorVisible) {
+    return null;
+  }
+
   return (
     <div className="theme-selector">
       {Object.entries(THEMES).map(([, value]) => (

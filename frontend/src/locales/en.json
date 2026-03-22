@@ -82,10 +82,12 @@
     "exitViewing": "Exit viewing mode"
   },
   "themes": {
+    "default": "Default",
     "light": "Light",
     "teletext": "Teletext",
     "youth": "Youth version",
     "business": "Business",
+    "defaultAria": "Default theme",
     "lightAria": "Light theme",
     "teletextAria": "Teletext theme",
     "youthAria": "Youth version theme",
