@@ -91,7 +91,7 @@ export function Header({ dateTime, onToggleViewingMode, onToggleFullscreen }) {
         onChange={(e) => setCompanyName(e.target.value)}
       />
       <div className="header-time">
-        <span className="time">{dateTime.time}</span>
+        <span className="time">{dateTime.time}{' '}</span>
         <span className="date">{dateTime.date}</span>
       </div>
     </header>
