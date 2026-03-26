@@ -2,6 +2,7 @@ import i18n from './i18n';
 
 const THEME_STORAGE_KEY = 'infoahky_theme';
 const MESSAGES_STORAGE_KEY = 'infoahky_messages';
+const INFOBOX_STORAGE_KEY = 'infoahky_infobox';
 
 export const THEMES = { DEFAULT: 'default', LIGHT: 'light', TELETEXT: 'teletext', YOUTH: 'youth', BUSINESS: 'business' };
 
@@ -26,6 +27,14 @@ export function getStoredMessages() {
 
 export function setStoredMessages(messages) {
   localStorage.setItem(MESSAGES_STORAGE_KEY, JSON.stringify(messages));
+}
+
+export function getStoredInfoBoxText() {
+  return localStorage.getItem(INFOBOX_STORAGE_KEY) || '';
+}
+
+export function setStoredInfoBoxText(text) {
+  localStorage.setItem(INFOBOX_STORAGE_KEY, text);
 }
 
 export function generateId() {
@@ -86,6 +95,8 @@ export function getCategoryI18nKey(category) {
   return CATEGORY_I18N_KEYS[category] || null;
 }
 
+export const CATEGORIES = ['uutisia', 'tutkimus', 'yritysyhteistyö', 'opintohallinto', 'hr'];
+
 export function escapeHtml(text) {
   if (text == null) return '';
   const div = document.createElement('div');
@@ -97,4 +108,3 @@ export function getDefaultInfoBoxText() {
   return i18n.t('infobox.defaultText');
 }
 
-export const CATEGORIES = ['uutisia', 'tutkimus', 'yritysyhteistyö', 'opintohallinto', 'hr'];
