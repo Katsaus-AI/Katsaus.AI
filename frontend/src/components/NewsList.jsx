@@ -9,6 +9,7 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { formatDate, getCategoryLabel, escapeHtml } from '../utils';
 
 /**
@@ -61,40 +62,7 @@ function NewsItemMainTopic({ msg, isExpanded, onToggle }) {
   );
 }
 
-/**
- * Full news item component for category and "all" views.
- * 
- * Displays complete message with all features:
- * - Main topic badge (★) if message is featured
- * - Deadline highlight if deadline is set
- * - Admin controls (visible when adminMode is enabled):
- *   - Toggle main topic status
- *   - Edit message
- *   - Delete message
- * - Click to expand/collapse (except when clicking action buttons)
- * 
- * CSS classes:
- * - .is-main-topic: Applied when message is featured for its category
- * - .expanded: Applied when content is visible
- * 
- * Action button behavior:
- * - Uses e.stopPropagation() to prevent triggering expand/collapse
- * - Checks e.target.closest('.news-actions') to ignore keyboard events on actions
- * 
- * Accessibility:
- * - role="button": Indicates interactive element
- * - tabIndex={0}: Keyboard focusable
- * - onKeyDown: Enter/Space support with action button detection
- * 
- * @param {Object} props
- * @param {Object} props.msg - Message object with all fields
- * @param {boolean} props.isExpanded - Whether content is visible
- * @param {Function} props.onToggle - Toggle expansion: (id, isActionClick) => void
- * @param {Function} props.onEdit - Edit handler: (id) => void
- * @param {Function} props.onDelete - Delete handler: (id) => void
- * @param {Function} props.onToggleMainTopic - Toggle main topic: (id) => void
- */
-function NewsItemFull({ msg, isExpanded, onToggle, onEdit, onDelete, onToggleMainTopic }) {
+function NewsItemFull({ msg, isExpanded, onToggle, onEdit, onDelete, onToggleMainTopic, t }) {
   return (
     <li
       className={`news-item ${msg.isMainTopic ? 'is-main-topic' : ''} ${isExpanded ? 'expanded' : ''}`}
@@ -122,7 +90,7 @@ function NewsItemFull({ msg, isExpanded, onToggle, onEdit, onDelete, onToggleMai
           <span className={`news-category ${msg.category}`}>{getCategoryLabel(msg.category)}</span>
           {msg.deadline && (
             <div className="news-deadline-highlight">
-              <span>Määräaika: {msg.deadline}</span>
+              <span>{t('news.deadline', { deadline: msg.deadline })}</span>
             </div>
           )}
           <div className="news-meta">{formatDate(msg.created)}</div>
@@ -138,7 +106,7 @@ function NewsItemFull({ msg, isExpanded, onToggle, onEdit, onDelete, onToggleMai
             onToggleMainTopic(msg.id);
           }}
         >
-          {msg.isMainTopic ? 'Poista pääaihe' : 'Aseta pääaiheeksi'}
+          {msg.isMainTopic ? t('news.removeMainTopic') : t('news.setMainTopic')}
         </button>
         <button
           type="button"
@@ -148,7 +116,7 @@ function NewsItemFull({ msg, isExpanded, onToggle, onEdit, onDelete, onToggleMai
             onEdit(msg.id);
           }}
         >
-          Muokkaa
+          {t('news.edit')}
         </button>
         <button
           type="button"
@@ -158,35 +126,27 @@ function NewsItemFull({ msg, isExpanded, onToggle, onEdit, onDelete, onToggleMai
             onDelete(msg.id);
           }}
         >
-          Poista
+          {t('news.delete')}
         </button>
       </div>
     </li>
   );
 }
 
-/**
- * Empty state when no messages exist in current filter.
- * Displayed on category pages and "all" view when no messages are available.
- */
-function EmptyState() {
+function EmptyState({ t }) {
   return (
     <div className="empty-state">
       <div className="empty-state-icon">📝</div>
-      <div className="empty-state-text">Ei viestejä</div>
+      <div className="empty-state-text">{t('news.noMessages')}</div>
     </div>
   );
 }
 
-/**
- * Empty state for "aloitus" page when no main topics are available.
- * Displayed when no messages exist in any category.
- */
-function EmptyStateMainTopics() {
+function EmptyStateMainTopics({ t }) {
   return (
     <div className="empty-state">
       <div className="empty-state-icon">📝</div>
-      <div className="empty-state-text">Ei pääaiheita</div>
+      <div className="empty-state-text">{t('news.noMainTopics')}</div>
     </div>
   );
 }
@@ -240,12 +200,13 @@ export function NewsList({
   toggleMainTopic,
   onReorder,
 }) {
+  const { t } = useTranslation();
   if (currentFilter === 'aloitus') {
     return (
       <>
         {mainTopics.length > 0 ? (
           <>
-            <h3 className="main-topics-title">Pääaiheet</h3>
+            <h3 className="main-topics-title">{t('news.mainTopicsTitle')}</h3>
             <ul className="news-list main-topics-list">
               {mainTopics.map((msg) => (
                 <NewsItemMainTopic
@@ -258,20 +219,21 @@ export function NewsList({
             </ul>
           </>
         ) : (
-          <EmptyStateMainTopics />
+          <EmptyStateMainTopics t={t} />
         )}
       </>
     );
   }
 
   if (filtered.length === 0) {
-    return <EmptyState />;
+    return <EmptyState t={t} />;
   }
 
   return (
     <ul className="news-list">
       {filtered.map((msg) => (
         <NewsItemFull
+          t={t}
           key={msg.id}
           msg={msg}
           isExpanded={expandedIds.has(msg.id)}

@@ -1,8 +1,10 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { getCategoryLabel } from '../utils';
 import { CATEGORIES } from '../utils';
 
 export function StatsBar({ categoryCounts, totalCount }) {
+  const { t } = useTranslation();
   return (
     <div className="stats-bar">
       {CATEGORIES.map((cat) => (
@@ -13,7 +15,7 @@ export function StatsBar({ categoryCounts, totalCount }) {
       ))}
       <div className="stat-item">
         <div className="stat-value">{totalCount}</div>
-        <div className="stat-label">Yhteensä</div>
+        <div className="stat-label">{t('stats.total')}</div>
       </div>
     </div>
   );

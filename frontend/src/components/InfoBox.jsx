@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { escapeHtml } from '../utils';
 
 export function InfoBox({ text, onEdit }) {
+  const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -16,7 +18,7 @@ export function InfoBox({ text, onEdit }) {
       <button
         type="button"
         className="info-box-edit-btn"
-        aria-label="Muokkaa tiivistelmää"
+        aria-label={t('infobox.editAria')}
         onClick={(e) => {
           e.stopPropagation();
           onEdit();

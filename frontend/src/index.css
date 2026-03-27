@@ -6,3 +6,17 @@
 body {
   margin: 0;
 }
+
+.lang-switcher {
+  display: flex;
+  gap: 2px;
+}
+
+/* DatePicker - match form input styling */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker-wrapper .datepicker-input {
+  width: 100%;
+}

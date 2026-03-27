@@ -27,6 +27,7 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAppState } from './hooks/useAppState';
 import { getCategoryLabel } from './utils';
 import {
@@ -55,7 +56,7 @@ function getFilterTitle(filter) {
 }
 
 export default function App() {
-  // Centralized state management via custom hook
+  const { t } = useTranslation();
   const state = useAppState();
 
   return (
@@ -77,13 +78,11 @@ export default function App() {
           onToggleAdminMode={state.toggleAdminMode}
         />
 
-        {/* Main teletext-styled screen */}
-        <div className="teletext-screen" role="application" aria-label="Teksti-TV">
-          {/* Decorative top bar (teletext style) */}
+        <div className="teletext-screen" role="application" aria-label={t('app.teletext')}>
           <div className="teletext-topbar" aria-hidden="true">
-            <span className="teletext-topbar-left">Yle</span>
-            <span className="teletext-topbar-center">100 - UUTISET</span>
-            <span className="teletext-topbar-right">FI</span>
+            <span className="teletext-topbar-left">{t('app.topbar.yle')}</span>
+            <span className="teletext-topbar-center">{t('app.topbar.news')}</span>
+            <span className="teletext-topbar-right">{t('app.topbar.lang')}</span>
           </div>
 
           <main className="app-main">
@@ -142,19 +141,6 @@ export default function App() {
                   editMessage={state.editMessage}
                   deleteMessage={state.deleteMessage}
                   toggleMainTopic={state.toggleMainTopic}
-                  {/* 
-                    onReorder callback for future drag-and-drop feature.
-                    
-                    When drag-and-drop is implemented:
-                    1. Moves message from index 'from' to index 'to' within category
-                    2. Preserves message order in other categories
-                    3. Updates messages array to reflect new order
-                    
-                    Implementation notes:
-                    - Only active on category pages (not 'aloitus')
-                    - Uses array splice to reorder messages
-                    - Merges reordered category messages with unchanged messages from other categories
-                  */}
                   onReorder={(from, to) => {
                     // Only allow reordering on category pages
                     if (state.currentFilter === 'aloitus') return;
@@ -191,8 +177,8 @@ export default function App() {
 
           {/* Decorative bottom bar (teletext style) */}
           <div className="teletext-bottombar" aria-hidden="true">
-            <span className="teletext-bottombar-left">AAKKOSELLINEN HAKEMISTO</span>
-            <span className="teletext-bottombar-right">196 - 198</span>
+            <span className="teletext-bottombar-left">{t('app.bottombar.index')}</span>
+            <span className="teletext-bottombar-right">{t('app.bottombar.pages')}</span>
           </div>
         </div>
         

@@ -24,6 +24,7 @@
  */
 
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 
@@ -38,8 +39,8 @@ import { db } from '../firebase';
  * @param {Function} props.onToggleAdminMode - Toggle admin mode (unused in component but may be needed for future features)
  */
 export function Header({ dateTime, onToggleViewingMode, onToggleFullscreen, adminMode, onToggleAdminMode }) {
-  // Company name state, initially shows loading indicator
-  const [companyName, setCompanyName] = useState('Ladataan...');
+  const { t, i18n } = useTranslation();
+  const [companyName, setCompanyName] = useState(t('header.loading'));
 
   /**
    * Fetch company name from Firestore on component mount.
@@ -76,13 +77,13 @@ export function Header({ dateTime, onToggleViewingMode, onToggleFullscreen, admi
         
         // Handle document not found
         if (!snap.exists()) {
-          setCompanyName('Ei löytynyt');
+          setCompanyName(i18n.t('header.notFound'));
           return;
         }
 
         // Extract company_name field from document
         const data = snap.data();
-        setCompanyName(data.company_name || 'Ei nimeä');
+        setCompanyName(data.company_name || i18n.t('header.noName'));
       } catch (error) {
         console.error('Firestore fetch failed:', error);
         if (cancelled) return;
@@ -90,14 +91,14 @@ export function Header({ dateTime, onToggleViewingMode, onToggleFullscreen, admi
         // Provide user-friendly error messages based on error code
         const code = error?.code || '';
         if (code === 'permission-denied') {
-          setCompanyName('Luku estetty (rules)');
+          setCompanyName(i18n.t('header.permissionDenied'));
           return;
         }
         if (code === 'unavailable') {
-          setCompanyName('Firestore ei tavoitettavissa');
+          setCompanyName(i18n.t('header.firestoreUnavailable'));
           return;
         }
-        setCompanyName(code ? `Virhe: ${code}` : 'Virhe haussa');
+        setCompanyName(code ? i18n.t('header.errorCode', { code }) : i18n.t('header.error'));
       }
     };
 
@@ -107,18 +108,33 @@ export function Header({ dateTime, onToggleViewingMode, onToggleFullscreen, admi
     return () => {
       cancelled = true;
     };
-  }, []); // Empty dependency array: run only once on mount
+  }, [i18n.language]);
 
   return (
     <header className="app-header">
-      {/* Static logo text (placeholder) */}
-      <span className="app-logo">Firma Oy</span>
-      
-      {/* Viewing mode toggle: Hides admin controls for presentations */}
+      <span className="app-logo">{t('header.companyPlaceholder')}</span>
+      <div className="lang-switcher">
+        <button
+          type="button"
+          className={`lang-btn ${i18n.language === 'fi' ? 'active' : ''}`}
+          onClick={() => i18n.changeLanguage('fi')}
+          aria-label="Suomi"
+        >
+          FI
+        </button>
+        <button
+          type="button"
+          className={`lang-btn ${i18n.language === 'en' ? 'active' : ''}`}
+          onClick={() => i18n.changeLanguage('en')}
+          aria-label="English"
+        >
+          EN
+        </button>
+      </div>
       <button
         type="button"
         className="viewing-mode-btn"
-        aria-label="Katselutila"
+        aria-label={t('header.viewingMode')}
         onClick={onToggleViewingMode}
       >
         👁
@@ -128,7 +144,7 @@ export function Header({ dateTime, onToggleViewingMode, onToggleFullscreen, admi
       <button
         type="button"
         className="fullscreen-btn"
-        aria-label="Fullscreen-näkymä"
+        aria-label={t('header.fullscreen')}
         onClick={onToggleFullscreen}
       >
         ⛶
@@ -148,14 +164,14 @@ export function Header({ dateTime, onToggleViewingMode, onToggleFullscreen, admi
       <input
         type="text"
         className="company-name-input"
-        aria-label="Yrityksen nimi Firestoresta"
+        aria-label={t('header.companyNameAria')}
         value={companyName}
         onChange={(e) => setCompanyName(e.target.value)}
       />
       
       {/* Current time and date display (updates every minute) */}
       <div className="header-time">
-        <span className="time">{dateTime.time}</span>
+        <span className="time">{dateTime.time}{' '}</span>
         <span className="date">{dateTime.date}</span>
       </div>
     </header>

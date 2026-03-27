@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { getCategoryLabel, CATEGORIES } from '../utils';
 
 const FILTERS = ['aloitus', 'all', ...CATEGORIES];
@@ -13,13 +14,14 @@ const FILTER_NUMBERS = {
   'hr': '600',
 };
 
-function filterLabel(f) {
-  if (f === 'aloitus') return 'Aloitus';
-  if (f === 'all') return 'Kaikki';
+function filterLabel(f, t) {
+  if (f === 'aloitus') return t('filters.home');
+  if (f === 'all') return t('filters.all');
   return getCategoryLabel(f);
 }
 
 export function FilterTabs({ currentFilter, onFilterChange }) {
+  const { t } = useTranslation();
   return (
     <div className="filter-tabs">
       {FILTERS.map((f) => (
@@ -30,7 +32,7 @@ export function FilterTabs({ currentFilter, onFilterChange }) {
           data-filter={f}
           onClick={() => onFilterChange(f)}
         >
-          <span className="filter-tab-number">{FILTER_NUMBERS[f]}</span> {filterLabel(f).toUpperCase()}
+          <span className="filter-tab-number">{FILTER_NUMBERS[f]}</span> {filterLabel(f, t).toUpperCase()}
         </button>
       ))}
     </div>

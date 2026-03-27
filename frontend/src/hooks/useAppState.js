@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import i18n from '../i18n';
 import {
   getStoredTheme,
   setStoredTheme,
@@ -8,7 +9,7 @@ import {
   setStoredInfoBoxText,
   generateId,
   parseDate,
-  DEFAULT_INFOBOX_TEXT,
+  getDefaultInfoBoxText,
   CATEGORIES,
 } from '../utils';
 
@@ -82,36 +83,19 @@ function applyThemeToDom(theme) {
  * @returns {Function} returns.toggleThemeSelector - Toggle theme selector visibility
  */
 export function useAppState() {
-  // ============================================
-  // STATE DECLARATIONS
-  // ============================================
-  
-  // Message data
-  const [messages, setMessages] = useState([]); // All news messages
-  
-  // Filters and navigation
-  const [currentFilter, setCurrentFilter] = useState('aloitus'); // Active category filter or 'aloitus'/'all'
-  
-  // Info box
-  const [infoBoxText, setInfoBoxText] = useState(DEFAULT_INFOBOX_TEXT); // HTML content for info box
-  
-  // Theme management
-  const [theme, setThemeState] = useState(getStoredTheme); // Current visual theme
-  
-  // Modal states
-  const [editingId, setEditingId] = useState(null); // ID of message being edited (null = new message)
-  const [messageModalOpen, setMessageModalOpen] = useState(false); // Message create/edit modal visibility
-  const [infoboxModalOpen, setInfoboxModalOpen] = useState(false); // Info box edit modal visibility
-  
-  // View modes
-  const [viewingMode, setViewingMode] = useState(false); // Presentation mode (hides admin controls)
-  const [fullscreenMode, setFullscreenMode] = useState(false); // Fullscreen display mode
-  const [adminMode, setAdminMode] = useState(false); // Admin mode (shows edit/delete buttons)
-  
-  // UI state
-  const [expandedIds, setExpandedIds] = useState(() => new Set()); // Set for O(1) lookup of expanded messages
-  const [dateTime, setDateTime] = useState({ time: '', date: '' }); // Current time/date for header
-  const [themeSelectorVisible, setThemeSelectorVisible] = useState(false); // Theme selector visibility
+  const [messages, setMessages] = useState([]);
+  const [currentFilter, setCurrentFilter] = useState('aloitus');
+  const [infoBoxText, setInfoBoxText] = useState(() => getStoredInfoBoxText() || getDefaultInfoBoxText());
+  const [theme, setThemeState] = useState(getStoredTheme);
+  const [editingId, setEditingId] = useState(null);
+  const [messageModalOpen, setMessageModalOpen] = useState(false);
+  const [infoboxModalOpen, setInfoboxModalOpen] = useState(false);
+  const [viewingMode, setViewingMode] = useState(false);
+  const [fullscreenMode, setFullscreenMode] = useState(false);
+  const [adminMode, setAdminMode] = useState(false);
+  const [expandedIds, setExpandedIds] = useState(() => new Set());
+  const [dateTime, setDateTime] = useState({ time: '', date: '' });
+  const [themeSelectorVisible, setThemeSelectorVisible] = useState(false);
 
   // ============================================
   // THEME MANAGEMENT
@@ -222,15 +206,13 @@ export function useAppState() {
     };
   }, []);
 
-  // Load info box text from localStorage on mount
-  useEffect(() => {
-    setInfoBoxText(getStoredInfoBoxText() || DEFAULT_INFOBOX_TEXT);
-  }, []);
-
-  // Persist messages to localStorage whenever they change
   useEffect(() => {
     setStoredMessages(messages);
   }, [messages]);
+
+  useEffect(() => {
+    setStoredInfoBoxText(infoBoxText);
+  }, [infoBoxText]);
 
   // ============================================
   // DATE/TIME DISPLAY
@@ -241,16 +223,25 @@ export function useAppState() {
    * Uses Finnish locale formatting for display in header.
    */
   useEffect(() => {
+    const locale = i18n.language === 'fi' ? 'fi-FI' : 'en-GB';
     const update = () => {
       const now = new Date();
       setDateTime({
-        time: now.toLocaleTimeString('fi-FI', { hour: '2-digit', minute: '2-digit' }),
-        date: now.toLocaleDateString('fi-FI', { weekday: 'short', day: 'numeric', month: 'numeric' }),
+        time: now.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' }),
+        date: now.toLocaleDateString(locale, { weekday: 'short', day: 'numeric', month: 'numeric' }),
       });
     };
     update();
     const id = setInterval(update, 60000); // Update every 60 seconds
     return () => clearInterval(id);
+  }, [i18n.language]);
+
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      setInfoBoxText(getDefaultInfoBoxText());
+    };
+    i18n.on('languageChanged', handleLanguageChange);
+    return () => i18n.off('languageChanged', handleLanguageChange);
   }, []);
 
   // ============================================
@@ -262,7 +253,6 @@ export function useAppState() {
    */
   const saveInfoBox = useCallback((text) => {
     setInfoBoxText(text);
-    setStoredInfoBoxText(text);
   }, []);
 
   // ============================================
@@ -386,7 +376,7 @@ export function useAppState() {
    * @param {string} id - Message ID to delete
    */
   const deleteMessage = useCallback((id) => {
-    if (window.confirm('Haluatko poistaa tämän viestin?')) {
+    if (window.confirm(i18n.t('confirm.deleteMessage'))) {
       setMessages((prev) => prev.filter((m) => m.id !== id));
       setExpandedIds((prev) => {
         const next = new Set(prev);

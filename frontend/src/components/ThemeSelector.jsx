@@ -1,24 +1,25 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { THEMES } from '../utils';
 
-const LABELS = {
-  default: 'Default',
-  light: 'Vaalea',
-  teletext: 'Teksti-TV',
-  youth: 'Nuorisoversio',
-  business: 'Business',
+const THEME_KEYS = {
+  default: 'themes.default',
+  light: 'themes.light',
+  teletext: 'themes.teletext',
+  youth: 'themes.youth',
+  business: 'themes.business',
 };
 
-const ARIA_LABELS = {
-  default: 'Default teema',
-  light: 'Vaalea teema',
-  teletext: 'Teksti-TV teema',
-  youth: 'Nuorisoversio teema',
-  business: 'Business teema',
+const THEME_ARIA_KEYS = {
+  default: 'themes.defaultAria',
+  light: 'themes.lightAria',
+  teletext: 'themes.teletextAria',
+  youth: 'themes.youthAria',
+  business: 'themes.businessAria',
 };
 
 export function ThemeSelector({ theme, setTheme, themeSelectorVisible }) {
-  // Piilotetaan kokonaan default-teemassa jos ei ole avattu
+  const { t } = useTranslation();
   if (theme === 'default' && !themeSelectorVisible) {
     return null;
   }
@@ -31,10 +32,10 @@ export function ThemeSelector({ theme, setTheme, themeSelectorVisible }) {
           type="button"
           className={`theme-selector-btn ${theme === value ? 'active' : ''}`}
           data-theme={value}
-          aria-label={ARIA_LABELS[value]}
+          aria-label={t(THEME_ARIA_KEYS[value])}
           onClick={() => setTheme(value)}
         >
-          {LABELS[value]}
+          {t(THEME_KEYS[value])}
         </button>
       ))}
     </div>
