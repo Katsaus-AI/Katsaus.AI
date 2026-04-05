@@ -1,13 +1,15 @@
+import i18n from './i18n';
+
 const THEME_STORAGE_KEY = 'infoahky_theme';
 const MESSAGES_STORAGE_KEY = 'infoahky_messages';
-const INFOBOX_STORAGE_KEY = 'infoahky_infobox_text';
+const INFOBOX_STORAGE_KEY = 'infoahky_infobox';
 
-export const THEMES = { LIGHT: 'light', TELETEXT: 'teletext', YOUTH: 'youth', BUSINESS: 'business' };
+export const THEMES = { DEFAULT: 'default', LIGHT: 'light', TELETEXT: 'teletext', YOUTH: 'youth', BUSINESS: 'business' };
 
 export function getStoredTheme() {
   const saved = localStorage.getItem(THEME_STORAGE_KEY);
   if (Object.values(THEMES).includes(saved)) return saved;
-  return THEMES.LIGHT;
+  return THEMES.DEFAULT;
 }
 
 export function setStoredTheme(theme) {
@@ -58,31 +60,42 @@ export function formatDate(dateStr) {
   const date = new Date(dateStr);
   const now = new Date();
   const diff = now - date;
+  const locale = i18n.language === 'fi' ? 'fi-FI' : 'en-GB';
   if (diff < 86400000) {
     const hours = Math.floor(diff / 3600000);
     if (hours < 1) {
       const mins = Math.floor(diff / 60000);
-      return mins < 1 ? 'Juuri nyt' : `${mins} min sitten`;
+      return mins < 1 ? i18n.t('time.justNow') : i18n.t('time.minutesAgo', { count: mins });
     }
-    return `${hours} h sitten`;
+    return i18n.t('time.hoursAgo', { count: hours });
   }
-  return date.toLocaleDateString('fi-FI', { day: 'numeric', month: 'numeric' });
+  return date.toLocaleDateString(locale, { day: 'numeric', month: 'numeric' });
 }
 
-const CATEGORY_LABELS = {
-  uutisia: 'Uutisia',
-  tutkimus: 'Tutkimus',
-  yritysyhteistyö: 'Yritysyhteistyö',
-  opintohallinto: 'Opintohallinto',
-  hr: 'HR',
-  johto: 'Johto',
-  tuotekehitys: 'Tuotekehitys',
-  'it-tuki': 'IT-tuki',
-  turvallisuus: 'Turvallisuus',
+const CATEGORY_I18N_KEYS = {
+  uutisia: 'categories.news',
+  tutkimus: 'categories.research',
+  yritysyhteistyö: 'categories.corporateCooperation',
+  opintohallinto: 'categories.academicAdmin',
+  hr: 'categories.hr',
+  johto: 'categories.management',
+  tuotekehitys: 'categories.productDevelopment',
+  'it-tuki': 'categories.itSupport',
+  turvallisuus: 'categories.security',
 };
+
 export function getCategoryLabel(category) {
-  return CATEGORY_LABELS[category] || category;
+  const i18nKey = CATEGORY_I18N_KEYS[category];
+  if (!i18nKey) return category;
+  const translated = i18n.t(i18nKey);
+  return translated !== i18nKey ? translated : category;
 }
+
+export function getCategoryI18nKey(category) {
+  return CATEGORY_I18N_KEYS[category] || null;
+}
+
+export const CATEGORIES = ['uutisia', 'tutkimus', 'yritysyhteistyö', 'opintohallinto', 'hr'];
 
 export function escapeHtml(text) {
   if (text == null) return '';
@@ -91,7 +104,7 @@ export function escapeHtml(text) {
   return div.innerHTML;
 }
 
-export const DEFAULT_INFOBOX_TEXT =
-  'Tervetuloa organisaation tiedotuskanavalle. Tältä sivulta löydät ajankohtaiset uutiset ja tärkeimmät tiedotteet eri kategorioista. Pysy ajan tasalla!';
+export function getDefaultInfoBoxText() {
+  return i18n.t('infobox.defaultText');
+}
 
-export const CATEGORIES = ['uutisia', 'tutkimus', 'yritysyhteistyö', 'opintohallinto', 'hr'];
