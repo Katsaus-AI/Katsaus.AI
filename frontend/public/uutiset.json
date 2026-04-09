@@ -26,5 +26,21 @@
     "Description": "• Sisältö: 3 kuukauden aikajana, virstanpylväät ja teknologiavalinnat.\n• Seuraavat askeleet (ennen seuraavaa kokousta): Ensimmäiset asiakashaastattelut, prototyypin esittely ja taloudelliset laskelmat.",
     "Link": "https://teks4407.atlassian.net/wiki/spaces/DEV/pages/4358145/Ty+njako",
     "Image": ""
+  },
+  {
+    "Title": "Wiki Update: DRAFT: Hallituksen kokous 09-04-2026 | Pöytäkirja",
+    "Date": "Just now",
+    "Description": "- **Riskienhallinta:** Syväanalyysi viikon 12 oppimispäiväkirjan havaintojen pohjalta. - **Visio:** Future press release -konseptin esittely ja vision kirkastaminen. - **Markkinatilanne:** Päivitetyt asiakasyhteenvedot ja kilpailija-analyysi. - **Operatiivinen tila:** Tilannekatsaus, roadmap-tarkastus ja use case -tarinallistaminen. - **Prioriteetit:** Projektin loppuvaiheen 2-3 kriittisintä strategista tavoitetta.",
+    "Link": "https:\/\/teks4407.atlassian.net\/wiki\/spaces\/INF\/pages\/56950785\/DRAFT+Hallituksen+kokous+09-04-2026+P+yt+kirja",
+    "Image": "",
+    "Category": "johto"
+  },
+  {
+    "Title": "Wiki Update: Glean",
+    "Date": "Just now",
+    "Description": "- **Glean-analyysi:** Tier 1 -tason suora kilpailija, jolla on 7,2 mrd USD valuaatio ja 200 milj. USD liikevaihto.\n- **Tekninen ero:** Glean keskittää datan omaan pilveensä (SaaS), kun taas Katsaus.ai käyttää asiakkaan omaa infraa (BYO-AI).\n- **Käyttökokemus:** Katsaus.ai erottuu passiivisella Zero-Click-mallilla Gleanin hakupohjaista ja aktiivista käyttöä vaativaa mallia vastaan.\n- **Kilpailuetu:** Parempi tietoturva (stateless), alempi kognitiivinen kuorma ja helpompi infosec-hyväksyntä suuryrityksissä.",
+    "Link": "https:\/\/teks4407.atlassian.net\/wiki\/spaces\/INF\/pages\/56033284\/Glean",
+    "Image": "",
+    "Category": "tutkimus"
   }
 ]

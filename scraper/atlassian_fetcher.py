@@ -1,4 +1,5 @@
 import os
+from bs4 import BeautifulSoup
 from atlassian import Confluence, Jira
 from dotenv import load_dotenv
 
@@ -111,7 +112,6 @@ def fetch_confluence_pages():
                 text_content = ""
                 if body_content:
                     try:
-                        from bs4 import BeautifulSoup
                         soup = BeautifulSoup(body_content, 'html.parser')
                         text_content = soup.get_text(separator=' ', strip=True)
                         # Truncate if too long (e.g. 100000 chars) to avoid token limits

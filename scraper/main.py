@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import os
 import requests
 from bs4 import BeautifulSoup
@@ -6,7 +5,6 @@ import pandas as pd
 from dotenv import load_dotenv
 
 load_dotenv()
-=======
 """
 Web scraper for Jyväskylä University news feed.
 
@@ -30,12 +28,6 @@ Dependencies:
     - pandas: Data manipulation and JSON export
     - lxml: Fast HTML parser backend for BeautifulSoup
 """
-
-import requests
-from bs4 import BeautifulSoup
-import pandas as pd
-
->>>>>>> 25bb4dcaf4a89bf3716049b42d27e4157e7ac566
 
 def scrape_blog_articles(url):
     """
@@ -135,33 +127,26 @@ def scrape_blog_articles(url):
 
 
 if __name__ == "__main__":
-<<<<<<< HEAD
     import argparse
     parser = argparse.ArgumentParser(description='Scrape TekstiTV news and updates.')
     parser.add_argument('--no-gemini', action='store_true', help='Skip Gemini summarization')
+    parser.add_argument('--no-jyu', action='store_true', help='Skip fetching JYU articles')
+    parser.add_argument('--atlassian-limit', type=int, default=5, help='Max number of Atlassian items to process')
+    parser.add_argument('--atlassian-ids', type=str, help='Comma separated list of specific Atlassian IDs to process')
     args = parser.parse_args()
 
-=======
-    # URL of the JYU news page to scrape
->>>>>>> 25bb4dcaf4a89bf3716049b42d27e4157e7ac566
-    url = 'https://www.jyu.fi/fi/ajankohtaista/uutiset-ja-tiedotteet'
-    
-    # Scrape articles from the URL
-    articles = scrape_blog_articles(url)
-    
-    # Clean up Unicode characters that may cause issues in JSON/frontend
-    # Replace en dash (U+2013 '–') with ASCII hyphen-minus (U+002D '-')
-    # Replace non-breaking space (U+00A0) with regular space (U+0020)
-    # These replacements ensure compatibility with frontend parsing and display
-    for article in articles:
-        for key, value in article.items():
-            if isinstance(value, str):
-                value = value.replace('\u2013', '-')  # En dash → hyphen
-                value = value.replace('\u00a0', ' ')  # Non-breaking space → space
-                article[key] = value
-<<<<<<< HEAD
+    articles = []
+    if not args.no_jyu:
+        url = 'https://www.jyu.fi/fi/ajankohtaista/uutiset-ja-tiedotteet'
+        articles = scrape_blog_articles(url)
+        # Replace en dash (U+2013) with ASCII hyphen-minus (U+002d) and non-breaking space (U+00A0) with regular space (U+0020) in all string fields
+        for article in articles:
+            for key, value in article.items():
+                if isinstance(value, str):
+                    value = value.replace('\u2013', '-')
+                    value = value.replace('\u00a0', ' ')
+                    article[key] = value
 
-    # --- Atlassian Projects ---
     # --- Atlassian Projects ---
     print("Fetching Atlassian projects...")
     try:
@@ -201,18 +186,35 @@ if __name__ == "__main__":
                 except Exception as e:
                     print(f"Error saving cache: {e}")
         
-        for item in atlassian_data:
+        # Filter out items with no recent activity
+        filtered_data = [
+            item for item in atlassian_data 
+            if item.get('recent_activity') != "No recent activity in the last 7 days."
+        ]
+        
+        # Filter by specific IDs if provided
+        if args.atlassian_ids:
+            allowed_ids = [aid.strip() for aid in args.atlassian_ids.split(',')]
+            filtered_data = [item for item in filtered_data if str(item.get('key')) in allowed_ids]
+            
+        # Apply the specified limit
+        filtered_data = filtered_data[:args.atlassian_limit]
+        
+        for item in filtered_data:
             title_prefix = "Project Update" if item.get('source') == 'Jira' else "Wiki Update"
             
             if args.no_gemini:
                 print(f"Skipping summarization for {item['title']}")
                 # Use recent_activity (preview) or just a static text
                 summary = item.get('recent_activity', 'No details available.')
+                category = 'uutisia'
             else:
                 print(f"Summarizing {item['title']}...")
                 # Use full_content if available (Confluence), else recent_activity (Jira)
                 content_to_summarize = item.get('full_content') or item.get('recent_activity')
-                summary = summarize_project_update(item['title'], content_to_summarize)
+                result_dict = summarize_project_update(item['title'], content_to_summarize)
+                summary = result_dict.get("summary", "Virhe tiivistämisessä.")
+                category = result_dict.get("category", "uutisia")
             
             # Link handling: Jira uses 'key' construction, Confluence provides full 'link'
             link = item.get('link')
@@ -225,18 +227,16 @@ if __name__ == "__main__":
                 'Date': 'Just now',
                 'Description': summary,
                 'Link': link,
-                'Image': '' 
+                'Image': '',
+                'Category': category
             })
             
     except ImportError as e:
         print(f"Skipping Atlassian integration due to missing modules: {e}")
     except Exception as e:
         print(f"Error in Atlassian integration: {e}")
-
-=======
     
     # Convert to DataFrame for easier manipulation and export
->>>>>>> 25bb4dcaf4a89bf3716049b42d27e4157e7ac566
     df = pd.DataFrame(articles)
     print(df)
     
