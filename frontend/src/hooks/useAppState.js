@@ -190,6 +190,7 @@ export function useAppState() {
           id: generateId(),
           title: item.Title,
           content: item.Description,
+          link: item.Link,
           category: item.Category || 'uutisia',
           created: parseDate(item.Date), // Adds random time to differentiate same-day messages
           updated: parseDate(item.Date),

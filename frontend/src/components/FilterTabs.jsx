@@ -12,6 +12,10 @@ const FILTER_NUMBERS = {
   'yritysyhteistyö': '400',
   'opintohallinto': '500',
   'hr': '600',
+  'johto': '700',
+  'tuotekehitys': '800',
+  'it-tuki': '900',
+  'turvallisuus': '990',
 };
 
 function filterLabel(f, t) {

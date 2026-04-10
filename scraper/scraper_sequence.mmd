@@ -1,0 +1,28 @@
+sequenceDiagram
+    participant Main as main.py
+    participant Fetcher as atlassian_fetcher.py
+    participant Gemini as gemini_summarizer.py
+    participant API as Atlassian API
+    participant LLM as Google Gemini API
+    
+    Main->>Fetcher: fetch_jira_projects()
+    Fetcher->>API: GET /rest/api/2/project & JQL
+    API-->>Fetcher: Project & Activity Data
+    Fetcher-->>Main: List of Jira Updates
+    
+    Main->>Fetcher: fetch_confluence_pages()
+    Fetcher->>API: GET CQL space="DEV"
+    API-->>Fetcher: Page Data + Storage Content
+    Fetcher-->>Main: List of Wiki Updates
+    
+    Main->>Main: Cache results to atlassian_raw.json
+    Main->>Main: Filter recent & apply limits/ids
+    
+    loop Each Atlassian Update
+        Main->>Gemini: summarize_project_update(title, content)
+        Gemini->>LLM: Prompt with Rules & Raw Data
+        LLM-->>Gemini: Structured DistilledUpdate (Category, Summary)
+        Gemini-->>Main: Dict {summary, category}
+    end
+    
+    Main->>Main: Export to uutiset.json

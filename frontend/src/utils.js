@@ -95,13 +95,21 @@ export function getCategoryI18nKey(category) {
   return CATEGORY_I18N_KEYS[category] || null;
 }
 
-export const CATEGORIES = ['uutisia', 'tutkimus', 'yritysyhteistyö', 'opintohallinto', 'hr'];
+export const CATEGORIES = ['uutisia', 'tutkimus', 'yritysyhteistyö', 'opintohallinto', 'hr', 'johto', 'tuotekehitys', 'it-tuki', 'turvallisuus'];
 
 export function escapeHtml(text) {
   if (text == null) return '';
   const div = document.createElement('div');
   div.textContent = text;
   return div.innerHTML;
+}
+
+export function renderMarkdown(text) {
+  if (text == null) return '';
+  let escaped = escapeHtml(text);
+  // Replace **bold** with <strong>bold</strong>
+  escaped = escaped.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  return escaped;
 }
 
 export function getDefaultInfoBoxText() {

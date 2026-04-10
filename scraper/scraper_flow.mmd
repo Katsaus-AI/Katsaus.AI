@@ -1,0 +1,37 @@
+graph TD
+    A[main.py: CLI Entry Point] --> B{Arguments Parsed}
+    B -->|--no-jyu not set| C[scrape_blog_articles]
+    C --> D[requests + BeautifulSoup]
+    D --> E[JYU Website]
+    E -->|HTML content| D
+    D --> |Parsed Articles| F[articles list]
+    
+    B --> G[Atlassian Integration]
+    G --> H[atlassian_fetcher.py]
+    H --> I(Jira API)
+    H --> J(Confluence API)
+    
+    I --> |Jira Projects| K[atlassian_data]
+    J --> |Confluence Pages| K
+    
+    K --> L{Check Cache atlassian_raw.json}
+    L -->|Cache hits| M[Load Cache]
+    L -->|No Cache| N[Fetch Fresh]
+    N --> K
+    
+    K --> O[Filter Activity & limit & ids]
+    
+    O --> P{For each item}
+    P -->|--no-gemini set| Q[Skip Gemini]
+    P -->|--no-gemini not set| R[gemini_summarizer.py]
+    
+    R --> S(Google Gemini API)
+    S --> |Summarized Content| T[DistilledUpdate JSON]
+    T --> U[Append to articles list]
+    Q --> U
+    
+    F --> V[Combine Data]
+    U --> V
+    
+    V --> W[pandas DataFrame]
+    W --> X[uutiset.json]

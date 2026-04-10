@@ -10,7 +10,7 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { formatDate, getCategoryLabel, escapeHtml } from '../utils';
+import { formatDate, getCategoryLabel, escapeHtml, renderMarkdown } from '../utils';
 
 /**
  * News item component for "aloitus" (start page) view.
@@ -57,7 +57,16 @@ function NewsItemMainTopic({ msg, isExpanded, onToggle }) {
           <div className="news-meta">{formatDate(msg.created)}</div>
         </div>
       </div>
-      <div className="news-content">{escapeHtml(msg.content)}</div>
+      <div className="news-content">
+        <div dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.content) }}></div>
+        {msg.link && msg.link !== '#' && (
+          <div style={{ paddingTop: '0.75rem' }}>
+            <a href={msg.link} target="_blank" rel="noopener noreferrer" className="btn-action btn-edit" style={{ display: 'inline-block', textDecoration: 'none' }} onClick={(e) => e.stopPropagation()}>
+              Lue lisää »
+            </a>
+          </div>
+        )}
+      </div>
     </li>
   );
 }
@@ -96,7 +105,16 @@ function NewsItemFull({ msg, isExpanded, onToggle, onEdit, onDelete, onToggleMai
           <div className="news-meta">{formatDate(msg.created)}</div>
         </div>
       </div>
-      <div className="news-content">{escapeHtml(msg.content)}</div>
+      <div className="news-content">
+        <div dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.content) }}></div>
+        {msg.link && msg.link !== '#' && (
+          <div style={{ paddingTop: '0.75rem' }}>
+            <a href={msg.link} target="_blank" rel="noopener noreferrer" className="btn-action btn-edit" style={{ display: 'inline-block', textDecoration: 'none' }} onClick={(e) => e.stopPropagation()}>
+              Lue lisää »
+            </a>
+          </div>
+        )}
+      </div>
       <div className="news-actions">
         <button
           type="button"

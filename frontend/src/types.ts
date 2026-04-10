@@ -33,7 +33,7 @@ export type Category =
  * Active categories currently in use.
  * Subset of Category type that determines which tabs are shown in UI.
  */
-export type ActiveCategory = Extract<Category, 'uutisia' | 'tutkimus' | 'yritysyhteistyö' | 'opintohallinto' | 'hr'>;
+export type ActiveCategory = Extract<Category, 'uutisia' | 'tutkimus' | 'yritysyhteistyö' | 'opintohallinto' | 'hr' | 'johto' | 'tuotekehitys' | 'it-tuki' | 'turvallisuus'>;
 
 // ============================================
 // THEME TYPES
@@ -153,13 +153,13 @@ export interface ViewModes {
    * Toggled via eye icon in header.
    */
   viewingMode: boolean;
-  
+
   /**
    * Fullscreen mode: Expands all messages and enters browser fullscreen.
    * Toggled via fullscreen icon in header.
    */
   fullscreenMode: boolean;
-  
+
   /**
    * Admin mode: Shows edit/delete buttons for messages.
    * Toggled via gear icon in header.
@@ -179,12 +179,12 @@ export interface ModalState {
    * Message create/edit modal visibility.
    */
   messageModalOpen: boolean;
-  
+
   /**
    * Info box edit modal visibility.
    */
   infoboxModalOpen: boolean;
-  
+
   /**
    * ID of message being edited (null = creating new message).
    */

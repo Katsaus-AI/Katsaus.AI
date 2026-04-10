@@ -15,6 +15,7 @@
     box-shadow: none;
     font-family: 'JetBrains Mono', monospace;
 }
+
 /* InfoAHKY Default CSS - Teletext Style */
 
 /* Reset and base styles */
@@ -375,6 +376,26 @@ body:not([data-theme="default"]) .footer-controls {
     color: #000000;
 }
 
+.news-category.johto {
+    background: #ffff00;
+    color: #000000;
+}
+
+.news-category.tuotekehitys {
+    background: #0000ff;
+    color: #ffffff;
+}
+
+.news-category.it-tuki {
+    background: #459785;
+    color: #807979;
+}
+
+.news-category.turvallisuus {
+    background: #ffffff;
+    color: #a81616;
+}
+
 /* Expanded news content (when clicked) */
 .news-content {
     display: none;
@@ -709,6 +730,22 @@ body:not([data-theme="default"]) .footer-controls {
     color: #ff00ff;
 }
 
+.filter-tab[data-filter="johto"] .filter-tab-number {
+    color: #ffff00;
+}
+
+.filter-tab[data-filter="tuotekehitys"] .filter-tab-number {
+    color: #0000ff;
+}
+
+.filter-tab[data-filter="it-tuki"] .filter-tab-number {
+    color: #459785;
+}
+
+.filter-tab[data-filter="turvallisuus"] .filter-tab-number {
+    color: #a81616;
+}
+
 /* Alternating background colors removed */
 .news-item:nth-child(odd) {
     background: #000000;
@@ -723,18 +760,18 @@ body:not([data-theme="default"]) .footer-controls {
     body[data-theme="default"] {
         padding: 0;
     }
-    
+
     .app-container {
         /* Säilytetään pyöristetyt nurkat myös desktopilla */
         border-radius: 1.5rem;
         box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3);
         min-height: auto;
     }
-    
+
     .app-header {
         border-radius: 0;
     }
-    
+
     .modal-content {
         border-radius: 0.5rem;
         margin: auto;
@@ -747,15 +784,15 @@ body:not([data-theme="default"]) .footer-controls {
     .app-header {
         padding: 0.75rem 1rem;
     }
-    
+
     .app-logo {
         font-size: 1rem;
     }
-    
+
     .news-item {
         padding: 1rem 1.25rem;
     }
-    
+
     .news-item::before {
         min-width: 2.1875rem;
         font-size: 1rem;
@@ -779,6 +816,7 @@ body:not([data-theme="default"]) .footer-controls {
         transform: translateY(100%);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -1193,4 +1231,3 @@ body.admin-mode[data-theme="default"] .company-name-input:focus {
     outline: none;
     border-color: #00ff00;
 }
-
