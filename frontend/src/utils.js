@@ -73,6 +73,10 @@ export function formatDate(dateStr) {
 }
 
 const CATEGORY_I18N_KEYS = {
+  jyu: 'categories.jyu',
+  atlassian: 'categories.atlassian',
+  yle: 'categories.yle',
+  bbc: 'categories.bbc',
   uutisia: 'categories.news',
   tutkimus: 'categories.research',
   yritysyhteistyö: 'categories.corporateCooperation',

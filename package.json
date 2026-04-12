@@ -5,10 +5,17 @@
   "scripts": {
     "dev": "npm --prefix frontend run dev",
     "build": "npm --prefix frontend run build",
+    "build:frontend": "npm --prefix frontend run build",
+    "build:functions": "npm --prefix functions run build",
+    "build:all": "npm run build:frontend && npm run build:functions",
     "preview": "npm --prefix frontend run preview",
-    "setup": "npm --prefix frontend install && npm --prefix functions install && npm --prefix backend install",
+    "setup": "npm install && npm --prefix frontend install && npm --prefix functions install && npm --prefix backend install",
     "functions:build": "npm --prefix functions run build",
     "functions:serve": "npm --prefix functions run serve",
+    "deploy": "firebase deploy --only hosting,functions",
     "backend:check": "node -e \"import('./backend/firebase.js').then(() => console.log('firebase init module loaded'))\""
+  },
+  "devDependencies": {
+    "firebase-tools": "^15.14.0"
   }
 }

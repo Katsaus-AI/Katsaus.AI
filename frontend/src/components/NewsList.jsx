@@ -8,7 +8,6 @@
  * - Empty state components
  */
 
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { formatDate, getCategoryLabel, escapeHtml, renderMarkdown } from '../utils';
 
@@ -35,7 +34,7 @@ import { formatDate, getCategoryLabel, escapeHtml, renderMarkdown } from '../uti
  * @param {boolean} props.isExpanded - Whether content is visible
  * @param {Function} props.onToggle - Callback to toggle expansion: (id, isActionClick) => void
  */
-function NewsItemMainTopic({ msg, isExpanded, onToggle }) {
+function NewsItemMainTopic({ msg, isExpanded, onToggle, t }) {
   return (
     <li
       className={`news-item main-topic-item ${isExpanded ? 'expanded' : ''}`}
@@ -59,10 +58,16 @@ function NewsItemMainTopic({ msg, isExpanded, onToggle }) {
       </div>
       <div className="news-content">
         <div dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.content) }}></div>
+        {msg.rawDescription && (
+          <details className="news-original-details" onClick={(e) => e.stopPropagation()}>
+            <summary>{t('news.originalText')}</summary>
+            <p>{escapeHtml(msg.rawDescription)}</p>
+          </details>
+        )}
         {msg.link && msg.link !== '#' && (
           <div style={{ paddingTop: '0.75rem' }}>
             <a href={msg.link} target="_blank" rel="noopener noreferrer" className="btn-action btn-edit" style={{ display: 'inline-block', textDecoration: 'none' }} onClick={(e) => e.stopPropagation()}>
-              Lue lisää »
+              {t('news.readMore')} »
             </a>
           </div>
         )}
@@ -71,7 +76,7 @@ function NewsItemMainTopic({ msg, isExpanded, onToggle }) {
   );
 }
 
-function NewsItemFull({ msg, isExpanded, onToggle, onEdit, onDelete, onToggleMainTopic, t }) {
+function NewsItemFull({ msg, isExpanded, onToggle, onEdit, onDelete, onToggleMainTopic, t, showActions }) {
   return (
     <li
       className={`news-item ${msg.isMainTopic ? 'is-main-topic' : ''} ${isExpanded ? 'expanded' : ''}`}
@@ -107,46 +112,54 @@ function NewsItemFull({ msg, isExpanded, onToggle, onEdit, onDelete, onToggleMai
       </div>
       <div className="news-content">
         <div dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.content) }}></div>
+        {msg.rawDescription && (
+          <details className="news-original-details" onClick={(e) => e.stopPropagation()}>
+            <summary>{t('news.originalText')}</summary>
+            <p>{escapeHtml(msg.rawDescription)}</p>
+          </details>
+        )}
         {msg.link && msg.link !== '#' && (
           <div style={{ paddingTop: '0.75rem' }}>
             <a href={msg.link} target="_blank" rel="noopener noreferrer" className="btn-action btn-edit" style={{ display: 'inline-block', textDecoration: 'none' }} onClick={(e) => e.stopPropagation()}>
-              Lue lisää »
+              {t('news.readMore')} »
             </a>
           </div>
         )}
       </div>
-      <div className="news-actions">
-        <button
-          type="button"
-          className="btn-action btn-main-topic"
-          onClick={(e) => {
-            e.stopPropagation();
-            onToggleMainTopic(msg.id);
-          }}
-        >
-          {msg.isMainTopic ? t('news.removeMainTopic') : t('news.setMainTopic')}
-        </button>
-        <button
-          type="button"
-          className="btn-action btn-edit"
-          onClick={(e) => {
-            e.stopPropagation();
-            onEdit(msg.id);
-          }}
-        >
-          {t('news.edit')}
-        </button>
-        <button
-          type="button"
-          className="btn-action btn-delete"
-          onClick={(e) => {
-            e.stopPropagation();
-            onDelete(msg.id);
-          }}
-        >
-          {t('news.delete')}
-        </button>
-      </div>
+      {showActions && (
+        <div className="news-actions">
+          <button
+            type="button"
+            className="btn-action btn-main-topic"
+            onClick={(e) => {
+              e.stopPropagation();
+              onToggleMainTopic(msg.id);
+            }}
+          >
+            {msg.isMainTopic ? t('news.removeMainTopic') : t('news.setMainTopic')}
+          </button>
+          <button
+            type="button"
+            className="btn-action btn-edit"
+            onClick={(e) => {
+              e.stopPropagation();
+              onEdit(msg.id);
+            }}
+          >
+            {t('news.edit')}
+          </button>
+          <button
+            type="button"
+            className="btn-action btn-delete"
+            onClick={(e) => {
+              e.stopPropagation();
+              onDelete(msg.id);
+            }}
+          >
+            {t('news.delete')}
+          </button>
+        </div>
+      )}
     </li>
   );
 }
@@ -200,12 +213,6 @@ function EmptyStateMainTopics({ t }) {
  * @param {Function} props.editMessage - Open edit modal for message
  * @param {Function} props.deleteMessage - Delete message with confirmation
  * @param {Function} props.toggleMainTopic - Toggle main topic status
- * @param {Function} props.onReorder - (Future) Drag-and-drop reordering callback
- * 
- * Future enhancement:
- * onReorder prop is reserved for drag-and-drop functionality.
- * When implemented, users will be able to manually reorder messages
- * within a category by dragging items.
  */
 export function NewsList({
   currentFilter,
@@ -216,7 +223,7 @@ export function NewsList({
   editMessage,
   deleteMessage,
   toggleMainTopic,
-  onReorder,
+  showActions = false,
 }) {
   const { t } = useTranslation();
   if (currentFilter === 'aloitus') {
@@ -232,6 +239,7 @@ export function NewsList({
                   msg={msg}
                   isExpanded={expandedIds.has(msg.id)}
                   onToggle={toggleExpanded}
+                  t={t}
                 />
               ))}
             </ul>
@@ -259,6 +267,7 @@ export function NewsList({
           onEdit={editMessage}
           onDelete={deleteMessage}
           onToggleMainTopic={toggleMainTopic}
+          showActions={showActions}
         />
       ))}
     </ul>

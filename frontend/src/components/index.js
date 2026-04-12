@@ -1,3 +1,4 @@
+export { AuthPanel } from './AuthPanel';
 export { ThemeSelector } from './ThemeSelector';
 export { Header } from './Header';
 export { FilterTabs } from './FilterTabs';
@@ -7,4 +8,5 @@ export { NewsList } from './NewsList';
 export { InfoBox } from './InfoBox';
 export { MessageModal } from './MessageModal';
 export { InfoboxModal } from './InfoboxModal';
+export { UserSettingsModal } from './UserSettingsModal';
 export { ExitButtons } from './ExitButtons';
