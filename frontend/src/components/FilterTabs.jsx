@@ -1,8 +1,5 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { getCategoryLabel, CATEGORIES } from '../utils';
-
-const FILTERS = ['aloitus', 'all', ...CATEGORIES];
+import { getCategoryLabel } from '../utils';
 
 const FILTER_NUMBERS = {
   'aloitus': '100',
@@ -24,11 +21,13 @@ function filterLabel(f, t) {
   return getCategoryLabel(f);
 }
 
-export function FilterTabs({ currentFilter, onFilterChange }) {
+export function FilterTabs({ currentFilter, categories = [], onFilterChange }) {
   const { t } = useTranslation();
+  const filters = ['aloitus', 'all', ...categories];
+
   return (
     <div className="filter-tabs">
-      {FILTERS.map((f) => (
+      {filters.map((f, index) => (
         <button
           key={f}
           type="button"
@@ -36,7 +35,7 @@ export function FilterTabs({ currentFilter, onFilterChange }) {
           data-filter={f}
           onClick={() => onFilterChange(f)}
         >
-          <span className="filter-tab-number">{FILTER_NUMBERS[f]}</span> {filterLabel(f, t).toUpperCase()}
+          <span className="filter-tab-number">{FILTER_NUMBERS[f] || String(200 + index * 10)}</span> {filterLabel(f, t).toUpperCase()}
         </button>
       ))}
     </div>

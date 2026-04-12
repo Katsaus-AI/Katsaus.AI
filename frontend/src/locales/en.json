@@ -29,6 +29,10 @@
     "all": "All"
   },
   "categories": {
+    "jyu": "JYU",
+    "atlassian": "Atlassian",
+    "yle": "YLE",
+    "bbc": "BBC",
     "news": "News",
     "research": "Research",
     "corporateCooperation": "Corporate cooperation",
@@ -45,6 +49,9 @@
     "setMainTopic": "Set as main topic",
     "edit": "Edit",
     "delete": "Delete",
+    "readMore": "Read more",
+    "summaryLabel": "Summary",
+    "originalText": "Show original description",
     "noMessages": "No messages",
     "noMainTopics": "No main topics",
     "mainTopicsTitle": "Main topics"

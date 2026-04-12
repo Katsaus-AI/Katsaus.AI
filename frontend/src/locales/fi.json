@@ -29,6 +29,10 @@
     "all": "Kaikki"
   },
   "categories": {
+    "jyu": "JYU",
+    "atlassian": "Atlassian",
+    "yle": "YLE",
+    "bbc": "BBC",
     "news": "Uutisia",
     "research": "Tutkimus",
     "corporateCooperation": "Yritysyhteistyö",
@@ -45,6 +49,9 @@
     "setMainTopic": "Aseta pääaiheeksi",
     "edit": "Muokkaa",
     "delete": "Poista",
+    "readMore": "Lue lisää",
+    "summaryLabel": "Tiivistelmä",
+    "originalText": "Näytä alkuperäinen kuvaus",
     "noMessages": "Ei viestejä",
     "noMainTopics": "Ei pääaiheita",
     "mainTopicsTitle": "Pääaiheet"

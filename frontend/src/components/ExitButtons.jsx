@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 export function ExitButtons({ fullscreenMode, viewingMode, onExitFullscreen, onExitViewing }) {

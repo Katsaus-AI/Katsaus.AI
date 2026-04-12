@@ -4,20 +4,22 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
-    "serve": "npm run build && firebase emulators:start --only functions",
+    "serve": "npm run build && FIREBASE_AUTH_EMULATOR_HOST=127.0.0.1:9099 firebase --config ../firebase.json emulators:start --only functions,firestore,auth",
     "deploy": "firebase deploy --only functions",
     "test": "jest"
   },
   "engines": {
-    "node": ">=18"
+    "node": "20"
   },
   "dependencies": {
+    "cheerio": "^1.2.0",
     "firebase-admin": "^12.0.0",
     "firebase-functions": "^4.5.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^20.10.0",
+    "firebase-tools": "^15.14.0",
     "jest": "^29.7.0",
     "ts-jest": "^29.1.1",
     "typescript": "^5.3.0"

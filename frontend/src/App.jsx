@@ -26,11 +26,13 @@
  * 8. Exit buttons (for fullscreen/viewing modes)
  */
 
-import React from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppState } from './hooks/useAppState';
+import { useAuth } from './hooks/useAuth';
 import { getCategoryLabel } from './utils';
 import {
+  AuthPanel,
   ThemeSelector,
   Header,
   FilterTabs,
@@ -40,6 +42,7 @@ import {
   Fab,
   MessageModal,
   InfoboxModal,
+  UserSettingsModal,
   ExitButtons,
 } from './components';
 
@@ -57,7 +60,43 @@ function getFilterTitle(filter) {
 
 export default function App() {
   const { t } = useTranslation();
-  const state = useAppState();
+  const auth = useAuth();
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [newsRefreshKey, setNewsRefreshKey] = useState(0);
+  const canManage = Boolean(auth.profile?.isAdmin);
+  const state = useAppState(auth.user, canManage, newsRefreshKey);
+
+  const handleSaveUserSettings = async (updates) => {
+    const success = await auth.savePreferences(updates);
+    if (!success) return false;
+    try {
+      await fetch('/api/uutiset');
+    } catch {
+      // Refresh is still triggered even if API call fails.
+    }
+    setNewsRefreshKey((value) => value + 1);
+    return true;
+  };
+
+  if (auth.loading && !auth.user) {
+    return (
+      <div className="auth-page">
+        <div className="auth-page__inner">
+          <p className="auth-panel__status">Ladataan kirjautumista...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!auth.user) {
+    return (
+      <div className="auth-page">
+        <div className="auth-page__inner">
+          <AuthPanel auth={auth} />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -74,8 +113,10 @@ export default function App() {
           dateTime={state.dateTime}
           onToggleViewingMode={state.toggleViewingMode}
           onToggleFullscreen={state.toggleFullscreen}
-          adminMode={state.adminMode}
-          onToggleAdminMode={state.toggleAdminMode}
+          userEmail={auth.user?.email || ''}
+          isAdmin={canManage}
+          onSignOut={auth.signOutUser}
+          onOpenSettings={() => setSettingsOpen(true)}
         />
 
         <div className="teletext-screen" role="application" aria-label={t('app.teletext')}>
@@ -108,9 +149,11 @@ export default function App() {
                   editMessage={state.editMessage}
                   deleteMessage={state.deleteMessage}
                   toggleMainTopic={state.toggleMainTopic}
+                  showActions={canManage && state.adminMode}
                 />
                 <FilterTabs
                   currentFilter={state.currentFilter}
+                  categories={state.availableCategories}
                   onFilterChange={state.setCurrentFilter}
                 />
                 <InfoBox
@@ -127,8 +170,6 @@ export default function App() {
               - All messages in current category (or all messages if filter='all')
               - Filter tabs for navigation
               - No info box
-              
-              Future feature: Drag-and-drop reordering via onReorder callback
             */}
             {state.currentFilter !== 'aloitus' && (
               <>
@@ -141,28 +182,11 @@ export default function App() {
                   editMessage={state.editMessage}
                   deleteMessage={state.deleteMessage}
                   toggleMainTopic={state.toggleMainTopic}
-                  onReorder={(from, to) => {
-                    // Only allow reordering on category pages
-                    if (state.currentFilter === 'aloitus') return;
-                    
-                    // Get messages in current category
-                    const catMsgs = state.filtered.slice();
-                    
-                    // Remove message from old position
-                    const [moved] = catMsgs.splice(from, 1);
-                    
-                    // Insert message at new position
-                    catMsgs.splice(to, 0, moved);
-                    
-                    // Get messages from other categories (unchanged)
-                    const otherMsgs = state.messages.filter(m => m.category !== state.currentFilter);
-                    
-                    // Update messages array with new order
-                    state.setMessages([...otherMsgs, ...catMsgs]);
-                  }}
+                  showActions={canManage && state.adminMode}
                 />
                 <FilterTabs
                   currentFilter={state.currentFilter}
+                  categories={state.availableCategories}
                   onFilterChange={state.setCurrentFilter}
                 />
               </>
@@ -193,13 +217,15 @@ export default function App() {
         {state.theme === 'default' && (
           <>
             <div className="footer-controls">
-              <button
-                type="button"
-                className={`footer-control-btn ${state.adminMode ? 'active' : ''}`}
-                onClick={state.toggleAdminMode}
-              >
-                {state.adminMode ? 'POISTU HALLINNASTA' : 'HALLINTA'}
-              </button>
+              {canManage && (
+                <button
+                  type="button"
+                  className={`footer-control-btn ${state.adminMode ? 'active' : ''}`}
+                  onClick={state.toggleAdminMode}
+                >
+                  {state.adminMode ? 'POISTU HALLINNASTA' : 'HALLINTA'}
+                </button>
+              )}
               <button
                 type="button"
                 className="footer-control-btn"
@@ -238,24 +264,36 @@ export default function App() {
       </div>
 
       {/* Floating Action Button for adding new messages */}
-      <Fab onAdd={() => state.openMessageModal()} />
+      {canManage && state.adminMode && <Fab onAdd={() => state.openMessageModal()} />}
 
       {/* Message create/edit modal */}
-      <MessageModal
-        isOpen={state.messageModalOpen}
-        editingMessage={state.editingMessage}
-        editingId={state.editingId}
-        onClose={state.closeMessageModal}
-        onSubmit={state.handleMessageSubmit}
-        defaultCategory={state.currentFilter}
-      />
+      {canManage && (
+        <MessageModal
+          isOpen={state.messageModalOpen}
+          editingMessage={state.editingMessage}
+          editingId={state.editingId}
+          onClose={state.closeMessageModal}
+          onSubmit={state.handleMessageSubmit}
+          defaultCategory={state.currentFilter}
+        />
+      )}
 
       {/* Info box edit modal */}
-      <InfoboxModal
-        isOpen={state.infoboxModalOpen}
-        infoBoxText={state.infoBoxText}
-        onClose={() => state.setInfoboxModalOpen(false)}
-        onSubmit={state.handleInfoboxSubmit}
+      {canManage && (
+        <InfoboxModal
+          isOpen={state.infoboxModalOpen}
+          infoBoxText={state.infoBoxText}
+          onClose={() => state.setInfoboxModalOpen(false)}
+          onSubmit={state.handleInfoboxSubmit}
+        />
+      )}
+
+      <UserSettingsModal
+        isOpen={settingsOpen}
+        profile={auth.profile}
+        email={auth.user?.email || ''}
+        onClose={() => setSettingsOpen(false)}
+        onSave={handleSaveUserSettings}
       />
 
       {/* Exit buttons for fullscreen/viewing modes */}

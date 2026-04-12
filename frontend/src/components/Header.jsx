@@ -23,7 +23,7 @@
  * In production, this should be dynamic or configured via environment variables.
  */
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -35,10 +35,8 @@ import { db } from '../firebase';
  * @param {Object} props.dateTime - Current time and date {time: string, date: string}
  * @param {Function} props.onToggleViewingMode - Toggle presentation mode
  * @param {Function} props.onToggleFullscreen - Toggle fullscreen mode
- * @param {boolean} props.adminMode - Current admin mode state (unused in component but may be needed for future features)
- * @param {Function} props.onToggleAdminMode - Toggle admin mode (unused in component but may be needed for future features)
  */
-export function Header({ dateTime, onToggleViewingMode, onToggleFullscreen, adminMode, onToggleAdminMode }) {
+export function Header({ dateTime, onToggleViewingMode, onToggleFullscreen, userEmail, isAdmin, onSignOut, onOpenSettings }) {
   const { t, i18n } = useTranslation();
   const [companyName, setCompanyName] = useState(t('header.loading'));
 
@@ -129,6 +127,16 @@ export function Header({ dateTime, onToggleViewingMode, onToggleFullscreen, admi
           aria-label="English"
         >
           EN
+        </button>
+      </div>
+      <div className="session-controls">
+        <span className="session-label">{isAdmin ? 'Admin' : 'Käyttäjä'}</span>
+        <span className="session-email">{userEmail}</span>
+        <button type="button" className="session-settings-btn" onClick={onOpenSettings}>
+          Asetukset
+        </button>
+        <button type="button" className="session-logout-btn" onClick={onSignOut}>
+          Kirjaudu ulos
         </button>
       </div>
       <button

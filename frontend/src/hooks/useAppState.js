@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import i18n from '../i18n';
 import {
   getStoredTheme,
@@ -10,8 +10,9 @@ import {
   generateId,
   parseDate,
   getDefaultInfoBoxText,
-  CATEGORIES,
 } from '../utils';
+import { db } from '../firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
 /**
  * Applies the selected theme to the DOM by:
@@ -42,10 +43,12 @@ function applyThemeToDom(theme) {
  * - UI state: Expanded items, theme selector visibility, date/time display
  * 
  * Data flow:
- * 1. On mount, fetches messages from /uutiset.json (scraped news data)
- * 2. Falls back to localStorage if fetch fails
- * 3. All message changes are automatically persisted to localStorage
- * 4. Theme changes are applied to DOM and persisted to localStorage
+ * 1. On mount, reads messages from the signed-in user's Firestore feed if available
+ * 2. Falls back to the shared Firestore collection `uutiset`
+ * 3. Falls back to /api/uutiset, then /uutiset.json if Firestore is unavailable
+ * 4. Falls back to localStorage if all remote sources fail
+ * 5. All message changes are automatically persisted to localStorage
+ * 6. Theme changes are applied to DOM and persisted to localStorage
  * 
  * @returns {Object} Application state and action handlers
  * @returns {string} returns.theme - Current theme identifier
@@ -82,10 +85,11 @@ function applyThemeToDom(theme) {
  * @returns {boolean} returns.themeSelectorVisible - Theme selector visibility state
  * @returns {Function} returns.toggleThemeSelector - Toggle theme selector visibility
  */
-export function useAppState() {
+export function useAppState(currentUser = null, canManage = false, refreshKey = 0) {
   const [messages, setMessages] = useState([]);
   const [currentFilter, setCurrentFilter] = useState('aloitus');
   const [infoBoxText, setInfoBoxText] = useState(() => getStoredInfoBoxText() || getDefaultInfoBoxText());
+  const defaultInfoBoxTextRef = useRef(getDefaultInfoBoxText());
   const [theme, setThemeState] = useState(getStoredTheme);
   const [editingId, setEditingId] = useState(null);
   const [messageModalOpen, setMessageModalOpen] = useState(false);
@@ -161,6 +165,14 @@ export function useAppState() {
     return () => document.body.classList.remove('admin-mode');
   }, [adminMode]);
 
+  useEffect(() => {
+    if (!canManage) {
+      setAdminMode(false);
+      setMessageModalOpen(false);
+      setInfoboxModalOpen(false);
+    }
+  }, [canManage]);
+
   // ============================================
   // DATA FETCHING AND PERSISTENCE
   // ============================================
@@ -179,33 +191,95 @@ export function useAppState() {
    */
   useEffect(() => {
     let cancelled = false;
-    fetch('/uutiset.json')
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data) => {
-        if (cancelled || !Array.isArray(data) || data.length === 0) {
-          if (!cancelled) setMessages(getStoredMessages());
+    const fetchNews = async () => {
+      const userOnlySources = [
+        async () => {
+          const response = await fetch('/api/uutiset');
+          if (!response.ok) return null;
+          const refetchSnapshot = await getDocs(collection(db, 'users', currentUser.uid, 'news'));
+          return refetchSnapshot.docs.map((newsDoc) => newsDoc.data());
+        },
+        async () => {
+          const snapshot = await getDocs(collection(db, 'users', currentUser.uid, 'news'));
+          return snapshot.docs.map((newsDoc) => newsDoc.data());
+        },
+      ];
+
+      const anonymousSources = [
+        async () => {
+          const snapshot = await getDocs(collection(db, 'uutiset'));
+          return snapshot.docs.map((newsDoc) => newsDoc.data());
+        },
+        async () => {
+          const response = await fetch('/api/uutiset');
+          if (!response.ok) return null;
+          return response.json();
+        },
+        async () => {
+          const response = await fetch('/uutiset.json');
+          if (!response.ok) return null;
+          return response.json();
+        },
+      ];
+
+      const sources = currentUser?.uid ? userOnlySources : anonymousSources;
+
+      for (const loadSource of sources) {
+        try {
+          const data = await loadSource();
+          if (cancelled || !Array.isArray(data) || data.length === 0) continue;
+
+          const normalized = [...data].sort((left, right) => {
+            const leftTime = Date.parse(left.syncedAt || left.Date || left.date || '');
+            const rightTime = Date.parse(right.syncedAt || right.Date || right.date || '');
+            return rightTime - leftTime;
+          });
+
+          const seenCategories = new Set();
+          const mapped = normalized.map((item) => {
+            const title = item.Title || item.title || '';
+            const summary = item.summary || item.Summary || '';
+            const rawDescription = item.rawDescription || item.RawDescription || '';
+            const content = item.Description || item.description || summary || '';
+            const link = item.Link || item.link || '';
+            const category = item.Category || item.category || 'uutisia';
+            const source = item.source || item.Source || '';
+            const createdDate = item.Date || item.date || item.syncedAt || '';
+            const isMainTopic = !seenCategories.has(category);
+            seenCategories.add(category);
+            return {
+              id: generateId(),
+              title,
+              content,
+              summary,
+              rawDescription,
+              link,
+              source,
+              category,
+              created: parseDate(createdDate),
+              updated: parseDate(createdDate),
+              isMainTopic,
+            };
+          });
+
+          setMessages(mapped);
+          setStoredMessages(mapped);
           return;
+        } catch {
+          continue;
         }
-        const mapped = data.map((item, index) => ({
-          id: generateId(),
-          title: item.Title,
-          content: item.Description,
-          link: item.Link,
-          category: item.Category || 'uutisia',
-          created: parseDate(item.Date), // Adds random time to differentiate same-day messages
-          updated: parseDate(item.Date),
-          isMainTopic: index === 0, // First message is default main topic
-        }));
-        setMessages(mapped);
-        setStoredMessages(mapped);
-      })
-      .catch(() => {
+      }
+
+      if (!cancelled) setMessages(currentUser?.uid ? [] : getStoredMessages());
+    };
+
+    fetchNews().catch(() => {
         if (!cancelled) setMessages(getStoredMessages());
-      });
+    });
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [currentUser?.uid, refreshKey]);
 
   useEffect(() => {
     setStoredMessages(messages);
@@ -239,7 +313,11 @@ export function useAppState() {
 
   useEffect(() => {
     const handleLanguageChange = () => {
-      setInfoBoxText(getDefaultInfoBoxText());
+      const nextDefault = getDefaultInfoBoxText();
+      setInfoBoxText((currentText) => (
+        currentText === defaultInfoBoxTextRef.current ? nextDefault : currentText
+      ));
+      defaultInfoBoxTextRef.current = nextDefault;
     };
     i18n.on('languageChanged', handleLanguageChange);
     return () => i18n.off('languageChanged', handleLanguageChange);
@@ -265,9 +343,10 @@ export function useAppState() {
    * @param {Object|null} message - Message to edit, or null for new message
    */
   const openMessageModal = useCallback((message = null) => {
+    if (!canManage) return;
     setEditingId(message ? message.id : null);
     setMessageModalOpen(true);
-  }, []);
+  }, [canManage]);
 
   /**
    * Close message modal and reset editing state.
@@ -305,6 +384,7 @@ export function useAppState() {
    */
   const handleMessageSubmit = useCallback(
     (e) => {
+      if (!canManage) return;
       e.preventDefault();
       const form = e.target;
       const title = form.messageTitle?.value?.trim();
@@ -339,7 +419,7 @@ export function useAppState() {
       form.reset();
       closeMessageModal();
     },
-    [editingId, closeMessageModal]
+    [editingId, closeMessageModal, canManage]
   );
 
   /**
@@ -349,12 +429,13 @@ export function useAppState() {
    */
   const handleInfoboxSubmit = useCallback(
     (e) => {
+      if (!canManage) return;
       e.preventDefault();
       const text = e.target.infoboxText?.value?.trim();
       if (text) saveInfoBox(text);
       setInfoboxModalOpen(false);
     },
-    [saveInfoBox]
+    [saveInfoBox, canManage]
   );
 
   /**
@@ -364,10 +445,11 @@ export function useAppState() {
    */
   const editMessage = useCallback(
     (id) => {
+      if (!canManage) return;
       const msg = messages.find((m) => m.id === id);
       if (msg) openMessageModal(msg);
     },
-    [messages, openMessageModal]
+    [messages, openMessageModal, canManage]
   );
 
   /**
@@ -377,6 +459,7 @@ export function useAppState() {
    * @param {string} id - Message ID to delete
    */
   const deleteMessage = useCallback((id) => {
+    if (!canManage) return;
     if (window.confirm(i18n.t('confirm.deleteMessage'))) {
       setMessages((prev) => prev.filter((m) => m.id !== id));
       setExpandedIds((prev) => {
@@ -385,7 +468,7 @@ export function useAppState() {
         return next;
       });
     }
-  }, []);
+  }, [canManage]);
 
   /**
    * Toggle main topic status for a message.
@@ -399,6 +482,7 @@ export function useAppState() {
    * @param {string} id - Message ID to toggle
    */
   const toggleMainTopic = useCallback((id) => {
+    if (!canManage) return;
     const msg = messages.find((m) => m.id === id);
     if (!msg) return;
     setMessages((prev) =>
@@ -407,7 +491,7 @@ export function useAppState() {
         return m;
       })
     );
-  }, [messages]);
+  }, [messages, canManage]);
 
   // ============================================
   // UI INTERACTION HANDLERS
@@ -453,30 +537,28 @@ export function useAppState() {
    * which is handled by fullscreenchange event listener.
    */
   const toggleFullscreen = useCallback(() => {
-    setFullscreenMode((f) => {
-      const next = !f;
-      if (next) {
-        // Entering fullscreen: expand all messages
-        setExpandedIds(() => new Set(messages.map((m) => m.id)));
-        // Request browser fullscreen
-        if (document.documentElement.requestFullscreen) {
-          document.documentElement.requestFullscreen().catch((err) => {
-            console.error('Fullscreen-tilaan siirtyminen epäonnistui:', err);
-          });
-        }
-      } else {
-        // Exiting fullscreen: collapse all messages
-        setExpandedIds(new Set());
-        // Exit browser fullscreen
-        if (document.fullscreenElement && document.exitFullscreen) {
-          document.exitFullscreen().catch((err) => {
-            console.error('Fullscreen-tilasta poistuminen epäonnistui:', err);
-          });
-        }
+    const next = !fullscreenMode;
+    setFullscreenMode(next);
+
+    if (next) {
+      // Entering fullscreen: expand all messages
+      setExpandedIds(new Set(messages.map((m) => m.id)));
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen().catch((err) => {
+          console.error('Fullscreen-tilaan siirtyminen epäonnistui:', err);
+        });
       }
-      return next;
-    });
-  }, [messages.length]);
+      return;
+    }
+
+    // Exiting fullscreen: collapse all messages
+    setExpandedIds(new Set());
+    if (document.fullscreenElement && document.exitFullscreen) {
+      document.exitFullscreen().catch((err) => {
+        console.error('Fullscreen-tilasta poistuminen epäonnistui:', err);
+      });
+    }
+  }, [fullscreenMode, messages]);
 
   /**
    * Toggle theme selector visibility.
@@ -489,8 +571,9 @@ export function useAppState() {
    * Toggle admin mode (shows edit/delete controls).
    */
   const toggleAdminMode = useCallback(() => {
+    if (!canManage) return;
     setAdminMode((a) => !a);
-  }, []);
+  }, [canManage]);
 
   // ============================================
   // COMPUTED VALUES
@@ -504,6 +587,16 @@ export function useAppState() {
     acc[m.category] = (acc[m.category] || 0) + 1;
     return acc;
   }, {});
+
+  const availableCategories = Object.keys(categoryCounts)
+    .filter((category) => category && category !== 'all' && category !== 'aloitus')
+    .sort((left, right) => left.localeCompare(right, 'fi'));
+
+  useEffect(() => {
+    if (currentFilter !== 'aloitus' && currentFilter !== 'all' && !availableCategories.includes(currentFilter)) {
+      setCurrentFilter('aloitus');
+    }
+  }, [currentFilter, availableCategories]);
 
   /**
    * Filter and sort messages based on current filter.
@@ -532,7 +625,7 @@ export function useAppState() {
    */
   const mainTopics =
     currentFilter === 'aloitus'
-      ? CATEGORIES.map((cat) => {
+      ? availableCategories.map((cat) => {
           const main = messages.find((m) => m.category === cat && m.isMainTopic);
           if (main) return main;
           const inCat = messages.filter((m) => m.category === cat);
@@ -574,6 +667,7 @@ export function useAppState() {
     toggleMainTopic,
     dateTime,
     categoryCounts,
+    availableCategories,
     filtered,
     mainTopics,
     themeSelectorVisible,

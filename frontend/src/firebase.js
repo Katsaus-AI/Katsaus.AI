@@ -27,21 +27,40 @@
  * 
  * Used by:
  * - Header.jsx (fetches company name from Firestore)
+ * - AuthPanel and useAuth for user sign-in and profile storage
  * - Future components that need Firestore access
  */
 
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import { connectAuthEmulator, getAuth } from 'firebase/auth';
+import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
+
+const requiredEnvKeys = [
+  'VITE_FIREBASE_API_KEY',
+  'VITE_FIREBASE_AUTH_DOMAIN',
+  'VITE_FIREBASE_PROJECT_ID',
+  'VITE_FIREBASE_STORAGE_BUCKET',
+  'VITE_FIREBASE_MESSAGING_SENDER_ID',
+  'VITE_FIREBASE_APP_ID',
+];
+
+const missingEnvKeys = requiredEnvKeys.filter((key) => !import.meta.env[key]);
+
+if (missingEnvKeys.length > 0) {
+  console.warn(
+    `[firebase] Missing env vars: ${missingEnvKeys.join(', ')}. Using local demo defaults. Fill frontend/.env for real Firebase data.`
+  );
+}
 
 // Firebase configuration from Vite environment variables
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || 'demo-api-key',
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || 'demo-no-project.firebaseapp.com',
   databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || 'demo-no-project',
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || 'demo-no-project.appspot.com',
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || '000000000000',
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || '1:000000000000:web:demo',
 };
 
 // Initialize Firebase app
@@ -52,10 +71,24 @@ const app = initializeApp(firebaseConfig);
  * 
  * Used for:
  * - Reading company information (Header component)
- * - Future: User authentication, message persistence, etc.
+ * - User profile documents and per-user news feeds
  * 
  * Collections currently in use:
  * - 'companies': Organization/company information
  */
 export const db = getFirestore(app);
+
+/**
+ * Firebase Auth instance for email/password sign-in.
+ */
+export const auth = getAuth(app);
+
+const useEmulators =
+  (import.meta.env.VITE_USE_FIREBASE_EMULATORS ?? 'true') !== 'false' &&
+  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
+if (useEmulators) {
+  connectFirestoreEmulator(db, '127.0.0.1', 8080);
+  connectAuthEmulator(auth, 'http://127.0.0.1:9099', { disableWarnings: true });
+}
 
