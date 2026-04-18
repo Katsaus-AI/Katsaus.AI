@@ -72,14 +72,39 @@ Koko projektin build:
 npm run build:all
 ```
 
-## Firebase Hosting + Functions CI/CD
+## Firebase Hosting CI/CD (staattinen uutis-JSON)
 
-Production deploy tapahtuu GitHub Actionsilla `main`-branchista. Workflow buildaa frontendin ja Functionsin, ja deployaa ne Firebaseen.
+Production deploy tapahtuu GitHub Actionsilla `main`-branchista. Workflow generoi `uutiset.json`-datan scraperilla, buildaa frontendin ja deployaa vain Hostingin Firebaseen.
 
 ### Paikallinen build
 
 ```bash
 npm run build:all
+```
+
+Staattisen uutis-JSON:n generointi ja synkkaus frontendiin:
+
+```bash
+npm run news:deps
+npm run news:prepare
+```
+
+Ennen tuotantodeployta varmista, että `frontend/.env` sisältää oikean Firebase Web App -konfiguraation (ei demo-arvoja) ja että:
+
+```env
+VITE_USE_FIREBASE_EMULATORS=false
+```
+
+Voit tarkistaa tämän erikseen:
+
+```bash
+npm run deploy:check
+```
+
+Nopeampi versio ilman Gemini-tiivistystä:
+
+```bash
+npm run news:prepare:fast
 ```
 
 ### Paikallinen deploy
@@ -88,7 +113,13 @@ npm run build:all
 npm run deploy
 ```
 
-Tämä komento olettaa, että Firebase CLI on asennettu ja että olet kirjautunut sisään omalla Firebase-projektillasi.
+Tämä komento ajaa staattisen putken: scraper -> `frontend/public/uutiset.json` -> frontend build -> Firebase Hosting deploy.
+
+Jos haluat edelleen yrittää Functions + Hosting deployta (vaatii Blaze-planin):
+
+```bash
+npm run deploy:full
+```
 
 ### GitHub Secrets
 
@@ -104,16 +135,13 @@ Workflow tarvitsee nämä secretit:
 - `VITE_FIREBASE_MESSAGING_SENDER_ID`
 - `VITE_FIREBASE_APP_ID`
 
-Lisäksi suositellaan (Functionsin täysiin integraatioihin):
+Lisäksi suositellaan (scraperin täysiin integraatioihin):
 
 - `ATLASSIAN_URL`
 - `ATLASSIAN_USERNAME`
 - `ATLASSIAN_API_TOKEN`
 - `GEMINI_API_KEY`
 - `GEMINI_MODEL` (esim. `gemini-2.0-flash`)
-- `COPILOT_STUDIO_AGENT_URL`
-- `COPILOT_STUDIO_API_KEY`
-- `COPILOT_STUDIO_TIMEOUT_MS`
 
 ### CI-triggeri
 
@@ -140,51 +168,13 @@ npm run serve
 
 Komento käynnistää Functions-, Firestore- ja Auth-emulaattorit (vaatii Firebase CLI:n + `firebase init`).
 
-Functions hoitaa nyt JYU-uutisten lisäksi myös Atlassian-uutisvirran sekä ulkoiset RSS-syötteet (YLE, BBC World News) ja yliopistokohtaiset lähteet (Aalto, Helsingin yliopisto, Tampereen yliopisto, Turun yliopisto, Oulun yliopisto, Itä-Suomen yliopisto, LUT-yliopisto, Åbo Akademi, Hanken, Lapin yliopisto, Vaasan yliopisto, Taideyliopisto).
-
-Haetut tekstit tiivistetään ja luokitellaan valmiiksi määritettyihin kategorioihin ennen tallennusta Firestoreen (`uutiset` + `users/{uid}/news`).
-
-### Testiorganisaatiot ja testikäyttäjät lokaalisti
-
-Kun emulaattori on käynnissä, seedaa testidata:
-
-```bash
-curl -X POST "http://127.0.0.1:5001/demo-no-project/us-central1/seedTestTenants"
-```
-
-Tämä luo testiorganisaatiot (`organizations/org-alpha`, `organizations/org-beta`, `organizations/org-gamma`, `organizations/org-delta`) ja testikäyttäjät:
-
-- `alpha.admin@example.com` / `Testi123!` (admin)
-- `alpha.viewer@example.com` / `Testi123!` (ei admin)
-- `beta.admin@example.com` / `Testi123!` (admin)
-- `beta.viewer@example.com` / `Testi123!` (ei admin)
-- `gamma.admin@example.com` / `Testi123!` (admin)
-- `gamma.viewer@example.com` / `Testi123!` (ei admin)
-- `delta.admin@example.com` / `Testi123!` (admin)
-- `delta.viewer@example.com` / `Testi123!` (ei admin)
-
-### Testitunnukset (myös omaan Firebase-testiprojektiin)
-
-Jos ajat samat testitunnukset omaan Firebase-testiprojektiin, käytä näitä oletuksia:
-
-- Organisaatio `org-alpha`
-  - `alpha.admin@example.com` / `Testi123!`
-  - `alpha.viewer@example.com` / `Testi123!`
-- Organisaatio `org-beta`
-  - `beta.admin@example.com` / `Testi123!`
-  - `beta.viewer@example.com` / `Testi123!`
-- Organisaatio `org-gamma`
-  - `gamma.admin@example.com` / `Testi123!`
-  - `gamma.viewer@example.com` / `Testi123!`
-- Organisaatio `org-delta`
-  - `delta.admin@example.com` / `Testi123!`
-  - `delta.viewer@example.com` / `Testi123!`
-
-Suositus: käytä näitä vain testauksessa ja vaihda salasanat ennen tuotantokäyttöä.
+Functions-osuutta käytetään tässä setupissa ensisijaisesti emulaattoreihin ja kehitystestaamiseen.
 
 ## Firebase / ympäristö
 
 Frontend käyttää Firebasen client SDK:ta suoraan Firestoreen. Kun projekti on Firebase Consolessa: kopioi `frontend/.env.example` → `frontend/.env` ja täytä arvot.
+
+Jos kirjautuminen antaa virheen `auth/configuration-not-found`, mene Firebase Consolessa kohtaan Authentication -> Sign-in method ja ota käyttöön ainakin `Email/Password`. Tarkista samalla, että `frontend/.env` käyttää saman projektin oikeita arvoja.
 
 ### Missä agentin avaimet säilytetään
 
@@ -198,21 +188,33 @@ Copilot Studio / agentti-integraation avaimet pidetään palvelinpuolella, ei fr
 
 Huom: `functions/.env.local` on nyt gitignoressa, joten salaisuudet eivät päädy Git-repoon.
 
-Repojuuressa on nyt myös [firebase.json](firebase.json), joka ohjaa Hostingin `frontend/dist`-hakemistoon ja Functionsin `functions`-kansioon.
+Repojuuressa on nyt myös [firebase.json](firebase.json), joka ohjaa Hostingin `frontend/dist`-hakemistoon (sekä sisältää Functionsin konfiguraation kehitystä varten).
 
-Uutiset tallennetaan Firestoreen kokoelmaan `uutiset`. Kirjautunut käyttäjä saa ensin oman syötteensä polusta `users/{uid}/news`, sen jälkeen yhteisen `uutiset`-kokoelman, ja vasta sitten `/api/uutiset`-reitin sekä paikallisen `uutiset.json`-varasijan.
+Uutisten yhteinen lähde julkaistaan tiedostona `frontend/public/uutiset.json`, josta se päätyy Hostingiin polkuun `/uutiset.json`.
 
-Kirjautuminen on tällä hetkellä sähköposti + salasana. Käyttäjän profiili tallennetaan polkuun `users/{uid}`, ja siellä säilytetään ainakin organisaatiokoodi sekä halutut scraperit.
+Sovellus lukee uutiset ensisijaisesti tästä yhteisestä `/uutiset.json`-tiedostosta kaikille käyttäjille. Firestore ja `/api/uutiset` jäävät varareiteiksi, jos niitä käytetään erikseen.
 
-Vain `isAdmin: true` käyttäjät voivat hallita sisältöä (admin-tila, muokkaus, poisto, pääaiheiden vaihto).
+Kirjautuminen on sähköposti + salasana. Käyttäjät rekisteröityvät itse, eikä sovelluksessa käytetä kiinteitä testitunnuksia oletuksena.
+
+Käyttäjän profiili tallennetaan polkuun `users/{uid}`, ja siellä säilytetään ainakin organisaatiokoodi sekä halutut scraperit.
+
+Kaikilla kirjautuneilla käyttäjillä on oikeus hallita sisältöä (admin-tila, muokkaus, poisto, pääaiheiden vaihto).
 
 Kirjautuminen näytetään erillisellä auth-sivulla ennen varsinaista uutisnäkymää. Organisaatiokoodi valitaan rekisteröinnissä tai myöhemmin käyttäjäasetuksissa, ei sisäänkirjautumisessa.
 
-Kirjautuneena käyttäjä voi vaihtaa näkyvät scraperit Headerin `Asetukset`-napista. Tallennus päivittää käyttäjän `desiredScrapers`-asetuksen ja synkkaa käyttäjäkohtaisen uutisnäkymän.
+Kirjautuneena käyttäjä voi vaihtaa näkyvät scraperit Headerin `Asetukset`-napista. Tallennus päivittää käyttäjän `desiredScrapers`-asetuksen. Jos scraperia ei ole valittu, sen kategoria ja uutiset piilotetaan näkymästä.
 
 ## Scraper
 
-The scraper is still available for generating `uutiset.json` from Atlassian data.
+Scraper on ensisijainen uutisputki ja generoi yhteisen `uutiset.json`-tiedoston.
+
+Se kerää dataa lähteistä:
+
+- JYU uutiset
+- Atlassian (Jira + Confluence)
+- ulkoiset RSS-syötteet (YLE, BBC ja yliopistokohtaiset lähteet)
+
+Atlassian-lähteistä tulevat jutut julkaistaan omalla `atlassian`-kategoriallaan, joten ne näkyvät vain silloin kun käyttäjä on valinnut kyseisen scraperin asetuksista.
 
 Create a `.env` file based on `.env.example` before running it.
 
@@ -234,10 +236,10 @@ If you don't want to use Gemini to summarize the text, use the `--no-gemini` fla
 python scraper/main.py --no-gemini
 ```
 
-This fetches data from Atlassian, caches it in `atlassian_raw.json`, and saves the final processed results to `uutiset.json`.
+Tämä hakee datan kaikista konfiguroiduista lähteistä, käyttää Atlassian-cachelle tiedostoa `atlassian_raw.json` ja tallentaa lopputuloksen tiedostoon `uutiset.json`.
 
 The scraper is still under active development.
 
-frontend/public/uutiset.json contains example data created with Gemini 3.5 Pro from the raw Atlassian data.
+`frontend/public/uutiset.json` sisältää julkaistavan uutisdatan, jota frontend näyttää kaikille käyttäjille.
 
-If you want to scrape Atlassian again, delete the atlassian_raw.json file and run the scraper again.
+Jos haluat hakea Atlassian-datan varmasti uudelleen API:sta, poista `atlassian_raw.json` ja aja scraper uudelleen.

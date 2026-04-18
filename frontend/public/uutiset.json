@@ -1,46 +1,698 @@
 [
   {
-    "Title": "Suunnitelma asiakkaiden kontaktoinnista",
-    "Date": "13.2.2026",
-    "Description": "• Tavoite: Asiakkaiden kontaktointi ja informaatioähkyn validointi.\n• Työkalut: Hissipuhe, 3-5 dian pitch-deck ja teksti-TV-tyyppiset UI-demot.\n• Tavoite: Kerätä asiakkailta palautetta ja tarjota tarvittaessa laajempi 10 dian tietopaketti.",
-    "Link": "https://teks4407.atlassian.net/wiki/spaces/DEV/pages/24477697/Suunnitelma+asiakkaiden+kontaktoinnista+kopioitu+Teamsista",
-    "Image": ""
+    "Title":"JYU: Monitieteisen aivotutkimuksen professori Tiina Parviainen näkee aivot avaimena oppimiseen ja hyvinvointiin",
+    "Date":"17.4.2026",
+    "Description":"Jyväskylän yliopiston monitieteisen aivotutkimuksen professori Tiina Parviainen tarkastelee tutkimuksissaan niin lapsen aivojen ainutlaatuista kehitystä kuin sitä, miten kehon fysiologiset signaalit muovaavat kokemuksia ja mielen hyvinvointia.",
+    "Link":"https:\/\/www.jyu.fi\/fi\/uutinen\/monitieteisen-aivotutkimuksen-professori-tiina-parviainen-nakee-aivot-avaimena-oppimiseen-ja",
+    "Image":"https:\/\/www.jyu.fi\/sites\/default\/files\/styles\/16_9_max_320px\/public\/2026-04\/ParviainenTiina_013.jpg?h=b0272d46&amp;itok=fTZW-3vC",
+    "Category":"jyu"
   },
   {
-    "Title": "Hallituksen kokous 05-02-2026 | Pöytäkirja",
-    "Date": "13.2.2026",
-    "Description": "• Päätös: Hallitus puoltaa Katsaus.AI-projektin jatkamista.\n• Käsitellyt asiat: Liikeidea, kilpailuetu, tiimin roolit ja MVP-suunnitelma.\n• Palaute: Asiakkaat osallistettava varhaisessa vaiheessa ja fokusoitava nopeaan MVP-kokeiluun ilman raskaita integraatioita aluksi.",
-    "Link": "https://teks4407.atlassian.net/wiki/spaces/DEV/pages/17072129/Hallituksen+kokous+05-02-2026+P+yt+kirja",
-    "Image": ""
+    "Title":"JYU: Jyväskylän yliopisto uudistaa opettajankoulutusta - Suomen ensimmäisenä opettajankoulutuksen työelämäprofessorina aloittaa KT Olli Luukkainen",
+    "Date":"16.4.2026",
+    "Description":"Jyväskylän yliopisto on perustanut Suomen ensimmäisen opettajankoulutuksen työelämäprofessuurin.",
+    "Link":"https:\/\/www.jyu.fi\/fi\/uutinen\/jyvaskylan-yliopisto-uudistaa-opettajankoulutusta-suomen-ensimmaisena-opettajankoulutuksen",
+    "Image":"https:\/\/www.jyu.fi\/sites\/default\/files\/styles\/16_9_max_320px\/public\/images\/paarakennus_%282%29.jpg?h=52d3fcb6&amp;itok=L1KZrMen",
+    "Category":"jyu"
   },
   {
-    "Title": "Projektin yleiskuva",
-    "Date": "13.2.2026",
-    "Description": "• Ongelma: Tieto on hajautunut eri järjestelmiin ja aiheuttaa informaatioähkyä.\n• Ratkaisu: Nopeasti hahmotettava 'headline-kerros' olennaiselle tiedolle.\n• Tavoite: Todentaa ydinarvo yksinkertaisella MVP-versiolla.\n• Rajaukset (MVP): Ei integraatioita, personointia, pitkää viestihistoriaa tai notifikaatioita tässä vaiheessa.",
-    "Link": "https://teks4407.atlassian.net/wiki/spaces/DEV/pages/3833857/Projektin+yleiskuva",
-    "Image": ""
+    "Title":"JYU: Jyväskylän yliopistoon 40 uutta aloituspaikkaa kauppakorkeakouluun ja luonnontieteellis-teknillisille aloille",
+    "Date":"15.4.2026",
+    "Description":"Tiede- ja kulttuuriministeri osoitti yliopistoihin lisäaloituspaikkoja kevään yhteishakuun. Jyväskylän yliopistoon kohdistuu kaikkiaan 40 lisäpaikkaa.",
+    "Link":"https:\/\/www.jyu.fi\/fi\/uutinen\/jyvaskylan-yliopistoon-40-uutta-aloituspaikkaa-kauppakorkeakouluun-ja-luonnontieteellis",
+    "Image":"https:\/\/www.jyu.fi\/sites\/default\/files\/styles\/16_9_max_320px\/public\/images\/JYUP%C3%A4%C3%A4rakennusJari%20Kivel%C3%A4.jpg?h=57762b68&amp;itok=-r15-dMb",
+    "Category":"jyu"
   },
   {
-    "Title": "Työnjako",
-    "Date": "13.2.2026",
-    "Description": "• Sisältö: 3 kuukauden aikajana, virstanpylväät ja teknologiavalinnat.\n• Seuraavat askeleet (ennen seuraavaa kokousta): Ensimmäiset asiakashaastattelut, prototyypin esittely ja taloudelliset laskelmat.",
-    "Link": "https://teks4407.atlassian.net/wiki/spaces/DEV/pages/4358145/Ty+njako",
-    "Image": ""
+    "Title":"JYU: Kilpailtu rahoitus tuo Jyväskylään kolme nuorta huippututkijaa",
+    "Date":"15.4.2026",
+    "Description":"Jyväskylän yliopistoon myönnettiin kolme tutkimushankerahoitusta erittäin kilpaillusta EU:n Marie Skłodowska-Curie -hausta. Rahoitus mahdollistaa kansainvälisten huippututkijoiden siirtymisen Jyväskylän yliopistoon.",
+    "Link":"https:\/\/www.jyu.fi\/fi\/uutinen\/kilpailtu-rahoitus-tuo-jyvaskylaan-kolme-nuorta-huippututkijaa",
+    "Image":"https:\/\/www.jyu.fi\/sites\/default\/files\/styles\/16_9_max_320px\/public\/2025-01\/ylistonrinne.jpeg?h=a9575592&amp;itok=UqJodaYV",
+    "Category":"jyu"
   },
   {
-    "Title": "Wiki Update: DRAFT: Hallituksen kokous 09-04-2026 | Pöytäkirja",
-    "Date": "Just now",
-    "Description": "- **Riskienhallinta:** Syväanalyysi viikon 12 oppimispäiväkirjan havaintojen pohjalta. - **Visio:** Future press release -konseptin esittely ja vision kirkastaminen. - **Markkinatilanne:** Päivitetyt asiakasyhteenvedot ja kilpailija-analyysi. - **Operatiivinen tila:** Tilannekatsaus, roadmap-tarkastus ja use case -tarinallistaminen. - **Prioriteetit:** Projektin loppuvaiheen 2-3 kriittisintä strategista tavoitetta.",
-    "Link": "https:\/\/teks4407.atlassian.net\/wiki\/spaces\/INF\/pages\/56950785\/DRAFT+Hallituksen+kokous+09-04-2026+P+yt+kirja",
-    "Image": "",
-    "Category": "johto"
+    "Title":"JYU: Metsämaan salainen elämä - uutta opetusmateriaalia eliöyhteisöistä",
+    "Date":"15.4.2026",
+    "Description":"Evoluutiopajat-projekti on julkaissut uutta opetusmateriaalia metsämaan eliöyhteisöistä ja ekosysteemeistä. Tehtävät ovat muokattavissa eri ikäryhmille, ja ne on suunniteltu toimimaan sekä yhtenä laajempana kokonaisuutena että itsenäisinä osioina.",
+    "Link":"https:\/\/www.jyu.fi\/fi\/uutinen\/metsamaan-salainen-elama-uutta-opetusmateriaalia-elioyhteisoista",
+    "Image":"https:\/\/www.jyu.fi\/sites\/default\/files\/styles\/16_9_max_320px\/public\/2026-04\/MUUMAA-opetusmateriaalit.png?h=cd56d87c&amp;itok=uBWqVH3a",
+    "Category":"jyu"
   },
   {
-    "Title": "Wiki Update: Glean",
-    "Date": "Just now",
-    "Description": "- **Glean-analyysi:** Tier 1 -tason suora kilpailija, jolla on 7,2 mrd USD valuaatio ja 200 milj. USD liikevaihto.\n- **Tekninen ero:** Glean keskittää datan omaan pilveensä (SaaS), kun taas Katsaus.ai käyttää asiakkaan omaa infraa (BYO-AI).\n- **Käyttökokemus:** Katsaus.ai erottuu passiivisella Zero-Click-mallilla Gleanin hakupohjaista ja aktiivista käyttöä vaativaa mallia vastaan.\n- **Kilpailuetu:** Parempi tietoturva (stateless), alempi kognitiivinen kuorma ja helpompi infosec-hyväksyntä suuryrityksissä.",
-    "Link": "https:\/\/teks4407.atlassian.net\/wiki\/spaces\/INF\/pages\/56033284\/Glean",
-    "Image": "",
-    "Category": "tutkimus"
+    "Title":"JYU: Osallistujat yliopiston tutkimuksiin haetaan julkisilla hakuilmoituksilla",
+    "Date":"14.4.2026",
+    "Description":"Jyväskylän yliopistossa tehdään paljon tutkimuksia, joihin haemme vapaaehtoisia osallistujia. Osallistujia haetaan julkisilla hakuilmoituksilla, mutta myös väestörekisteritietojen tai suostumuksen perusteella henkilökohtaisesti.",
+    "Link":"https:\/\/www.jyu.fi\/fi\/uutinen\/osallistujat-yliopiston-tutkimuksiin-haetaan-julkisilla-hakuilmoituksilla",
+    "Image":"https:\/\/www.jyu.fi\/sites\/default\/files\/styles\/16_9_max_320px\/public\/2026-04\/jyu-henkilosto-kesakuu2025-minnakarhunen-netti-96.png?h=2d44e782&amp;itok=j_fOnycX",
+    "Category":"jyu"
+  },
+  {
+    "Title":"JYU: Päättöarvioinnin kriteerit ohjaavat kriittiseen ajatteluun ja tiedon käyttämiseen - arvosanan 5 kriteereissä parannettavaa",
+    "Date":"14.4.2026",
+    "Description":"Päättöarvioinnin kriteerit tukevat oppilaiden kykyä käyttää tietoa omassa elämässään ja yhteiskunnassa. Tuore tutkimus osoittaa kuitenkin, että arviointikriteerit tarjoavat tähän hyvin erilaiset lähtökohdat arvosanojen 5 ja 9 välillä.",
+    "Link":"https:\/\/www.jyu.fi\/fi\/uutinen\/paattoarvioinnin-kriteerit-ohjaavat-kriittiseen-ajatteluun-ja-tiedon-kayttamiseen-arvosanan-5",
+    "Image":"https:\/\/www.jyu.fi\/sites\/default\/files\/styles\/16_9_max_320px\/public\/2026-04\/Norssi9Kieliopetus_008.jpg?h=35f5624c&amp;itok=GA3UoO6y",
+    "Category":"jyu"
+  },
+  {
+    "Title":"JYU: Jyväskylässä järjestettävät Kansalliset kalatutkimuspäivät vahvistavat suomalaista kalatutkimusta",
+    "Date":"10.4.2026",
+    "Description":"Jyväskylän yliopisto järjestää yhteistyössä Luonnonvarakeskuksen kanssa kuudennet Kansalliset kalatutkimuspäivät. Ohjelmassa luvassa ajankohtaista tutkimusta lohikannoista, vesiviljelystä, vesiekosysteemien muutoksista ja kalatalouden tiedonkeruusta.",
+    "Link":"https:\/\/www.jyu.fi\/fi\/uutinen\/jyvaskylassa-jarjestettavat-kansalliset-kalatutkimuspaivat-vahvistavat-suomalaista-kalatutkimusta",
+    "Image":"https:\/\/www.jyu.fi\/sites\/default\/files\/styles\/16_9_max_320px\/public\/2025-12\/Logo2026.png?h=ec041e41&amp;itok=fsiv3U0Y",
+    "Category":"jyu"
+  },
+  {
+    "Title":"JYU: Daniel Moilanen kertoi Japanin vuorten myyteistä",
+    "Date":"10.4.2026",
+    "Description":"Japanin kulttuuriin perehtynyt Daniel Moilanen piti luennon Fuji-vuoreen ja japanilaisiin vuoriin pohjautuvista kansantarinoista ja myyteistä.",
+    "Link":"https:\/\/www.jyu.fi\/fi\/uutinen\/daniel-moilanen-kertoi-japanin-vuorten-myyteista",
+    "Image":"https:\/\/www.jyu.fi\/sites\/default\/files\/styles\/16_9_max_320px\/public\/2026-04\/Daniel-Moilasen-esitys.png?h=fbf4b26c&amp;itok=Miwm54PI",
+    "Category":"jyu"
+  },
+  {
+    "Title":"JYU: Jyväskylän yliopisto mukana EU:n tukemassa eurooppalaisessa kvanttipilottihankkeessa",
+    "Date":"10.4.2026",
+    "Description":"Jyväskylän yliopiston rooli SPINS‑kvanttipilottihankkeessa perustuu sen vahvaan osaamiseen pii-pohjaisissa kvanttiteknologioissa ja kehittyneissä mittausmenetelmissä. Hankkeen kokonaisbudjetti on yhteensä 50 miljoonaa euroa.",
+    "Link":"https:\/\/www.jyu.fi\/fi\/uutinen\/jyvaskylan-yliopisto-mukana-eun-tukemassa-eurooppalaisessa-kvanttipilottihankkeessa",
+    "Image":"https:\/\/www.jyu.fi\/sites\/default\/files\/styles\/16_9_max_320px\/public\/2026-04\/JYU-Kumppanuus-00415.jpg?h=5e08a8b6&amp;itok=DrjvNsEa",
+    "Category":"jyu"
+  },
+  {
+    "Title":"JYU: Jyväskylän yliopiston kauppakorkeakoulun uusi johtamisen professori Monika von Bonsdorff tutkii johtamista ikääntymisen ja muuttuvan työelämän näkökulmista",
+    "Date":"9.4.2026",
+    "Description":"KTT Monika von Bonsdorff keskittyy tutkimuksessaan johtamisen, organisaatiokäyttäytymisen ja terveyden kysymyksiin.",
+    "Link":"https:\/\/www.jyu.fi\/fi\/uutinen\/jyvaskylan-yliopiston-kauppakorkeakoulun-uusi-johtamisen-professori-monika-von-bonsdorff-tutkii",
+    "Image":"https:\/\/www.jyu.fi\/sites\/default\/files\/styles\/16_9_max_320px\/public\/2026-04\/Monika%20von%20Bonsdorff.jpg?h=d1cb525d&amp;itok=Qu7a7dxG",
+    "Category":"jyu"
+  },
+  {
+    "Title":"JYU: Täydennä osaamistasi maksuttomasti kesän FITech-kursseilla",
+    "Date":"9.4.2026",
+    "Description":"Kesällä 2026 FITechin tarjonnasta löytyy monipuolinen kattaus kursseja liittyen kestävyyteen, kyberturvallisuuteen ja tulevaisuuden teknologioihin. Haku kesäkursseille alkaa 14.4.2026.",
+    "Link":"https:\/\/www.jyu.fi\/fi\/uutinen\/taydenna-osaamistasi-maksuttomasti-kesan-fitech-kursseilla",
+    "Image":"https:\/\/www.jyu.fi\/sites\/default\/files\/styles\/16_9_max_320px\/public\/2026-04\/FITech%20kev%C3%A4%C3%A4n%202026%20haku.jpg?h=0f7f6233&amp;itok=ZhG0EjJy",
+    "Category":"jyu"
+  },
+  {
+    "Title":"Project Update: InformaatioÄhkyCRM",
+    "Date":"Just now",
+    "Description":"- Tiedekunta (Voitettu)\n- Anna Oispuu (Trimble) (Potential contacts)\n- Jarkko Pellikka (Nokia PoC video) (Potential contacts)\n- Keuda (Menetetty)\n- Ilmasotakoulu (Menetetty)",
+    "Link":"#",
+    "Image":"",
+    "Category":"atlassian"
+  },
+  {
+    "Title":"Project Update: Katsaus.AI-projekti",
+    "Date":"Just now",
+    "Description":"- Scraperit ja Gemini-skripti Firebaseen (Käynnissä)\n- Firebase-deploy (Käynnissä)\n- Use-casejen rakentaminen (Valmis)\n- Riskienhallinta ja aikataulun ennakointi (Valmis)\n- i18 tuki (Valmis)",
+    "Link":"#",
+    "Image":"",
+    "Category":"atlassian"
+  },
+  {
+    "Title":"Wiki Update: Dave Berkus 2",
+    "Date":"Just now",
+    "Description":"Page Content: Dave Berkus – Pre-money-arvio Katsaus.AI :lle Luetut tiedostot ja lähteet: tiimi.md berkus-prototype.md katsaus-ai-ominaisuudet.md Confluence-muistiot & raportit: Keuda 20.3.2026, Ilmavoimat 27.03.202...",
+    "Link":"https:\/\/teks4407.atlassian.net\/\/wiki\/spaces\/INF\/pages\/65863681\/Dave+Berkus+2",
+    "Image":"",
+    "Category":"atlassian"
+  },
+  {
+    "Title":"Wiki Update: Scorecard 2",
+    "Date":"Just now",
+    "Description":"Page Content: Katsaus.AI – Scorecard Valuation (Pre-seed, Pohjoismaat) Status-analyysi ja benchmark Vaihe: Prototyyppi. Tiimillä on toimiva demokelpoinen kokonaisuus (frontend + backend + scraper) ja perusinfrat, m...",
+    "Link":"https:\/\/teks4407.atlassian.net\/\/wiki\/spaces\/INF\/pages\/65732609\/Scorecard+2",
+    "Image":"",
+    "Category":"atlassian"
+  },
+  {
+    "Title":"Wiki Update: Scorecard Valuaatio: katsaus.ai",
+    "Date":"Just now",
+    "Description":"Page Content: Hei! Olen Scorecard-analyytikko ja arvioin katsaus.ai:n arvon Bill Paynen Scorecard-menetelmällä. Olen analysoinut tiimi.md, berkus-prototype.md, katsausAi-ominaisuudet.md sekä Confluence-materiaalit ...",
+    "Link":"https:\/\/teks4407.atlassian.net\/\/wiki\/spaces\/INF\/pages\/65306625\/Scorecard+Valuaatio+katsaus.ai",
+    "Image":"",
+    "Category":"atlassian"
+  },
+  {
+    "Title":"Aalto: Show your school colours: new hoodies and tote bags now available",
+    "Date":"Fri, 17 Apr 2026 10:12:44 +0000",
+    "Description":"The Aalto University Shop launched a new line of school-specific hoodies and tote bags for students, staff, and alumni",
+    "Link":"https:\/\/www.aalto.fi\/en\/news\/show-your-school-colours-new-hoodies-and-tote-bags-now-available",
+    "Image":"",
+    "Category":"aalto"
+  },
+  {
+    "Title":"Aalto: ACRIS service restored",
+    "Date":"Fri, 17 Apr 2026 06:50:27 +0000",
+    "Description":"The ACRIS research information management system is now open following the planned service break on 13–20 April 2026.",
+    "Link":"https:\/\/www.aalto.fi\/en\/news\/acris-service-restored",
+    "Image":"",
+    "Category":"aalto"
+  },
+  {
+    "Title":"Aalto: Collaborating to Revolutionalize Critical Care",
+    "Date":"Fri, 17 Apr 2026 05:48:36 +0000",
+    "Description":"A collaboration across Design Factory, HUS, Biodesign Finland, and Aalto students brings urine monitoring into the 21st century",
+    "Link":"https:\/\/www.aalto.fi\/en\/news\/collaborating-to-revolutionalize-critical-care",
+    "Image":"",
+    "Category":"aalto"
+  },
+  {
+    "Title":"Aalto: Science must have a voice in society – but how?",
+    "Date":"Fri, 17 Apr 2026 05:00:31 +0000",
+    "Description":"Trust in science has fallen in Finland by almost ten percentage points in two years",
+    "Link":"https:\/\/www.aalto.fi\/en\/news\/science-must-have-a-voice-in-society-but-how",
+    "Image":"",
+    "Category":"aalto"
+  },
+  {
+    "Title":"Aalto: Students learning field-specific terminology through glossary tasks",
+    "Date":"Thu, 16 Apr 2026 11:24:11 +0000",
+    "Description":"I interviewed two Aalto University instructors who have used glossaries created by students as coursework in a subject course and a field-specific language course. The assignments are based on active learning methods: the glossaries are not created by the instructor, but by the learners themselves. The interview focused, among other things, on the teaching philosophy behind developing the glossary tasks, how the learning of field-specific vocabulary can be linked to the overall learning objectives of the course, and what technical solutions enable students’ active learning in glossary assignments.",
+    "Link":"https:\/\/www.aalto.fi\/en\/news\/students-learning-field-specific-terminology-through-glossary-tasks",
+    "Image":"",
+    "Category":"aalto"
+  },
+  {
+    "Title":"Helsingin yliopisto: Arkadiankadun siltaremontti aiheuttaa muutoksia liikennejärjestelyihin Luonnontieteellisen museon lähistöllä",
+    "Date":"Wed, 07 Jan 2026 06:13:58 +0000",
+    "Description":"Renewal of Arkadiankatu Bridge will cause changes to traffic arrangements near the Natural History Museum johanemi@helsinki.fi Wed, 07\/01\/2026 - 08:40 The renovation is expected to be completed in late 2026. The renovation will start with the construction of temporary traffic arrangements from Wednesday 7 January onwards. The renovation is expected to be completed in late 2026. A temporary pedestrian bridge over the Baana A temporary bridge for pedestrians will be built on the east side of Arkadiankatu over the Baana. The aim is to maintain the pedestrian route on the east side of the bridge until the temporary bridge is operational. Cyclists will also be able to use the bridge. The Baana route underneath the bridge is expected to remain open for most of the renovation's duration, with some minor exceptions. Changes to car routes There will be changes to the motor vehicle routes by the bridge and around it in January. If possible, should be favoured during the bridge renovation. Connections to the bus terminals in Kamppi will remain available, but there will be a slight diversion of routes. Tram routes 1 and 1T to be diverted Trams 1 and 1T will run via Simonkatu and Kamppi. Lasipalatsi and the Natural History Museum will not be served. The diversion is due to the renovation of the Arkadiankatu bridge and will remain in place until late 2026. The renovation will not affect HSL's bus services. Natural History Museum Pohjoinen Rautatiekatu 13 News Finnish Museum of Natural History Natural history museum Event Luomus Image Finnish Museum of Natural History 5.1.2026",
+    "Link":"https:\/\/www.helsinki.fi\/fi\/luomus\/tietoa-meista\/uutiset\/arkadiankadun-siltaremontti-aiheuttaa-muutoksia-liikennejarjestelyihin-luonnontieteellisen-museon-lahistolla",
+    "Image":"",
+    "Category":"helsinki"
+  },
+  {
+    "Title":"Helsingin yliopisto: Ukrainan sota - yliopiston suositukset",
+    "Date":"Fri, 04 Mar 2022 10:06:50 +0000",
+    "Description":"The War in Ukraine – University of Helsinki guidelines terojuut@helsinki.fi Fri, 04\/03\/2022 - 14:11 This page contains up-to-date information on the effects of the war in Ukraine on the University of Helsinki as well as University-level recommendations and instructions regarding the situation. The University of Helsinki has condemned the military action by Russia and expressed its support for Ukraine and its university community. We have also expressed our support for Ukraine, together with other Finnish universities, through statements by and the . As a demonstration of support, we have illuminated buildings in the colours of the Ukrainian flag and raised the flag on our premises. One of the principles of the University of Helsinki is to promote international collaboration in research and higher education, and to support these efforts even in difficult circumstances. Russia’s indefensible military aggression in Ukraine has required exceptional measures, which include those taken in the collaboration between universities. The University of Helsinki is monitoring both national and EU-level sanctions, adapting our policies and processes accordingly. Together with other Finnish and international universities, the University of Helsinki strives to promote the end of military action in Ukraine, while supporting Ukrainian institutions and people. How the University of Helsinki is helping students and employees In the early stages of the crisis, the University reached out to its Ukrainian degree and exchange students as well as employees to offer support. Inclusivity continues to be one of the values of our University. Consequently, all members of the University community are treated in an equal and respectful manner regardless of their nationality. Equal rights apply to everyone, and everyone is entitled to the same services. The University of Helsinki will continue to support staff and students in these challenging circumstances. Staff can contact the (link to Flamma), while students can find health-related information in the of the Instructions website. The University of Helsinki may grant the right to complete non-degree studies to a person arriving in Finland whose degree studies have been suspended at a Ukrainian higher education institution because of the war. Such rights can also be granted for specific courses or study modules. However, they do not give the person the right to complete a degree at the University of Helsinki. The right to complete a degree can be applied for through regular application procedures. Applications for the right to complete non-degree studies will be processed until the end of 2026 without application periods. Related rights will be granted until 31 July 2027, and no fees will be charged for these studies. In special cases, the University of Helsinki can offer special arrangements for tuition fee payments to students whose ability to pay has been seriously affected by the war in Ukraine. After being admitted, students must in such cases . As a demonstration of support, citizens of Ukraine fleeing the war can study free of charge at the until spring 2027. The University of Helsinki and other universities across the globe offer jobs to researchers who have fled Ukraine. These are listed on an . In addition, Ukrainian researchers can register in the international . The University supports the research conducted by researchers who have fled the war in Ukraine with a new funding model for salary costs. In the model, 40% of a researcher’s salary is covered by the University’s shared funds for one year. The remaining 60% of the salary is covered by the relevant unit’s own funding sources. Funds have been reserved for 20 researchers. The model can be used for the salary expenses of researchers on the second or third level of the University’s career path hierarchy who have arrived from Ukraine because of the war after 24 February 2022. Instead of implementing an application procedure for the salary support model, units can propose researchers who have arrived from Ukraine to be covered by the model by writing to the service address of their unit’s HR Services team. Donations by the University of Helsinki The crisis fund established by the University of Helsinki for students and researchers remains in operation. The fund supports the transition of researchers and students suffering from Russia’s attack on Ukraine to the University of Helsinki as well as those who are already here and are now facing financial difficulties. or . The University of Helsinki has supported victims of the war in Ukraine with a donation of €50,000 to UNICEF. The donation was made from the profit generated by the University of Helsinki Funds. The University Pharmacy has also supported Ukraine in the humanitarian crisis by making two donations totalling €20,000 to those in need. The first donation was made through the Operation Hope group, while the second was made to the Finnish Red Cross Disaster Relief Fund. In addition, the University Pharmacy has . University units have actively contributed to the protection of Ukrainian students and researchers by acquiring targeted external funding from, for example, the Kone Foundation, the Research Council of Finland and the Finnish National Agency for Education. Collaborative projects with Russia and Belarus For the time being, the University has suspended the promotion of all collaborative projects under development with Russia and Belarus. In accordance with the recommendations of the Ministry of Education and Culture, the University has frozen all institutional collaboration with Russian and Belarusian universities and other organisations. Members of the University community should take note of the fact that the European Commission has ordered the suspension of all RDI cooperation conducted with Russian organisations and coordinated by the Commission, as well as suspended all payments under current agreements to the same organisations. Members of the University community are asked to refrain from any interaction with government agencies of the Russian Federation. The University does not recruit individuals who have an affiliation with a Russian or Belarusian university, unless they give up their affiliation. The University does not recommend using persons currently working at Russian or Belarusian universities as scholarly assessors in recruitment processes or application processes for the title of docent, or to invite such persons to serve as opponents or preliminary examiners. Furthermore, the University does not recommend that its staff serve as assessors in similar assessment situations, or as opponents or preliminary examiners at universities operating in these countries. Travel to Russia or Belarus is not permitted, in addition to which the recommendation applies to events held over remote connections. University units and members of the University community are not to send invitations to researchers at Russian or Belarusian universities or research institutes. Researchers at the University are advised not to initiate new co-authored publications involving researchers affiliated with Russian or Belarusian universities or research institutes. No measures are required from researchers with regard to publications already in the publishing process. The University does not recommend contributions to refereeing research involving researchers affiliated with Russian or Belarusian universities or research institutes. Nor are contributions in any other role recommended to the assessment processes of publication series published in these countries. Ongoing processes need not be adjusted, but it should be noted that the payment of fees to Russian or Belarusian accounts is unlikely to be successful for the time being. The University is restricting access from Russia and Belarus to IT infrastructures as required by the regulations of the Council of Europe (EU 2022\/328 and EU 2022\/355). Consequently, the use of the University’s VPN service is restricted on the basis of geographical location. Travel to Ukraine, Belarus and Russia should be avoided in accordance with the recommendations of the Ministry for Foreign Affairs of Finland. See the website of the Finnish Immigration Service for . International conferences Researchers affiliated with Russian or Belarusian universities or research institutes should not be invited to conferences and events organised by the University or otherwise organised on University premises. Persons affiliated with Russian or Belarusian universities or research institutes should not be invited to speak at conferences. Affiliations with Russian or Belarusian universities or research institutes should not be indicated in conference attendee lists and related publications. This page was last updated on 30 January 2026. Are you looking for an expert regarding the war in Ukraine? Would you like to consult an expert about the war in Ukraine? Researchers at the University of Helsinki are monitoring the situation and developments in Ukraine and are ready to answer questions.",
+    "Link":"https:\/\/www.helsinki.fi\/fi\/ajankohtaista\/ukrainan-sota",
+    "Image":"",
+    "Category":"helsinki"
+  },
+  {
+    "Title":"Helsingin yliopisto: Our Research Group at the PBP World Meeting 2026",
+    "Date":"Sat, 18 Apr 2026 08:34:06 +0000",
+    "Description":"Our Research Group at the PBP World Meeting 2026 eaharju@helsinki.fi Sat, 18\/04\/2026 - 11:34 From 23rd to 26th March 2026 members of our group attended the 15th World Meeting on Pharmaceutics, Biopharmaceutics and Pharmaceutical Technology in Prague. Jukka, Alba and Lea had the pleasure of presenting their research at the PBP World Meeting, where they contributed both poster presentations and oral talks. The event brought together experts from fundamental and applied academic research, the chemical and pharmaceutical industries, and the regulatory sector, creating valuable opportunities for discussion and collaboration. The conference covered a broad range of topics, including manufacturing engineering, excipients for medicinal product formulation, key physicochemical principles, advanced characterisation techniques, and ongoing challenges in product development and manufacturing. News Faculty of Pharmacy Drug development Image Pharmaceutical Spectroscopy and Imaging Pharmaceutical Spectroscopy and Imaging 18.4.2026",
+    "Link":"https:\/\/www.helsinki.fi\/en\/researchgroups\/pharmaceutical-spectroscopy-and-imaging\/news\/our-research-group-at-the-pbp-world-meeting-2026",
+    "Image":"",
+    "Category":"helsinki"
+  },
+  {
+    "Title":"Helsingin yliopisto: Helsinki Animal Law Conference 2026: “Reimagining Justice Across Species”",
+    "Date":"Fri, 17 Apr 2026 11:00:01 +0000",
+    "Description":"Helsinki Animal Law Conference 2026: “Reimagining Justice Across Species” txrissan@helsinki.fi Fri, 17\/04\/2026 - 14:00 We are pleased to announce the annual conference of the Helsinki Animal Law Centre in collaboration with the Legacy and Rebound projects. The conference will be held in Helsinki from June 9-10, 2026. The conference explores the intersection of human, animal, and environmental justice as well as the role of animal law scholarship and advocacy in the age of the Anthropocene. Visit the conference website for more information. News Faculty of Law Animals Image Agency in Law Agency in Law Agency in Law 17.4.2026",
+    "Link":"https:\/\/www.helsinki.fi\/en\/researchgroups\/agency-in-law\/news-events\/helsinki-animal-law-conference-2026-reimagining-justice-across-species",
+    "Image":"",
+    "Category":"helsinki"
+  },
+  {
+    "Title":"Helsingin yliopisto: Tervetuloa avoimen julkaisemisen webinaareihin toukokuussa",
+    "Date":"Fri, 17 Apr 2026 08:30:36 +0000",
+    "Description":"Welcome to Open access publishing webinar series in May uvirolai@helsinki.fi Fri, 17\/04\/2026 - 12:17 The themes of the webinar series aimed at members of the University community are: 11.5.2026 Open Access Basics & Quality of Open Access Journals, 18.5. Helsinki University Press, Helda Open Books ja Editori, 25.5. Prior license model and licensing. Open access publishing webinar series The webinar series is for all interested university researchers, and no enrolment is required. In the webinars, you can also ask library information specialists about open publishing. The webinar of 25 May is held in English, other two in Finnish. Avoimen julkaisemisen perusteet & avoimien julkaisujen laadun arviointi 11. 5.2026 klo 10-11 (in Finnish) Helsingin yliopiston avoimet julkaisupalvelut: Helsinki University Press, Helda Open Books ja Editori 18. 5.2026 klo 10-11 (in Finnish) Helsingin yliopiston avoimet julkaisupalvelut eri tarkoituksiin: Helsinki University Press, Helda Open Books ja Editori. Prior license model and licensing (in English) 25.5.2026 klo 10-11 Introducing the prior licensing model introduced at the University of Helsinki from the beginning of 2026 and its effects on self-archiving; general information on licensing and CC licences The webinar will be held in English, but questions can also be asked in Finnish. You are welcome to join us online! You are always welcomed to send your questions to . News Helsinki University Library Library Ursula Virolainen Image Helsinki University Library Helsinki University Library Helsinki University Library 17.4.2026",
+    "Link":"https:\/\/www.helsinki.fi\/fi\/helsingin-yliopiston-kirjasto\/ajankohtaista-kirjastosta\/tervetuloa-avoimen-julkaisemisen-webinaareihin-toukokuussa",
+    "Image":"",
+    "Category":"helsinki"
+  },
+  {
+    "Title":"Tampereen yliopisto: Sisu opiskelijan työkalut - sisu.tuni.fi",
+    "Date":"Thu, 23 May 2024 08:12:16 GMT",
+    "Description":"Sisu opiskelijan työkalut sisu.tuni.fi",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMiQ0FVX3lxTE5KdFhRWDNCLS1BMDRaWko2eFVNaHUwOEd5VzM4Wk9kMk1ZdWZrcFBGTUJzTUpPSkFMT1pMYjJjXzFfQ28?oc=5",
+    "Image":"",
+    "Category":"tampere"
+  },
+  {
+    "Title":"Tampereen yliopisto: Keskustelua kasvatuksesta –tilaisuudet tarjoavat tutkittua tietoa ja näkökulmia oppimiseen - tuni.fi",
+    "Date":"Fri, 13 Mar 2026 07:00:00 GMT",
+    "Description":"Keskustelua kasvatuksesta –tilaisuudet tarjoavat tutkittua tietoa ja näkökulmia oppimiseen tuni.fi",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMitgFBVV95cUxQejRILUxGN295QTVjMzR2ZkpqRnIwWlZOVndVVEtzWDBBV1UzcTNUdkloS3g2UUs1RGdtdkVSNHA2VDQ2OEJ3WVAyVDk1NEI0R0pVdDhUdGRvS0RzbldLQ0tkTnlzRndpdHlvbWt1TXZSekF4T2VvNW05R3Fha0NvSkdQTlIzRHZZdFJDaC05VmQ5bnpURkdaOFU3dFh2Q3p3STlmalJndFZka0Z2QXI2M0lGdlBkZw?oc=5",
+    "Image":"",
+    "Category":"tampere"
+  },
+  {
+    "Title":"Tampereen yliopisto: Saritha Vargese: Muistisairaiden liitännäissairaudet elämän viimeisinä vuosina - tuni.fi",
+    "Date":"Tue, 07 Apr 2026 08:01:00 GMT",
+    "Description":"Saritha Vargese: Muistisairaiden liitännäissairaudet elämän viimeisinä vuosina tuni.fi",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMitAFBVV95cUxNc1lZdkNLLUNtZVBhVjVuNVEyc2tQR0tTa292S3BRTUc3S0ltajhPRzFQNmY2ZEs4NDNoYlJib25zcFBTbElOVjU5UmlYWjlFdVE2YWxxMjJ4dGhZQ1B2SVVVMzBYYVJxaVdBb05mUk1CQ0tmQVJzOU1xR3VaZWhPSmplM2w0V29za2VEUnZoei1Wbkp6Z3VaRlpRa0ZxTmVNX1poc0M5VXd4SDNsY2M2Q2ZYa3o?oc=5",
+    "Image":"",
+    "Category":"tampere"
+  },
+  {
+    "Title":"Tampereen yliopisto: Tero Järvinen on Tampereen yliopiston Vuoden keksijä - tuni.fi",
+    "Date":"Fri, 10 Apr 2026 06:00:00 GMT",
+    "Description":"Tero Järvinen on Tampereen yliopiston Vuoden keksijä tuni.fi",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMijwFBVV95cUxOOFBJQVpDdUhXeGctRG1NZDBSaXpoY0N4TWxsa0FJcURzeW1BeG5iN1NtcTlQQ09NRDlLME5ZUklkNlNfUS1CTjBwV0ZscGMyZUY0OFZnZmRVSTltTW9YWG03NHJLd3ZWVW81dFkycGk4aUdTRE9aQ3czekdnNkVMTnVNYTNrNmZFaDVyQUtjbw?oc=5",
+    "Image":"",
+    "Category":"tampere"
+  },
+  {
+    "Title":"Tampereen yliopisto: Vuoden Alumniksi on valittu teknologia- ja perheyrittäjä, kasvatustieteilijä Marjo Miettinen - tuni.fi",
+    "Date":"Wed, 15 Apr 2026 15:05:47 GMT",
+    "Description":"Vuoden Alumniksi on valittu teknologia- ja perheyrittäjä, kasvatustieteilijä Marjo Miettinen tuni.fi",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMitAFBVV95cUxQOGwzakJwQXEzVG10STVVWWNGNXg3X1VfMklIYWNpajhBVGxGbGc1REJsZWNSMlVQblEzVjJZdkJFS2hFajYyenNWVmMzVWZXN2huTF9vV3VCTWtGdmRYd0F1ZGxfODQzYUlxcUpMLUYwQ3VzajdkYlFzbEpyZnJxWHp4QzN4NGR2b0JZa2MwdGNhYlNvS09vUGdMek1TcUx3RG5sSmJZdXVXUlVnakFQcExydEM?oc=5",
+    "Image":"",
+    "Category":"tampere"
+  },
+  {
+    "Title":"Turun yliopisto: Pysy ajan tasalla lainvalmistelusta – Lakitutkan uusi Hakuvahti on täällä",
+    "Date":"Thu, 16 Apr 2026 14:49:56 +0300",
+    "Description":"Hakuvahdin ansiosta itselle tärkeiden lakihankkeiden seuraaminen on helppoa, kun sähköpostiin kilahtaa automaattisesti tieto uusista asiakirjoista. Lainvalmistelun asiakirjat löytyvät Lakitutkassa kätevästi yhdestä paikasta.",
+    "Link":"https:\/\/www.utu.fi\/fi\/ajankohtaista\/uutinen\/pysy-ajan-tasalla-lainvalmistelusta-lakitutkan-uusi-hakuvahti-on-taalla",
+    "Image":"",
+    "Category":"turku"
+  },
+  {
+    "Title":"Turun yliopisto: Turun yliopisto ja Åbo Akademi uudistavat strategisen kumppanuutensa",
+    "Date":"Thu, 16 Apr 2026 11:00:00 +0300",
+    "Description":"Turun yliopisto ja Åbo Akademi haluavat syventää pitkää yhteistyötään tutkimuksessa, opetuksessa ja vaikuttavuudessa.",
+    "Link":"https:\/\/www.utu.fi\/fi\/ajankohtaista\/mediatiedote\/turun-yliopisto-ja-abo-akademi-uudistavat-strategisen-kumppanuutensa",
+    "Image":"",
+    "Category":"turku"
+  },
+  {
+    "Title":"Turun yliopisto: Historialliset lehtiaineistot tarkentavat aikaisempia tietoja Suomen eliölajiston levinneisyydestä",
+    "Date":"Thu, 16 Apr 2026 09:09:41 +0300",
+    "Description":"Uudessa tutkimuksessa selvitettiin Suomen eliölajistossa tapahtuneita muutoksia 1800-luvulta 1900-luvulle. Digitoitujen sanomalehtiaineistojen avulla tutkijat saivat selville, että esimerkiksi hirvi, supikoira ja harmaahaikara ovat olleet Suomessa laajemmalle levinneitä kuin aiemmin on tiedetty. Turun yliopiston historioitsijoiden ja biodiversiteettitutkijoiden yhteistyönä syntynyt uusi tutkimus avaa mahdollisuuksia ymmärtää eliölajistossa tapahtuvia muutoksia.",
+    "Link":"https:\/\/www.utu.fi\/fi\/ajankohtaista\/mediatiedote\/historialliset-lehtiaineistot-tarkentavat-aikaisempia-tietoja-suomen",
+    "Image":"",
+    "Category":"turku"
+  },
+  {
+    "Title":"Turun yliopisto: Tutkimus: Monilla mikrobeilla on kyky hajottaa muovia",
+    "Date":"Wed, 15 Apr 2026 10:04:13 +0300",
+    "Description":"Tutkijat tunnistivat yli 600 000 mikrobiproteiinia, joilla on kyky hajottaa luonnollisia ja synteettisiä muoveja. Tulokset osoittavat, että mikrobien kyky hajottaa muovia on huomattavasti yleisempää kuin aiemmin on arvioitu.",
+    "Link":"https:\/\/www.utu.fi\/fi\/ajankohtaista\/mediatiedote\/monilla-mikrobeilla-kyky-hajottaa-muovia",
+    "Image":"",
+    "Category":"turku"
+  },
+  {
+    "Title":"Turun yliopisto: Biolääketieteen, neurotieteen ja kansanterveystieteen opinnäytteet esitellään kaikille avoimessa Terveydeksi – New Discoveries 2026! -seminaarissa",
+    "Date":"Wed, 15 Apr 2026 09:56:46 +0300",
+    "Description":"Turun yliopiston lääketieteellisen tiedekunnan biolääketieteen koulutusohjelmasta keväällä valmistuvat opiskelijat esittelevät luonnontieteiden kandidaatin opinnäytteitään Terveydeksi – New Discoveries 2026! -seminaarissa. Lisäksi seminaarissa esittelevät maisterin opinnäytteitään Biomedical Imaging, Drug Discovery and Development, Human Neuroscience ja Public Mental Health -maisteriohjelmien opiskelijat. Biomedical Imaging -opiskelijoista osa on Åbo Akademin puolelta. Seminaari järjestetään 20.4.2026 Medisiina C:n Osmo Järvi -salissa sekä 21.-24.4.2026 Medisiina D:n Alhopuro-salissa.",
+    "Link":"https:\/\/www.utu.fi\/fi\/ajankohtaista\/uutinen\/biolaaketieteen-neurotieteen-ja-kansanterveystieteen-opinnaytteet-esitellaan",
+    "Image":"",
+    "Category":"turku"
+  },
+  {
+    "Title":"Oulun yliopisto: Opinto-opas menu - Oulun yliopisto",
+    "Date":"Fri, 03 Jul 2020 16:48:21 GMT",
+    "Description":"Opinto-opas menu Oulun yliopisto",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMiQEFVX3lxTE1oTlhzNTNUYkRabjhiRzZPaXMzN2hfaGJBTUowZGpELWFPX2l6VGE5UFVPMFJRNXFPc2xDazZPTFI?oc=5",
+    "Image":"",
+    "Category":"oulu"
+  },
+  {
+    "Title":"Oulun yliopisto: Epäsäännöllinen nukkumaanmeno lisää sydäntapahtumien riskiä - Oulun yliopisto",
+    "Date":"Mon, 30 Mar 2026 07:00:00 GMT",
+    "Description":"Epäsäännöllinen nukkumaanmeno lisää sydäntapahtumien riskiä Oulun yliopisto",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMilAFBVV95cUxPOThrTm9oVnNwTnkzZjRCcnozejFIQ05OdXFNaFJYQmNpbGpkenpONlZpTDkyUkp4b3FHdHl0ZjIteGNKOW1mTTU3VW1IUl92T2o3LVlwYnlSN0pZcUI1TElZNWszb2tvcmlWMjNhdGV5cnBNNTBRTVF3V2JIdmIwTnlOLTU3UE93V1dUNXQ3Z3pubWVB?oc=5",
+    "Image":"",
+    "Category":"oulu"
+  },
+  {
+    "Title":"Oulun yliopisto: Opiskele kieliä verkossa – myös kesällä! - Oulun yliopisto",
+    "Date":"Thu, 19 Mar 2026 07:00:00 GMT",
+    "Description":"Opiskele kieliä verkossa – myös kesällä! Oulun yliopisto",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMid0FVX3lxTE9zTGVQVkZjdEM4bE9uRDdVOG9RY3NsQVF0cUp3dkhVdjNZcVZBWUFfNXhxbF9rbGdMX0pmWjVoZ043SFYyU0xuTldDbEhBLXlmMlVGbTV5YmFwVnd1MjRBU0NlSUlJVEl0bTBMbUF2ZklZOFNjMUpj?oc=5",
+    "Image":"",
+    "Category":"oulu"
+  },
+  {
+    "Title":"Oulun yliopisto: Janne Hukkanen - Oulun yliopisto",
+    "Date":"Wed, 02 Mar 2022 07:46:04 GMT",
+    "Description":"Janne Hukkanen Oulun yliopisto",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMiWkFVX3lxTE5JTjktUWVvOFp2dDlHSHFscHIwTjEtWUVCdF9rY1dQTFJ1NDlUUzRnWVJJT2pjTUs3ZXV1RjlDMHVGRkc0aS1NdWo0Z0xVT2hzV1k5TEdaYWhNZw?oc=5",
+    "Image":"",
+    "Category":"oulu"
+  },
+  {
+    "Title":"Oulun yliopisto: Lisäajan hakeminen - Oulun yliopisto",
+    "Date":"Mon, 31 May 2021 12:45:56 GMT",
+    "Description":"Lisäajan hakeminen Oulun yliopisto",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMiekFVX3lxTFBJdTlOMmdOUU9wQncxWkwtbGphNmV3ZXUxTjN5NF9wN2xPVkhvTEs3eVFFWlE1LVpGQlJsMmNLbWZvWDNGY1J5MkpENmZVWUc2YnZRS3dqNHNIUHJ3OFpJcTJ5YTUzdjNEUFBMNXFoUUdUNVJwZ2t2QmNn?oc=5",
+    "Image":"",
+    "Category":"oulu"
+  },
+  {
+    "Title":"Itä-Suomen yliopisto: Lukkarikone 4 - Itä-Suomen yliopisto",
+    "Date":"Mon, 25 Oct 2021 22:06:24 GMT",
+    "Description":"Lukkarikone 4 Itä-Suomen yliopisto",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMiPEFVX3lxTE9OV3R1U1N1dW5IZUwyeXI3NS14YUdITThsb3J0N213SHJmTkExbmhXOXowR2hIMmV1NjVpeA?oc=5",
+    "Image":"",
+    "Category":"uef"
+  },
+  {
+    "Title":"Itä-Suomen yliopisto: Kirjasto - Itä-Suomen yliopisto",
+    "Date":"Sun, 31 Mar 2013 19:55:04 GMT",
+    "Description":"Kirjasto Itä-Suomen yliopisto",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMiREFVX3lxTE95U2xHRWZ0TFpWX2sxWFVnVGFSQXVXOXRPU0JQakl1eU5KNm5SM3dfV240OVRqSHRHSmJ6VUR3WEdPalpq?oc=5",
+    "Image":"",
+    "Category":"uef"
+  },
+  {
+    "Title":"Itä-Suomen yliopisto: Digipalvelut - Itä-Suomen yliopisto",
+    "Date":"Thu, 29 Dec 2022 09:06:53 GMT",
+    "Description":"Digipalvelut Itä-Suomen yliopisto",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMiVEFVX3lxTE1TR2dPZmZKM01qVUpVSVh4bG5Ha2ZrQkdQYzk2YzFJcGdGZ3dTVlRqdDdYRnNmY1JrVVgxU05jRXZpYnVCSkI0NDRMd0ZsQTFGMHFuMw?oc=5",
+    "Image":"",
+    "Category":"uef"
+  },
+  {
+    "Title":"Itä-Suomen yliopisto: Itä-Suomen korkeakouluyhteisön neuvottelut käynnistyvät – omistajakaupungit, ammattikorkeakoulut ja yliopisto jatkavat valmistelua yhdessä - Itä-Suomen yliopisto",
+    "Date":"Tue, 07 Apr 2026 11:55:00 GMT",
+    "Description":"Itä-Suomen korkeakouluyhteisön neuvottelut käynnistyvät – omistajakaupungit, ammattikorkeakoulut ja yliopisto jatkavat valmistelua yhdessä Itä-Suomen yliopisto",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMixwFBVV95cUxQUVhKd3NCRmYxU3ZQWEFyUTE4TEJ4RTkxUEVFTXdYc1hoeVo5QUVXNVBvM3g3Q2ROaUdXcDRNOEF4X3pxOWVsWjFrWHJ6XzhzSnhrc1NDUnJiSnhqX282NlUzbTd2d00xWWljQnd6TGxHamJrNFlzaVNjTzIweDRLdHZITW5TT3J6WkFxdS1kSnNENjFUeEEydzRTX0ktNTZQWUhpUDdYbHlDeXZKUkF0YkowbDJpR0F5WVplTUxueWF0VXhFbWpv?oc=5",
+    "Image":"",
+    "Category":"uef"
+  },
+  {
+    "Title":"Itä-Suomen yliopisto: Itä-Suomen korkeakouluyhteisön valmistelu - Itä-Suomen yliopisto",
+    "Date":"Mon, 23 Mar 2026 07:00:00 GMT",
+    "Description":"Itä-Suomen korkeakouluyhteisön valmistelu Itä-Suomen yliopisto",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMicEFVX3lxTE9qR2pGQVk0QU1LRjBqdXYxVDBCTXB4S0d6d041TVJ5Y0c2a3Rtd3l1WjdaTlNhczhOQjRSZmhJYzk2d1NvLVZFVnZzSTJ1R1JZR19nZzhuQy1uOTljR0tZY0IzR2pUS1ViMmwxOGQ5RGQ?oc=5",
+    "Image":"",
+    "Category":"uef"
+  },
+  {
+    "Title":"LUT-yliopisto: Sisu opiskelijan työkalut - Sisu LUT",
+    "Date":"Thu, 12 Sep 2019 06:44:02 GMT",
+    "Description":"Sisu opiskelijan työkalut Sisu LUT",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMiQkFVX3lxTFBSWUlxcVNfck8tY1JuLVZ3cnVFaDdpaGZxMDNnLVRVRE1YU0ZrX0lWVDVfNFFvMnB2djNzYVk2Vktqdw?oc=5",
+    "Image":"",
+    "Category":"lut"
+  },
+  {
+    "Title":"LUT-yliopisto: Juha-Matti Saksa jatkaa LUT-yliopiston rehtorina - LUT-yliopisto",
+    "Date":"Tue, 07 Apr 2026 10:58:38 GMT",
+    "Description":"Juha-Matti Saksa jatkaa LUT-yliopiston rehtorina LUT-yliopisto",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMihAFBVV95cUxPV1ROLW1jUS1iUTNKZkpaYkRXb0pjNGQ4dmpwN1cwZ0xhVmJJMTBQZVRnTXZqb1Z0UXVXQ2c0Q3dQU3pqQnE5UEc4cG5iWTREZC0xeEhISnhQcFF6VUFwLWliemNVWVZnRVFyVElBbDhOOEpLUW9qcXZGTkhsYU5nNGFHVk8?oc=5",
+    "Image":"",
+    "Category":"lut"
+  },
+  {
+    "Title":"LUT-yliopisto: Lahtelainen Virnex Group ja LUT-yliopisto käynnistävät kansainvälisiin AI-hankkeisiin tähtäävän tutkimuskeskuksen - LUT-yliopisto",
+    "Date":"Fri, 10 Apr 2026 13:44:45 GMT",
+    "Description":"Lahtelainen Virnex Group ja LUT-yliopisto käynnistävät kansainvälisiin AI-hankkeisiin tähtäävän tutkimuskeskuksen LUT-yliopisto",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMitgFBVV95cUxPdUZBWk5FNlFWdXh5VElmU1ZiUmpfbFdNSHlmcHNSSU9zeGNjTEpTSmdVZXpXeGFscG8tYnl4cDRyN0JBbmU4Y2lZbVNJWUdYTDNkcktpclRRN2tYYnZkZGlvUEl5cWV6YVpBODBBUmdqTU1udlo2bW5DSTF4cXkwM1IyX0VaR29vT0ZYVUVJTkdVMjlIV1RDUnJzQXd3TXBUS3VRZ3RjYnNiQmdaZm1lTkJKdDlRdw?oc=5",
+    "Image":"",
+    "Category":"lut"
+  },
+  {
+    "Title":"LUT-yliopisto: LUT-yliopisto kasvatti hakijamääräänsä kevään toisessa yhteishaussa - LUT-yliopisto",
+    "Date":"Thu, 26 Mar 2026 07:00:00 GMT",
+    "Description":"LUT-yliopisto kasvatti hakijamääräänsä kevään toisessa yhteishaussa LUT-yliopisto",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMingFBVV95cUxQR2RsbFFwUzd4RmZ4ZWNJSHY1TGI4VmxZZ29aamVySWxmNlZ6U3QzVUJEdGstTUpENGhTZDY4eTVZR1ZSeWV4VUQ3dHkzaXdRRGR1Tmg0TlZBalZ4OVVOWXNzeDcweXEzQ3cwOW1JVUVnYUxaeS1CZjAzbDJQWFNHSEtyNUx3NTEwLWxqQlVSSUpwYmNuU24wRkNaSFBiZw?oc=5",
+    "Image":"",
+    "Category":"lut"
+  },
+  {
+    "Title":"LUT-yliopisto: Emma Laasonen - Post-doctoral researcher - LUT-yliopisto",
+    "Date":"Wed, 01 Jun 2022 21:49:39 GMT",
+    "Description":"Emma Laasonen - Post-doctoral researcher LUT-yliopisto",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMiWEFVX3lxTE4waU9fdjFmOTdGUkw5Nkk1cmNjTFJNcHQ5VjBOY1ZsTVVTTE51UC1vb3pxVmtzRGJram92eDU3TDhJT1JjMDlRODY1aG5CV0h1blBvY3U3dDg?oc=5",
+    "Image":"",
+    "Category":"lut"
+  },
+  {
+    "Title":"Abo Akademi: Researchers at Åbo Akademi University Contribute to Breakthrough in Needle-Free Glucose Monitoring",
+    "Date":"Fri, 17 Apr 2026 10:20:48 +0000",
+    "Description":"Researchers at Åbo Akademi University are contributing to the development of a new, needle-free method for measuring blood sugar. Associate Professor Zhanna Boeva and Professor Johan Bobacka are co-founders of the Finnish company GlucoModicum, which has attracted international attention with its glucose meter SOFIO.",
+    "Link":"https:\/\/www.abo.fi\/en\/news\/researchers-at-abo-akademi-university-contribute-to-breakthrough-in-needle-free-glucose-monitoring\/",
+    "Image":"",
+    "Category":"abo-akademi"
+  },
+  {
+    "Title":"Abo Akademi: Global leader in sustainable bioproducts highlights Åbo Akademi University’s role in the bioeconomy transition",
+    "Date":"Thu, 16 Apr 2026 10:57:01 +0000",
+    "Description":"Åbo Akademi University recently welcomed Arthur J. Ragauskas, Professor and Governor’s Chair in Biorefining at the University of Tennessee and one of the world’s most influential researchers in renewable carbon and sustainable materials. The visit included a well-attended Frontiers of Science lecture and provided an opportunity to discuss current research in sustainable bioproducts at Åbo Akademi University in an international context.",
+    "Link":"https:\/\/www.abo.fi\/en\/news\/global-leader-in-sustainable-bioproducts-highlights-abo-akademi-universitys-role-in-the-bioeconomy-transition\/",
+    "Image":"",
+    "Category":"abo-akademi"
+  },
+  {
+    "Title":"Abo Akademi: University of Turku and Åbo Akademi University renew their strategic partnership",
+    "Date":"Thu, 16 Apr 2026 08:00:00 +0000",
+    "Description":"Turun yliopisto ja Åbo Akademi haluavat syventää pitkää yhteistyötään tutkimuksessa, opetuksessa ja vaikuttavuudessa.",
+    "Link":"https:\/\/www.abo.fi\/en\/news\/university-of-turku-and-abo-akademi-university-renew-their-strategic-partnership\/",
+    "Image":"",
+    "Category":"abo-akademi"
+  },
+  {
+    "Title":"Abo Akademi: FRA’s assessment on civil society protection in the EU",
+    "Date":"Tue, 14 Apr 2026 12:43:50 +0000",
+    "Description":"Civic space update: Enabling civil society to uphold EU values and strengthen democracy The EU Fundamental Rights Agency (FRA) has documented challenges to civic space in the EU since 2018. According to the latest civic space assessment by FRA, published on 31 March 2026, civil society organisations (CSOs) across the EU are facing increasing challenges […]",
+    "Link":"https:\/\/www.abo.fi\/en\/news\/fras-assessment-on-civil-society-protection-in-the-eu\/",
+    "Image":"",
+    "Category":"abo-akademi"
+  },
+  {
+    "Title":"Abo Akademi: Comparative literature Celebrates the Reissue of Professor Clas Zilliacus’s Groundbreaking Doctoral Dissertation",
+    "Date":"Tue, 14 Apr 2026 12:42:51 +0000",
+    "Description":"Professor emeritus Clas Zilliacus defended his doctoral dissertation in Comparative literature, Beckett and Broadcasting, at Åbo Akademi University in 1976. The dissertation, which examines Samuel Beckett’s works for radio and television, has long been out of print but is now being reissued—something that is highly unusual for a work of this kind.",
+    "Link":"https:\/\/www.abo.fi\/en\/news\/comparative-literature-celebrates-the-reissue-of-professor-clas-zilliacuss-groundbreaking-doctoral-dissertation\/",
+    "Image":"",
+    "Category":"abo-akademi"
+  },
+  {
+    "Title":"Hanken: Sisu opiskelijan työkalut - Sisu Hanken",
+    "Date":"Tue, 25 May 2021 20:31:02 GMT",
+    "Description":"Sisu opiskelijan työkalut Sisu Hanken",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMiRkFVX3lxTE1PRlVtdGM0Y1BmdWtMNDZHdEN4UWYxWnhSbTZqT2xmSExRNUg4R05Gb2VPUDQzVTR5dGpRUEE2WWJFbk9OUXc?oc=5",
+    "Image":"",
+    "Category":"hanken"
+  },
+  {
+    "Title":"Hanken: Hakutulokset - Moodle | HANKEN",
+    "Date":"Sat, 11 Apr 2026 01:40:32 GMT",
+    "Description":"Hakutulokset Moodle | HANKEN",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMizgJBVV95cUxNQlVpUGIyT185Wl85ZlVGOTlZS3QxQWRGZ3pUZ21RRDlZX1FfZVU4Qzl5dmp3RkkxY2hfUjRGS29pWklSdExQY05Da2VsalZDLWpPUWt3OVJsTF9ZYTBfS3o2TDd3ZWhtUTBKS1lIdlRqM29EQ1VfelRmdUNBU0dMeGxkSU91Z2N4T0REZkIwODQyRURoUEoyZ2RvSk5peFdTVXN0OHQ1cnBsQmg3dm9qRGJTT3ZkMkx2WEg2ZHJBNWFlTU41XzlzV0dDTTNIdjIySkwtNkttTXlWQm1jYWVSa0JHVF9BYXVOUFpfX0VRWkpmY3hhQkFVeVNuNzFJR25kV0h6Wm9LdlN2M3NNOE1rUUpyRzFOTENiSjRfLUZVSnh3Qk41WV9uenZYTmRsYzhKTVNWdGpLMFFLZEdmZExZQ2c4ZlktN1ZLcmhkVmdn?oc=5",
+    "Image":"",
+    "Category":"hanken"
+  },
+  {
+    "Title":"Hanken: Hakutulokset - Moodle | HANKEN",
+    "Date":"Sun, 05 Apr 2026 13:28:49 GMT",
+    "Description":"Hakutulokset Moodle | HANKEN",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMi8gFBVV95cUxOMFI5dWZVbkpBd0YtSkpGWllQY1FJNmRRVHBFS1VWX2dKcWR1Y1dCYXl6c1JYT3BDaGZzSklVV3RVT1AwWU1Za203SGg5UnI1ckh4OVNJeUFiYVBsZkc3b0FOQnlxbzdwQWx2UHhYNDM4QVVMaER4RXhkUnppaDFtMUNBZ21iQmJNRlBubzQzV1RTTHV0RU1FWVo4RHo3eWdqeE5TZXdOTnlZNlNCamtTMzJIaGxpNG9xaHV6SEFwb0JhdUJHVF9udUZJcFZZblRnRnY2SkRxbXNCZDZENUY0RGpjMGVGMDNVWmU5UE5XcUI3Zw?oc=5",
+    "Image":"",
+    "Category":"hanken"
+  },
+  {
+    "Title":"Hanken: Hakutulokset - Moodle | HANKEN",
+    "Date":"Thu, 09 Apr 2026 06:26:18 GMT",
+    "Description":"Hakutulokset Moodle | HANKEN",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMi_gFBVV95cUxQRm9TeXZZVnVwTnBUbi1Sekw0YjY0ZjRVVjVjZVpkTW1sQUtMN2QzQVViTnJXMENRWlBYYllxekxSYkJPSzY0OWp5MGZPdk5YWWVHeXRIUkEzUk1FSC1fV29FU1FpanNTNXJFY2ZvWFpyQlg2TF9CYVZLVlN3UTB5SHlNa050Q1NJdmJENkdhLTRaUjY3eVdyOEFIdTdEcGx5bkdycUN5VF9vbzU3OXlfSUpXUnR0UU02a0hLS2I4OUVBcXBnRklCYnVZM3Fta05BOGJXVWFoUHJBR2JQdlpzLWs0dTBFbWNBZ0E2VERZcGphT3ZCSDBjcXdoaUpDUQ?oc=5",
+    "Image":"",
+    "Category":"hanken"
+  },
+  {
+    "Title":"Hanken: Hakutulokset - Moodle | HANKEN",
+    "Date":"Thu, 09 Apr 2026 07:01:06 GMT",
+    "Description":"Hakutulokset Moodle | HANKEN",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMigAJBVV95cUxQMTJXZ0t4WXpYOVgxelgtVnBHbDIzbWl1d05fOEFyUTJqUkJXdXNKaHJOd2FPS29Xc09PMEY0NGJsX0Y2R1NjbW9jejVuVmpxRk9XOF9UZWpqVGNnQkcyVWxKRkUxUjJKcjNuUC1pUlRtb3lsVVpTNE9Pd2FGbnVXc2lPYWpjZW9PMFBYNVk1YXM3aEd3cjBFTE80X09PTl9yaEo1SnZLNU90d2pRUjluNFM0LS03azVLZnhMQWNsNGVObml0RnpaX05xdzJEMndBeE1zS1JUX0U1NEdnVWpDQ1Zuczc5b2FmSGZwamFwdnJoQTZZaGxNMlo4LThUYkFy?oc=5",
+    "Image":"",
+    "Category":"hanken"
+  },
+  {
+    "Title":"Lapin yliopisto: Jenna Piipolle apuraha oikeustieteelliseen tutkimukseen",
+    "Date":"Thu, 16 Apr 2026 08:28:42 +0000",
+    "Description":"Väitöskirjatutkija Jenna Piippo on saanut 14 000 euron apurahan Maaliskuun 25 päivän rahastolta rikosoikeuden alaan kuuluvaan väitöstutkimukseensa Lapin yliopiston oikeustieteiden tiedekunnassa. Julkaisu Jenna Piipolle apuraha oikeustieteelliseen tutkimukseen esiintyi ensimmäisenä sivulla Lapin yliopisto .",
+    "Link":"https:\/\/ulapland.fi\/jenna-piipolle-apuraha-oikeustieteelliseen-tutkimukseen\/",
+    "Image":"",
+    "Category":"lapland"
+  },
+  {
+    "Title":"Lapin yliopisto: Väitös: Matkailun vieraanvaraisuus murroksessa: digitaaliset alustat haastavat toimintamalleja",
+    "Date":"Thu, 16 Apr 2026 05:21:30 +0000",
+    "Description":"YTM Petra Paloniemi tarkastelee väitöstutkimuksessaan, miten digitalisaatio ja matkailijoiden entistä omatoimisempi käyttäytyminen muuttavat vieraanvaraisuuden käytäntöjä. Tutkimus osoittaa, että ilmiön vaikutukset näkyvät matkailun organisoitumisessa, asiakasvuorovaikutuksessa ja vallan jakautumisessa. Julkaisu Väitös: Matkailun vieraanvaraisuus murroksessa: digitaaliset alustat haastavat toimintamalleja esiintyi ensimmäisenä sivulla Lapin yliopisto .",
+    "Link":"https:\/\/ulapland.fi\/vaitos-matkailun-vieraanvaraisuus-murroksessa-digitaaliset-alustat-haastavat-toimintamalleja\/",
+    "Image":"",
+    "Category":"lapland"
+  },
+  {
+    "Title":"Lapin yliopisto: Lapin yliopisto järjestää kaksipäiväisen alumnitapahtuman syyskuussa",
+    "Date":"Thu, 09 Apr 2026 06:46:09 +0000",
+    "Description":"Lapin yliopisto kutsuu alumnejaan Rovaniemelle viettämään Alumnipäiviä 24.–25. syyskuuta 2026. Ensimmäisenä päivänä on luvassa yhteistä ohjelmaa ja toisena päivänä tiedekuntakohtaista. Tule sieki, kuten kutsu kuuluu. Julkaisu Lapin yliopisto järjestää kaksipäiväisen alumnitapahtuman syyskuussa esiintyi ensimmäisenä sivulla Lapin yliopisto .",
+    "Link":"https:\/\/ulapland.fi\/lapin-yliopisto-jarjestaa-kaksipaivaisen-alumnitapahtuman-syyskuussa\/",
+    "Image":"",
+    "Category":"lapland"
+  },
+  {
+    "Title":"Lapin yliopisto: Kansainväliset suositukset ulkoleikille – Suomi voisi halutessaan olla edelläkävijä",
+    "Date":"Wed, 08 Apr 2026 04:58:22 +0000",
+    "Description":"Kansainvälinen tutkijaryhmä nostaa aktiivisen ulkoleikin terveyden ja hyvinvoinnin peruspilariksi unen ja ravinnon rinnalle. Vuoden 2025 lopussa julkaistun laajan kannanoton mukaan ulkoleikki tukee lasten ja nuorten oppimista, osallisuutta ja kokonaisvaltaista hyvinvointia. Lapin yliopiston Marjaana Kankaan mukaan Suomella olisi edellytykset olla aktiivisen ulkoleikkimisen edelläkävijä. Julkaisu Kansainväliset suositukset ulkoleikille – Suomi voisi halutessaan olla edelläkävijä esiintyi ensimmäisenä sivulla Lapin yliopisto .",
+    "Link":"https:\/\/ulapland.fi\/kansainvaliset-suositukset-ulkoleikille-suomi-voisi-halutessaan-olla-edellakavija\/",
+    "Image":"",
+    "Category":"lapland"
+  },
+  {
+    "Title":"Lapin yliopisto: Pääsiäisen jälkeen avautuvat näyttelyt taiteiden tiedekunnan F-talon gallerioissa",
+    "Date":"Fri, 03 Apr 2026 11:16:08 +0000",
+    "Description":"Vuoden viides näyttelykattaus avautuu pääsiäisen jälkeen taiteiden tiedekunnan F-talon gallerioissa poikkeuksellisesti tiistaina. Esille tulee kaikkiaan kahdeksan uutta näyttelyä. Näyttelyiden avajaisia vietetään tiistaina 7. huhtikuuta klo 18–19.30. Lämpimästi tervetuloa! Julkaisu Pääsiäisen jälkeen avautuvat näyttelyt taiteiden tiedekunnan F-talon gallerioissa esiintyi ensimmäisenä sivulla Lapin yliopisto .",
+    "Link":"https:\/\/ulapland.fi\/paasiaisen-jalkeen-avautuvat-nayttelyt-taiteiden-tiedekunnan-f-talon-gallerioissa\/",
+    "Image":"",
+    "Category":"lapland"
+  },
+  {
+    "Title":"Vaasan yliopisto: Vaasa näyttää suuntaa – yliopisto, kaupunki ja yritykset vauhdittavat yhdessä ilmastoratkaisuja",
+    "Date":"Thu, 16 Apr 2026 06:36:21 +0000",
+    "Description":"Vaasa näyttää suuntaa – yliopisto, kaupunki ja yritykset vauhdittavat yhdessä ilmastoratkaisuja tramsila@uwasa.fi To, 16.04.2026 - 09.36 Vaasa on valittu vuoden 2026 European Green Leaf -kaupungiksi. Euroopan komission myöntämä tunnustus nostaa esiin alle 100 000 asukkaan edelläkävijäkaupunkeja, jotka tekevät määrätietoista ja vaikuttavaa ilmasto- ja ympäristötyötä. Vaasan vahvuus on konkreettisissa teoissa sekä kunnianhimoisessa tavoitteessa saavuttaa hiilineutraalius jo 2020-luvulla. Erityisen poikkeuksellista Vaasassa on tiivis yhteistyö: alueen korkeakoulut, yritykset ja julkinen sektori muodostavat vahvan ekosysteemin, jossa tutkimus, kehitys, innovaatio ja koulutus kytkeytyvät toisiinsa. Vaasan yliopisto on keskeisessä roolissa tässä kokonaisuudessa.",
+    "Link":"https:\/\/www.uwasa.fi\/fi\/uutishuone\/uutiset\/vaasa-nayttaa-suuntaa-yliopisto-kaupunki-ja-yritykset-vauhdittavat-yhdessa-ilmastoratkaisuja",
+    "Image":"",
+    "Category":"vaasa"
+  },
+  {
+    "Title":"Vaasan yliopisto: Uupunut esihenkilö on yritykselle taloudellinen riski, sillä johtajan kyynistyminen katkaisee tiimin työn imun",
+    "Date":"Mon, 13 Apr 2026 05:52:40 +0000",
+    "Description":"Uupunut esihenkilö on yritykselle taloudellinen riski, sillä johtajan kyynistyminen katkaisee tiimin työn imun tramsila@uwasa.fi Ma, 13.04.2026 - 08.52 Esihenkilön hyvinvointi heijastuu kahdenvälisten esihenkilö-alaissuhteiden kautta työntekijöiden motivaatioon ja suoriutumiseen ja sitä kautta yrityksen kilpailukykyyn. Vaasan yliopiston projektitutkija Jussi Tanskanen osoittaa väitöstutkimuksessaan, että uupuneelta johtajalta loppuvat voimavarat laadukkaiden alaissuhteiden ylläpitämiseen, mikä johtaa työntekijöiden omistautumisen lopahtamiseen. Ilmiö on erityisen korostunut nykyisessä intensiivisessä työelämässä ja etätyössä.",
+    "Link":"https:\/\/www.uwasa.fi\/fi\/uutishuone\/uutiset\/uupunut-esihenkilo-yritykselle-taloudellinen-riski-silla-johtajan-kyynistyminen-katkaisee-tiimin",
+    "Image":"",
+    "Category":"vaasa"
+  },
+  {
+    "Title":"Vaasan yliopisto: Vaasan yliopisto kehittää toiminnallisesti kaksikielistä opetusta vahvistaakseen kansainvälisten opiskelijoiden suomen kieltä ja työllistymistä",
+    "Date":"Thu, 09 Apr 2026 06:51:14 +0000",
+    "Description":"Vaasan yliopisto kehittää toiminnallisesti kaksikielistä opetusta vahvistaakseen kansainvälisten opiskelijoiden suomen kieltä ja työllistymistä tramsila@uwasa.fi To, 09.04.2026 - 09.51 Vaasan yliopisto kehittää uutta toiminnallisen kaksikielisen opetuksen mallia, jonka tavoitteena on tukea kansainvälisten opiskelijoiden suomen kielen osaamista ja työllistymistä suomalaisille työmarkkinoille. Opetuksen pääkieli on englanti, mutta suomea integroidaan suunnitelmallisesti osaksi opintoja niin, että kieli tukee sekä oppimista että työelämävalmiuksien kehittymistä.",
+    "Link":"https:\/\/www.uwasa.fi\/fi\/uutishuone\/uutiset\/vaasan-yliopisto-kehittaa-toiminnallisesti-kaksikielista-opetusta-vahvistaakseen-kansainvalisten",
+    "Image":"",
+    "Category":"vaasa"
+  },
+  {
+    "Title":"Vaasan yliopisto: Wärtsilän konsernijohtaja Håkan Agnevall: Energiasiirtymä vaatii vahvaa suuntaa ja kykyä sopeutua",
+    "Date":"Wed, 08 Apr 2026 19:19:41 +0000",
+    "Description":"Wärtsilän konsernijohtaja Håkan Agnevall: Energiasiirtymä vaatii vahvaa suuntaa ja kykyä sopeutua rkalmi@uwasa.fi Ke, 08.04.2026 - 22.19 Jos Wärtsilän konsernijohtajalta Håkan Agnevallilta olisi viisi vuotta sitten kysytty, toimisiko yhtiö datakeskusten parissa, vastaus olisi todennäköisesti ollut ei. Nyt Wärtsilä toimittaa datakeskuksiin energiantuotantoratkaisuja, ja tästä on tullut yhtiölle merkittävä kasvun ajuri. Tämä kuvastaa Agnevallin mukaan sitä, miten uusi kysyntä muokkaa energiasiirtymää. Hän käsitteli aihetta Strategic Leadership in the Energy Transition -aiheisella vierailuluennolla keskiviikkona Vaasan yliopistossa.",
+    "Link":"https:\/\/www.uwasa.fi\/fi\/uutishuone\/uutiset\/wartsilan-konsernijohtaja-hakan-agnevall-energiasiirtyma-vaatii-vahvaa-suuntaa-ja-kykya-sopeutua",
+    "Image":"",
+    "Category":"vaasa"
+  },
+  {
+    "Title":"Vaasan yliopisto: Vaasan yliopisto sai opetus- ja kulttuuriministeriöltä 45 lisäaloituspaikkaa",
+    "Date":"Tue, 31 Mar 2026 08:04:21 +0000",
+    "Description":"Vaasan yliopisto sai opetus- ja kulttuuriministeriöltä 45 lisäaloituspaikkaa tramsila@uwasa.fi Ti, 31.03.2026 - 11.04 Opetus- ja kulttuuriministeriö on myöntänyt korkeakouluille kertaluonteista rahoitusta uusien aloituspaikkojen lisäämiseksi talouskasvua edistäville aloille. Vaasan yliopisto sai rahoituksen yhteensä 45 lisäaloituspaikkaan.",
+    "Link":"https:\/\/www.uwasa.fi\/fi\/uutishuone\/uutiset\/vaasan-yliopisto-sai-opetus-ja-kulttuuriministeriolta-45-lisaaloituspaikkaa",
+    "Image":"",
+    "Category":"vaasa"
+  },
+  {
+    "Title":"Taideyliopisto: Globaalin musiikin koulutusohjelma - Taideyliopisto",
+    "Date":"Sun, 12 Apr 2026 12:59:35 GMT",
+    "Description":"Globaalin musiikin koulutusohjelma Taideyliopisto",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMidEFVX3lxTE9UOGpldjVoREd1SEF6WlMyRjltX2tZaGpubkdhenhQcFhDUllhR3BnLWZ2X3dGSVJzWElUYVh4NzhFU2pjYTY1dmtKOTNCX2ZfVTZBN2Vac1NzbnRvMzRMS3BkaXNoSUs2LUZGdE9DQ0tjX0JW?oc=5",
+    "Image":"",
+    "Category":"uniarts"
+  },
+  {
+    "Title":"Taideyliopisto: Kandikonsertti: Jesse Ansala, piano - Taideyliopisto",
+    "Date":"Sat, 11 Apr 2026 00:52:41 GMT",
+    "Description":"Kandikonsertti: Jesse Ansala, piano Taideyliopisto",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMid0FVX3lxTE1uLVhlV2dpekhVZzJUSnhxVE1Xb0F6UHVJdUhwOXQxakZQWk1vSEJLOVNCQUhKYUYtb2FNZEdiMjdrcnJLcTY5MHZDU2h2Qjd0V0sza2RMNmpBb0I2eXExWG03TzZGNS1HVHZKWWIxWXp6NS1hQjNz?oc=5",
+    "Image":"",
+    "Category":"uniarts"
+  },
+  {
+    "Title":"Taideyliopisto: Henri Wegelius - Taideyliopisto",
+    "Date":"Thu, 19 Mar 2020 10:57:51 GMT",
+    "Description":"Henri Wegelius Taideyliopisto",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMiW0FVX3lxTE56SF94NVd6bURzVkRuWlFPR1pnc0tOYVV3TFNqY2FnZ3FxQllVclUwV1czeXRKT1NvRHdGU3M4aDFsX1EyRkFsTjNoVF92am5lOXRpQkxCQXZnSlk?oc=5",
+    "Image":"",
+    "Category":"uniarts"
+  },
+  {
+    "Title":"Taideyliopisto: Avoimen yliopiston yhteistyöoppilaitokset - Taideyliopisto",
+    "Date":"Thu, 27 Feb 2020 08:00:00 GMT",
+    "Description":"Avoimen yliopiston yhteistyöoppilaitokset Taideyliopisto",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMifEFVX3lxTE9rRUxUOWJrNUFmZVdEbG1HaDVMcmMxOEZBa1hMRXpQNGdzY3laci1KNzZ5MU1nM0xFdFJkOVlKVWpObk5IUW9kb2NCMHZXdmxYV3djUW8tWHE2dFZ5b1dvNlNDTW5WWWl0RWRsczZ3S3NxUENDSldxNXdZVzA?oc=5",
+    "Image":"",
+    "Category":"uniarts"
+  },
+  {
+    "Title":"Taideyliopisto: Laura Wahlfors - Taideyliopisto",
+    "Date":"Thu, 19 Mar 2020 10:57:39 GMT",
+    "Description":"Laura Wahlfors Taideyliopisto",
+    "Link":"https:\/\/news.google.com\/rss\/articles\/CBMiW0FVX3lxTFBQYWxIUVg2aDNFdzROX3dTY1d5amNEQ1hEZ0E0XzRBNnpaczVZbzdVSEJTUmNvX2o3cVVsbUtfYVR0RmdpODRJN1ZLcFI4UjE5dGlEdG10eFZ1ZVU?oc=5",
+    "Image":"",
+    "Category":"uniarts"
+  },
+  {
+    "Title":"YLE: Iran väittää sulkeneensa Hormuzinsalmen uudelleen – aluksia kuitenkin liikkuu",
+    "Date":"Sat, 28 Feb 2026 09:17:23 +0200",
+    "Description":"",
+    "Link":"https:\/\/yle.fi\/a\/74-20212869?origin=rss",
+    "Image":"",
+    "Category":"uutisia"
+  },
+  {
+    "Title":"YLE: Tämän tiedämme nyt Hormuzinsalmen tilanteesta",
+    "Date":"Sat, 18 Apr 2026 10:19:21 +0300",
+    "Description":"Iranin ja Yhdysvaltojen välisissä neuvotteluissa on yhä erimielisyyksiä.",
+    "Link":"https:\/\/yle.fi\/a\/74-20221305?origin=rss",
+    "Image":"",
+    "Category":"uutisia"
+  },
+  {
+    "Title":"YLE: Näin opettaja voi tienata yli 200 000 euroa vuodessa: osa oppikirjojen tekijöistä on ostanut lapsilleen sijoitusasuntoja",
+    "Date":"Sat, 18 Apr 2026 11:15:24 +0300",
+    "Description":"Oppikirjallisuudella voi tienata Suomessa sievoiset vuositulot, tosin oppikirjan menestys on aina arpapeliä. Myös yleisen kirjallisuuden myynti on nousussa.",
+    "Link":"https:\/\/yle.fi\/a\/74-20221208?origin=rss",
+    "Image":"",
+    "Category":"uutisia"
+  },
+  {
+    "Title":"YLE: Ville Niinistö: ”USA:n politiikka ei ole vain ennakoimatonta, vaan jopa vaarallista Euroopalle”",
+    "Date":"Sat, 18 Apr 2026 12:09:37 +0300",
+    "Description":"Niinistö varoittaa luottamasta liikaa Yhdysvaltoihin ja sanoo maan pyrkivän heikentämään Euroopan yhtenäisyyttä. EU:n tulisi nyt hyödyntää ”kultainen hetkensä”.",
+    "Link":"https:\/\/yle.fi\/a\/74-20221313?origin=rss",
+    "Image":"",
+    "Category":"uutisia"
+  },
+  {
+    "Title":"YLE: Venäjä: Drooni-isku sytytti tulipalon satamassa lähellä Viipuria",
+    "Date":"Wed, 28 Dec 2022 13:21:27 +0200",
+    "Description":"Seuraamme tuoreimpia tietoja Venäjän hyökkäyksestä Ukrainaan tässä päivittyvässä jutussa.",
+    "Link":"https:\/\/yle.fi\/a\/74-20010573?origin=rss",
+    "Image":"",
+    "Category":"uutisia"
+  },
+  {
+    "Title":"BBC: Oil prices plunge as Iran says Strait 'open'",
+    "Date":"Sat, 18 Apr 2026 06:06:38 GMT",
+    "Description":"Brent crude sinks by a tenth after Iran says the key waterway is open for commercial ships for the rest of the ceasefire.",
+    "Link":"https:\/\/www.bbc.com\/news\/articles\/ckg045z73z1o?at_medium=RSS&at_campaign=rss",
+    "Image":"",
+    "Category":"uutisia"
+  },
+  {
+    "Title":"BBC: Ceasefire with Israel brings respite to Lebanon, but obstacles to peace remain",
+    "Date":"Fri, 17 Apr 2026 14:31:51 GMT",
+    "Description":"The halt to weeks of fighting is being celebrated in Lebanon, but it will be difficult to ensure it lasts.",
+    "Link":"https:\/\/www.bbc.com\/news\/articles\/crm10w4ynj1o?at_medium=RSS&at_campaign=rss",
+    "Image":"",
+    "Category":"uutisia"
+  },
+  {
+    "Title":"BBC: Kanye West concert in Poland cancelled over antisemitic comments",
+    "Date":"Fri, 17 Apr 2026 18:19:10 GMT",
+    "Description":"The UK government blocked the rapper from entering the country over his history of making pro-Nazi and racist statements.",
+    "Link":"https:\/\/www.bbc.com\/news\/articles\/czx95rl4ek5o?at_medium=RSS&at_campaign=rss",
+    "Image":"",
+    "Category":"uutisia"
+  },
+  {
+    "Title":"BBC: Thousands celebrate open-air Mass with Pope Leo in Cameroon - in pictures",
+    "Date":"Fri, 17 Apr 2026 18:25:12 GMT",
+    "Description":"Pope Leo XIV is on his third day in Cameroon before he heads to Angola on Saturday.",
+    "Link":"https:\/\/www.bbc.com\/news\/articles\/cdj7kwn1d78o?at_medium=RSS&at_campaign=rss",
+    "Image":"",
+    "Category":"uutisia"
+  },
+  {
+    "Title":"BBC: Suspected crime boss Daniel Kinahan arrested in Dubai",
+    "Date":"Fri, 17 Apr 2026 17:48:13 GMT",
+    "Description":"Kinahan, in his 40s, was arrested in Dubai on foot of an arrest warrant issued by the Irish courts.",
+    "Link":"https:\/\/www.bbc.com\/news\/articles\/c4g4yl5dd4do?at_medium=RSS&at_campaign=rss",
+    "Image":"",
+    "Category":"uutisia"
   }
 ]

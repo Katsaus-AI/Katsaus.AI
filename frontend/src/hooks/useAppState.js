@@ -9,10 +9,42 @@ import {
   setStoredInfoBoxText,
   generateId,
   parseDate,
+  normalizeCategory,
   getDefaultInfoBoxText,
 } from '../utils';
 import { db } from '../firebase';
 import { collection, getDocs } from 'firebase/firestore';
+
+const SCRAPER_CATEGORIES = new Set([
+  'jyu',
+  'aalto',
+  'helsinki',
+  'tampere',
+  'turku',
+  'oulu',
+  'uef',
+  'lut',
+  'abo-akademi',
+  'hanken',
+  'lapland',
+  'vaasa',
+  'uniarts',
+  'atlassian',
+  'yle',
+  'bbc',
+]);
+
+const DEFAULT_SCRAPER_SELECTION = ['jyu', 'atlassian'];
+
+function normalizeScraperSelection(desiredScrapers) {
+  if (Array.isArray(desiredScrapers) && desiredScrapers.length > 0) {
+    return new Set(desiredScrapers.map((item) => normalizeCategory(item)));
+  }
+  if (typeof desiredScrapers === 'string' && desiredScrapers.trim()) {
+    return new Set(desiredScrapers.split(',').map((item) => normalizeCategory(item.trim())).filter(Boolean));
+  }
+  return new Set(DEFAULT_SCRAPER_SELECTION);
+}
 
 /**
  * Applies the selected theme to the DOM by:
@@ -85,7 +117,7 @@ function applyThemeToDom(theme) {
  * @returns {boolean} returns.themeSelectorVisible - Theme selector visibility state
  * @returns {Function} returns.toggleThemeSelector - Toggle theme selector visibility
  */
-export function useAppState(currentUser = null, canManage = false, refreshKey = 0) {
+export function useAppState(currentUser = null, canManage = false, refreshKey = 0, desiredScrapers = []) {
   const [messages, setMessages] = useState([]);
   const [currentFilter, setCurrentFilter] = useState('aloitus');
   const [infoBoxText, setInfoBoxText] = useState(() => getStoredInfoBoxText() || getDefaultInfoBoxText());
@@ -192,37 +224,40 @@ export function useAppState(currentUser = null, canManage = false, refreshKey = 
   useEffect(() => {
     let cancelled = false;
     const fetchNews = async () => {
-      const userOnlySources = [
-        async () => {
-          const response = await fetch('/api/uutiset');
-          if (!response.ok) return null;
-          const refetchSnapshot = await getDocs(collection(db, 'users', currentUser.uid, 'news'));
-          return refetchSnapshot.docs.map((newsDoc) => newsDoc.data());
-        },
-        async () => {
-          const snapshot = await getDocs(collection(db, 'users', currentUser.uid, 'news'));
-          return snapshot.docs.map((newsDoc) => newsDoc.data());
-        },
-      ];
-
-      const anonymousSources = [
-        async () => {
-          const snapshot = await getDocs(collection(db, 'uutiset'));
-          return snapshot.docs.map((newsDoc) => newsDoc.data());
-        },
-        async () => {
-          const response = await fetch('/api/uutiset');
-          if (!response.ok) return null;
-          return response.json();
-        },
+      const sharedSources = [
         async () => {
           const response = await fetch('/uutiset.json');
           if (!response.ok) return null;
           return response.json();
         },
+        async () => {
+          const response = await fetch('/api/uutiset');
+          if (!response.ok) return null;
+          return response.json();
+        },
+        async () => {
+          const snapshot = await getDocs(collection(db, 'uutiset'));
+          return snapshot.docs.map((newsDoc) => newsDoc.data());
+        },
       ];
 
-      const sources = currentUser?.uid ? userOnlySources : anonymousSources;
+      const userFallbackSources = currentUser?.uid
+        ? [
+            async () => {
+              const refetchSnapshot = await getDocs(collection(db, 'users', currentUser.uid, 'news'));
+              return refetchSnapshot.docs.map((newsDoc) => newsDoc.data());
+            },
+          ]
+        : [];
+
+      const fallbackSources = [
+        async () => {
+          const snapshot = await getDocs(collection(db, 'uutiset'));
+          return snapshot.docs.map((newsDoc) => newsDoc.data());
+        },
+      ];
+
+      const sources = [...sharedSources, ...userFallbackSources, ...fallbackSources];
 
       for (const loadSource of sources) {
         try {
@@ -242,7 +277,7 @@ export function useAppState(currentUser = null, canManage = false, refreshKey = 
             const rawDescription = item.rawDescription || item.RawDescription || '';
             const content = item.Description || item.description || summary || '';
             const link = item.Link || item.link || '';
-            const category = item.Category || item.category || 'uutisia';
+            const category = normalizeCategory(item.Category || item.category || 'uutisia');
             const source = item.source || item.Source || '';
             const createdDate = item.Date || item.date || item.syncedAt || '';
             const isMainTopic = !seenCategories.has(category);
@@ -389,7 +424,7 @@ export function useAppState(currentUser = null, canManage = false, refreshKey = 
       const form = e.target;
       const title = form.messageTitle?.value?.trim();
       const content = form.messageContent?.value?.trim();
-      const category = form.messageCategory?.value;
+      const category = normalizeCategory(form.messageCategory?.value);
       const deadline = form.messageDeadline?.value || null;
       if (!title || !content) return;
       if (editingId) {
@@ -583,7 +618,14 @@ export function useAppState(currentUser = null, canManage = false, refreshKey = 
    * Count messages per category for stats display.
    * Result: { uutisia: 5, tutkimus: 3, ... }
    */
-  const categoryCounts = messages.reduce((acc, m) => {
+  const selectedScrapers = normalizeScraperSelection(desiredScrapers);
+
+  const visibleMessages = messages.filter((message) => {
+    if (!SCRAPER_CATEGORIES.has(message.category)) return true;
+    return selectedScrapers.has(message.category);
+  });
+
+  const categoryCounts = visibleMessages.reduce((acc, m) => {
     acc[m.category] = (acc[m.category] || 0) + 1;
     return acc;
   }, {});
@@ -607,7 +649,7 @@ export function useAppState(currentUser = null, canManage = false, refreshKey = 
    * 
    * Sorting: newest first (by created date)
    */
-  let filtered = [...messages];
+  let filtered = [...visibleMessages];
   if (currentFilter !== 'all' && currentFilter !== 'aloitus') {
     filtered = filtered.filter((m) => m.category === currentFilter);
   }
@@ -626,9 +668,9 @@ export function useAppState(currentUser = null, canManage = false, refreshKey = 
   const mainTopics =
     currentFilter === 'aloitus'
       ? availableCategories.map((cat) => {
-          const main = messages.find((m) => m.category === cat && m.isMainTopic);
+          const main = visibleMessages.find((m) => m.category === cat && m.isMainTopic);
           if (main) return main;
-          const inCat = messages.filter((m) => m.category === cat);
+          const inCat = visibleMessages.filter((m) => m.category === cat);
           inCat.sort((a, b) => new Date(b.created) - new Date(a.created));
           return inCat[0] || null;
         }).filter(Boolean)
@@ -667,6 +709,7 @@ export function useAppState(currentUser = null, canManage = false, refreshKey = 
     toggleMainTopic,
     dateTime,
     categoryCounts,
+    visibleMessages,
     availableCategories,
     filtered,
     mainTopics,

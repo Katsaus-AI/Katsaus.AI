@@ -19,12 +19,18 @@ const SCRAPER_OPTIONS = [
   { id: 'bbc', label: 'BBC World News' },
 ];
 
+const DEFAULT_SCRAPERS = ['jyu', 'atlassian'];
+
+function withNewsSource(scrapers = []) {
+  return ['uutisia', ...new Set(scrapers.filter(Boolean))].filter(Boolean);
+}
+
 function toScraperSet(value) {
   if (Array.isArray(value)) return new Set(value);
   if (typeof value === 'string' && value.trim()) {
     return new Set(value.split(',').map((item) => item.trim()).filter(Boolean));
   }
-  return new Set(['jyu']);
+  return new Set(DEFAULT_SCRAPERS);
 }
 
 export function AuthPanel({ auth }) {
@@ -34,7 +40,7 @@ export function AuthPanel({ auth }) {
   const [password, setPassword] = useState('');
   const [orgId, setOrgId] = useState('default-org');
   const [displayName, setDisplayName] = useState('');
-  const [selectedScrapers, setSelectedScrapers] = useState(new Set(['jyu']));
+  const [selectedScrapers, setSelectedScrapers] = useState(new Set(DEFAULT_SCRAPERS));
   const [localMessage, setLocalMessage] = useState('');
 
   useEffect(() => {
@@ -51,7 +57,7 @@ export function AuthPanel({ auth }) {
       const next = new Set(current);
       if (next.has(scraperId)) next.delete(scraperId);
       else next.add(scraperId);
-      return next.size > 0 ? next : new Set(['jyu']);
+      return next.size > 0 ? next : new Set([DEFAULT_SCRAPERS[0]]);
     });
   };
 
@@ -68,7 +74,7 @@ export function AuthPanel({ auth }) {
     const user = await signUp(email.trim(), password, {
       orgId: orgId.trim() || 'default-org',
       displayName: displayName.trim() || email.trim(),
-      desiredScrapers: selectedList,
+      desiredScrapers: withNewsSource(selectedList),
     });
     if (user) setLocalMessage('Tili luotu ja profiili tallennettu.');
   };
@@ -79,7 +85,7 @@ export function AuthPanel({ auth }) {
     const success = await savePreferences({
       orgId: orgId.trim() || 'default-org',
       displayName: displayName.trim() || user.email,
-      desiredScrapers: selectedList,
+      desiredScrapers: withNewsSource(selectedList),
     });
     if (success) setLocalMessage('Asetukset tallennettu.');
   };

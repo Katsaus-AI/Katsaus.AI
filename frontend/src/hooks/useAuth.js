@@ -9,7 +9,15 @@ import {
 import { doc, getDoc, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 
-const DEFAULT_SCRAPERS = ['jyu'];
+const DEFAULT_SCRAPERS = [
+  'uutisia',
+  'jyu',
+  'atlassian',
+];
+
+function withDefaultScrapers(scrapers = []) {
+  return [...new Set(['uutisia', ...scrapers.filter(Boolean)])];
+}
 
 function getDefaultProfile(user) {
   return {
@@ -81,10 +89,14 @@ export function useAuth() {
       try {
         const credential = await createUserWithEmailAndPassword(auth, email, password);
         const profileRef = doc(db, 'users', credential.user.uid);
+        const desiredScrapers = Array.isArray(extraProfile.desiredScrapers)
+          ? withDefaultScrapers(extraProfile.desiredScrapers)
+          : DEFAULT_SCRAPERS;
         await setDoc(profileRef, {
           ...getDefaultProfile(credential.user),
           ...extraProfile,
           email,
+          desiredScrapers,
           updatedAt: serverTimestamp(),
         }, { merge: true });
         return credential.user;
@@ -117,10 +129,23 @@ export function useAuth() {
       if (!auth.currentUser) return;
       const profileRef = doc(db, 'users', auth.currentUser.uid);
       try {
+        const desiredScrapers = Array.isArray(updates.desiredScrapers)
+          ? withDefaultScrapers(updates.desiredScrapers)
+          : updates.desiredScrapers;
         await setDoc(profileRef, {
           ...updates,
+          ...(desiredScrapers ? { desiredScrapers } : {}),
           updatedAt: serverTimestamp(),
         }, { merge: true });
+        setProfile((current) =>
+          current
+            ? {
+                ...current,
+                ...updates,
+                ...(desiredScrapers ? { desiredScrapers } : {}),
+              }
+            : current
+        );
         return true;
       } catch (authError) {
         setError(authError instanceof Error ? authError.message : 'Asetusten tallennus epäonnistui');

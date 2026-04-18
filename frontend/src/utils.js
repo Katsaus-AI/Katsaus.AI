@@ -75,6 +75,18 @@ export function formatDate(dateStr) {
 const CATEGORY_I18N_KEYS = {
   jyu: 'categories.jyu',
   atlassian: 'categories.atlassian',
+  aalto: 'categories.aalto',
+  helsinki: 'categories.helsinki',
+  tampere: 'categories.tampere',
+  turku: 'categories.turku',
+  oulu: 'categories.oulu',
+  uef: 'categories.uef',
+  lut: 'categories.lut',
+  'abo-akademi': 'categories.aboAkademi',
+  hanken: 'categories.hanken',
+  lapland: 'categories.lapland',
+  vaasa: 'categories.vaasa',
+  uniarts: 'categories.uniarts',
   yle: 'categories.yle',
   bbc: 'categories.bbc',
   uutisia: 'categories.news',
@@ -88,15 +100,73 @@ const CATEGORY_I18N_KEYS = {
   turvallisuus: 'categories.security',
 };
 
+const CATEGORY_ALIASES = {
+  'abo akademi': 'abo-akademi',
+  'abo_academi': 'abo-akademi',
+  'aboakademi': 'abo-akademi',
+  it: 'it-tuki',
+  'it tuki': 'it-tuki',
+  'it_tuki': 'it-tuki',
+};
+
+const CATEGORY_CODES = {
+  aloitus: '100',
+  all: '150',
+  uutisia: '200',
+  tutkimus: '300',
+  yritysyhteistyö: '400',
+  opintohallinto: '500',
+  hr: '600',
+  johto: '700',
+  tuotekehitys: '800',
+  'it-tuki': '900',
+  turvallisuus: '990',
+  jyu: '210',
+  atlassian: '220',
+  aalto: '230',
+  helsinki: '240',
+  tampere: '250',
+  turku: '260',
+  oulu: '270',
+  uef: '280',
+  lut: '290',
+  'abo-akademi': '310',
+  hanken: '320',
+  lapland: '330',
+  vaasa: '340',
+  uniarts: '350',
+  yle: '360',
+  bbc: '370',
+};
+
+export function normalizeCategory(category) {
+  const raw = String(category || '').trim().toLowerCase();
+  if (!raw) return 'uutisia';
+  return CATEGORY_ALIASES[raw] || raw;
+}
+
+export function getCategoryCode(category) {
+  const normalized = normalizeCategory(category);
+  if (CATEGORY_CODES[normalized]) return CATEGORY_CODES[normalized];
+
+  // Stable fallback code for unknown categories.
+  let hash = 0;
+  for (let i = 0; i < normalized.length; i += 1) {
+    hash = (hash * 31 + normalized.charCodeAt(i)) % 900;
+  }
+  return String(100 + hash).padStart(3, '0');
+}
+
 export function getCategoryLabel(category) {
-  const i18nKey = CATEGORY_I18N_KEYS[category];
+  const normalized = normalizeCategory(category);
+  const i18nKey = CATEGORY_I18N_KEYS[normalized];
   if (!i18nKey) return category;
   const translated = i18n.t(i18nKey);
-  return translated !== i18nKey ? translated : category;
+  return translated !== i18nKey ? translated : normalized;
 }
 
 export function getCategoryI18nKey(category) {
-  return CATEGORY_I18N_KEYS[category] || null;
+  return CATEGORY_I18N_KEYS[normalizeCategory(category)] || null;
 }
 
 export const CATEGORIES = ['uutisia', 'tutkimus', 'yritysyhteistyö', 'opintohallinto', 'hr', 'johto', 'tuotekehitys', 'it-tuki', 'turvallisuus'];

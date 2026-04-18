@@ -750,8 +750,8 @@ async function syncUserFeeds(items: StoredNewsItem[]): Promise<void> {
       const profile = userDoc.data() as UserProfile;
       const desiredScrapers = Array.isArray(profile.desiredScrapers) && profile.desiredScrapers.length > 0
         ? profile.desiredScrapers
-        : ["jyu"];
-      const allowedSources = new Set(desiredScrapers.map((source) => source.toLowerCase()));
+        : ["uutisia", "jyu", "atlassian"];
+      const allowedSources = new Set(["uutisia", ...desiredScrapers].map((source) => source.toLowerCase()));
       const orgId = profile.orgId || "default-org";
 
       const allowedItems = items.filter((item) => {

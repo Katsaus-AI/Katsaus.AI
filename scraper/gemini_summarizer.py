@@ -14,7 +14,7 @@ def summarize_project_update(project_name, activity_log):
     api_key = os.getenv('GEMINI_API_KEY')
     if not api_key:
         print("Error: Missing Gemini API key in .env file.")
-        return {"summary": "Summarization unavailable: Missing API Key.", "category": "uutisia"}
+        return {"summary": "Summarization unavailable: Missing API Key.", "category": "atlassian"}
 
     try:
         system_instruction = """
@@ -74,7 +74,7 @@ Raakadata:
         return {"summary": data.summary, "category": data.category}
     except Exception as e:
         print(f"Error summarizing with Gemini: {e}")
-        return {"summary": "Virhe tiivistämisessä.", "category": "uutisia"}
+        return {"summary": "Virhe tiivistämisessä.", "category": "atlassian"}
 
 if __name__ == "__main__":
     # Test run

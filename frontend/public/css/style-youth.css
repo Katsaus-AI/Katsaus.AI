@@ -277,33 +277,97 @@ body::before {
     box-shadow: var(--shadow-glow);
 }
 
-/* Color variations for active filter tabs */
-.filter-tab.active:nth-child(1) {
-    background: var(--cyan-gradient);
+.filter-tab-number {
+    margin-right: 0.35em;
+    font-weight: 700;
 }
 
-.filter-tab.active:nth-child(2) {
-    background: var(--primary-gradient);
+.filter-tab[data-filter="aloitus"] .filter-tab-number { color: #06b6d4; }
+.filter-tab[data-filter="all"] .filter-tab-number { color: #3b82f6; }
+.filter-tab[data-filter="uutisia"] .filter-tab-number { color: #10b981; }
+.filter-tab[data-filter="tutkimus"] .filter-tab-number { color: #8b5cf6; }
+.filter-tab[data-filter="yritysyhteistyö"] .filter-tab-number { color: #f59e0b; }
+.filter-tab[data-filter="opintohallinto"] .filter-tab-number { color: #ef4444; }
+.filter-tab[data-filter="hr"] .filter-tab-number { color: #ec4899; }
+.filter-tab[data-filter="johto"] .filter-tab-number { color: #f97316; }
+.filter-tab[data-filter="tuotekehitys"] .filter-tab-number { color: #6366f1; }
+.filter-tab[data-filter="it-tuki"] .filter-tab-number { color: #14b8a6; }
+.filter-tab[data-filter="turvallisuus"] .filter-tab-number { color: #dc2626; }
+.filter-tab[data-filter="jyu"] .filter-tab-number { color: #06b6d4; }
+.filter-tab[data-filter="atlassian"] .filter-tab-number { color: #6366f1; }
+.filter-tab[data-filter="aalto"] .filter-tab-number { color: #22c55e; }
+.filter-tab[data-filter="helsinki"] .filter-tab-number { color: #3b82f6; }
+.filter-tab[data-filter="tampere"] .filter-tab-number { color: #f97316; }
+.filter-tab[data-filter="turku"] .filter-tab-number { color: #14b8a6; }
+.filter-tab[data-filter="oulu"] .filter-tab-number { color: #ef4444; }
+.filter-tab[data-filter="uef"] .filter-tab-number { color: #10b981; }
+.filter-tab[data-filter="lut"] .filter-tab-number { color: #06b6d4; }
+.filter-tab[data-filter="abo-akademi"] .filter-tab-number { color: #8b5cf6; }
+.filter-tab[data-filter="hanken"] .filter-tab-number { color: #ec4899; }
+.filter-tab[data-filter="lapland"] .filter-tab-number { color: #60a5fa; }
+.filter-tab[data-filter="vaasa"] .filter-tab-number { color: #22c55e; }
+.filter-tab[data-filter="uniarts"] .filter-tab-number { color: #d946ef; }
+.filter-tab[data-filter="yle"] .filter-tab-number { color: #3b82f6; }
+.filter-tab[data-filter="bbc"] .filter-tab-number { color: #ef4444; }
+
+.filter-tab.active[data-filter="aloitus"],
+.filter-tab.active[data-filter="jyu"],
+.filter-tab.active[data-filter="lut"] {
+    background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
 }
 
-.filter-tab.active:nth-child(3) {
-    background: var(--accent-gradient);
+.filter-tab.active[data-filter="all"],
+.filter-tab.active[data-filter="helsinki"],
+.filter-tab.active[data-filter="lapland"],
+.filter-tab.active[data-filter="yle"] {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
 }
 
-.filter-tab.active:nth-child(4) {
-    background: var(--secondary-gradient);
+.filter-tab.active[data-filter="uutisia"],
+.filter-tab.active[data-filter="aalto"],
+.filter-tab.active[data-filter="uef"],
+.filter-tab.active[data-filter="vaasa"] {
+    background: linear-gradient(135deg, #43e97b 0%, #10b981 100%);
 }
 
-.filter-tab.active:nth-child(5) {
-    background: var(--orange-gradient);
+.filter-tab.active[data-filter="tutkimus"],
+.filter-tab.active[data-filter="abo-akademi"] {
+    background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
 }
 
-.filter-tab.active:nth-child(6) {
-    background: var(--success-gradient);
+.filter-tab.active[data-filter="yritysyhteistyö"] {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
 }
 
-.filter-tab.active:nth-child(7) {
-    background: var(--pink-gradient);
+.filter-tab.active[data-filter="opintohallinto"],
+.filter-tab.active[data-filter="oulu"],
+.filter-tab.active[data-filter="bbc"] {
+    background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+}
+
+.filter-tab.active[data-filter="hr"],
+.filter-tab.active[data-filter="hanken"] {
+    background: linear-gradient(135deg, #f472b6 0%, #ec4899 100%);
+}
+
+.filter-tab.active[data-filter="johto"],
+.filter-tab.active[data-filter="tampere"],
+.filter-tab.active[data-filter="uniarts"] {
+    background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+}
+
+.filter-tab.active[data-filter="tuotekehitys"],
+.filter-tab.active[data-filter="atlassian"] {
+    background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
+}
+
+.filter-tab.active[data-filter="it-tuki"],
+.filter-tab.active[data-filter="turku"] {
+    background: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 100%);
+}
+
+.filter-tab.active[data-filter="turvallisuus"] {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
 }
 
 /* Main Topics Title */
@@ -470,6 +534,62 @@ body::before {
 
 .news-category.hr {
     background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    color: white;
+}
+
+.news-category.johto,
+.news-category.tampere,
+.news-category.uniarts {
+    background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+    color: white;
+}
+
+.news-category.tuotekehitys,
+.news-category.atlassian {
+    background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
+    color: white;
+}
+
+.news-category.it-tuki,
+.news-category.turku {
+    background: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 100%);
+    color: white;
+}
+
+.news-category.turvallisuus,
+.news-category.oulu,
+.news-category.bbc {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+}
+
+.news-category.jyu,
+.news-category.lut {
+    background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+    color: white;
+}
+
+.news-category.aalto,
+.news-category.uef,
+.news-category.vaasa {
+    background: linear-gradient(135deg, #43e97b 0%, #10b981 100%);
+    color: white;
+}
+
+.news-category.helsinki,
+.news-category.lapland,
+.news-category.yle {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+    color: white;
+}
+
+.news-category.abo-akademi {
+    background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+    color: white;
+}
+
+.news-category.hanken {
+    background: linear-gradient(135deg, #f472b6 0%, #ec4899 100%);
     color: white;
 }
 

@@ -19,18 +19,24 @@ const SCRAPER_OPTIONS = [
   { id: 'bbc', label: 'BBC World News' },
 ];
 
+const DEFAULT_SCRAPERS = ['jyu', 'atlassian'];
+
+function withNewsSource(scrapers = []) {
+  return ['uutisia', ...new Set(scrapers.filter(Boolean))].filter(Boolean);
+}
+
 function toScraperSet(value) {
   if (Array.isArray(value)) return new Set(value);
   if (typeof value === 'string' && value.trim()) {
     return new Set(value.split(',').map((item) => item.trim()).filter(Boolean));
   }
-  return new Set(['jyu']);
+  return new Set(DEFAULT_SCRAPERS);
 }
 
 export function UserSettingsModal({ isOpen, profile, email, onClose, onSave }) {
   const [displayName, setDisplayName] = useState('');
   const [orgId, setOrgId] = useState('default-org');
-  const [selectedScrapers, setSelectedScrapers] = useState(new Set(['jyu']));
+  const [selectedScrapers, setSelectedScrapers] = useState(new Set(DEFAULT_SCRAPERS));
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -50,7 +56,7 @@ export function UserSettingsModal({ isOpen, profile, email, onClose, onSave }) {
       const next = new Set(current);
       if (next.has(scraperId)) next.delete(scraperId);
       else next.add(scraperId);
-      return next.size > 0 ? next : new Set(['jyu']);
+      return next.size > 0 ? next : new Set([DEFAULT_SCRAPERS[0]]);
     });
   };
 
@@ -61,7 +67,7 @@ export function UserSettingsModal({ isOpen, profile, email, onClose, onSave }) {
     const success = await onSave({
       displayName: displayName.trim() || email,
       orgId: orgId.trim() || 'default-org',
-      desiredScrapers: selectedList,
+      desiredScrapers: withNewsSource(selectedList),
     });
     setSaving(false);
     setMessage(success ? 'Asetukset tallennettu.' : 'Asetusten tallennus epäonnistui.');

@@ -63,17 +63,12 @@ export default function App() {
   const auth = useAuth();
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [newsRefreshKey, setNewsRefreshKey] = useState(0);
-  const canManage = Boolean(auth.profile?.isAdmin);
-  const state = useAppState(auth.user, canManage, newsRefreshKey);
+  const canManage = Boolean(auth.user);
+  const state = useAppState(auth.user, canManage, newsRefreshKey, auth.profile?.desiredScrapers);
 
   const handleSaveUserSettings = async (updates) => {
     const success = await auth.savePreferences(updates);
     if (!success) return false;
-    try {
-      await fetch('/api/uutiset');
-    } catch {
-      // Refresh is still triggered even if API call fails.
-    }
     setNewsRefreshKey((value) => value + 1);
     return true;
   };
@@ -195,7 +190,7 @@ export default function App() {
             {/* Message count statistics */}
             <StatsBar
               categoryCounts={state.categoryCounts}
-              totalCount={state.messages.length}
+              totalCount={state.visibleMessages.length}
             />
           </main>
 
@@ -214,53 +209,51 @@ export default function App() {
           - Fullscreen mode toggle
           - Theme selector visibility toggle
         */}
-        {state.theme === 'default' && (
-          <>
-            <div className="footer-controls">
-              {canManage && (
-                <button
-                  type="button"
-                  className={`footer-control-btn ${state.adminMode ? 'active' : ''}`}
-                  onClick={state.toggleAdminMode}
-                >
-                  {state.adminMode ? 'POISTU HALLINNASTA' : 'HALLINTA'}
-                </button>
-              )}
+        <>
+          <div className="footer-controls">
+            {canManage && (
               <button
                 type="button"
-                className="footer-control-btn"
-                onClick={state.toggleFullscreen}
+                className={`footer-control-btn ${state.adminMode ? 'active' : ''}`}
+                onClick={state.toggleAdminMode}
               >
-                {state.fullscreenMode ? 'PALUU PERUSNÄKYMÄÄN' : 'KOKO NÄYTTÖ'}
+                {state.adminMode ? 'POISTU HALLINNASTA' : 'HALLINTA'}
               </button>
-            </div>
-            <div className="theme-toggle-footer">
-              {!state.themeSelectorVisible ? (
-                <a
-                  href="#"
-                  className="theme-toggle-link"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    state.toggleThemeSelector();
-                  }}
-                >
-                  Aiemmin demonstroidut teemat
-                </a>
-              ) : (
-                <a
-                  href="#"
-                  className="theme-toggle-link"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    state.toggleThemeSelector();
-                  }}
-                >
-                  Piilota teemat
-                </a>
-              )}
-            </div>
-          </>
-        )}
+            )}
+            <button
+              type="button"
+              className="footer-control-btn"
+              onClick={state.toggleFullscreen}
+            >
+              {state.fullscreenMode ? 'PALUU PERUSNÄKYMÄÄN' : 'KOKO NÄYTTÖ'}
+            </button>
+          </div>
+          <div className="theme-toggle-footer">
+            {!state.themeSelectorVisible ? (
+              <a
+                href="#"
+                className="theme-toggle-link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  state.toggleThemeSelector();
+                }}
+              >
+                Aiemmin demonstroidut teemat
+              </a>
+            ) : (
+              <a
+                href="#"
+                className="theme-toggle-link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  state.toggleThemeSelector();
+                }}
+              >
+                Piilota teemat
+              </a>
+            )}
+          </div>
+        </>
       </div>
 
       {/* Floating Action Button for adding new messages */}

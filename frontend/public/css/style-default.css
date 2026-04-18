@@ -396,6 +396,86 @@ body:not([data-theme="default"]) .footer-controls {
     color: #a81616;
 }
 
+.news-category.jyu {
+    background: #00ffff;
+    color: #000000;
+}
+
+.news-category.atlassian {
+    background: #ff00ff;
+    color: #000000;
+}
+
+.news-category.aalto {
+    background: #00ff00;
+    color: #000000;
+}
+
+.news-category.helsinki {
+    background: #ffff00;
+    color: #000000;
+}
+
+.news-category.tampere {
+    background: #ff6600;
+    color: #000000;
+}
+
+.news-category.turku {
+    background: #00ffff;
+    color: #000000;
+}
+
+.news-category.oulu {
+    background: #ff0000;
+    color: #ffffff;
+}
+
+.news-category.uef {
+    background: #00ff00;
+    color: #000000;
+}
+
+.news-category.lut {
+    background: #459785;
+    color: #000000;
+}
+
+.news-category.abo-akademi {
+    background: #ffff00;
+    color: #000000;
+}
+
+.news-category.hanken {
+    background: #ff00ff;
+    color: #000000;
+}
+
+.news-category.lapland {
+    background: #00ffff;
+    color: #000000;
+}
+
+.news-category.vaasa {
+    background: #00ff00;
+    color: #000000;
+}
+
+.news-category.uniarts {
+    background: #ff6600;
+    color: #000000;
+}
+
+.news-category.yle {
+    background: #ffff00;
+    color: #000000;
+}
+
+.news-category.bbc {
+    background: #00ffff;
+    color: #000000;
+}
+
 /* Expanded news content (when clicked) */
 .news-content {
     display: none;
@@ -744,6 +824,139 @@ body:not([data-theme="default"]) .footer-controls {
 
 .filter-tab[data-filter="turvallisuus"] .filter-tab-number {
     color: #a81616;
+}
+
+.filter-tab[data-filter="jyu"] .filter-tab-number {
+    color: #00ffff;
+}
+
+.filter-tab[data-filter="atlassian"] .filter-tab-number {
+    color: #ff00ff;
+}
+
+.filter-tab[data-filter="aalto"] .filter-tab-number {
+    color: #00ff00;
+}
+
+.filter-tab[data-filter="helsinki"] .filter-tab-number {
+    color: #ffff00;
+}
+
+.filter-tab[data-filter="tampere"] .filter-tab-number {
+    color: #ff6600;
+}
+
+.filter-tab[data-filter="turku"] .filter-tab-number {
+    color: #00ffff;
+}
+
+.filter-tab[data-filter="oulu"] .filter-tab-number {
+    color: #ff0000;
+}
+
+.filter-tab[data-filter="uef"] .filter-tab-number {
+    color: #00ff00;
+}
+
+.filter-tab[data-filter="lut"] .filter-tab-number {
+    color: #459785;
+}
+
+.filter-tab[data-filter="abo-akademi"] .filter-tab-number {
+    color: #ffff00;
+}
+
+.filter-tab[data-filter="hanken"] .filter-tab-number {
+    color: #ff00ff;
+}
+
+.filter-tab[data-filter="lapland"] .filter-tab-number {
+    color: #00ffff;
+}
+
+.filter-tab[data-filter="vaasa"] .filter-tab-number {
+    color: #00ff00;
+}
+
+.filter-tab[data-filter="uniarts"] .filter-tab-number {
+    color: #ff6600;
+}
+
+.filter-tab[data-filter="yle"] .filter-tab-number {
+    color: #ffff00;
+}
+
+.filter-tab[data-filter="bbc"] .filter-tab-number {
+    color: #00ffff;
+}
+
+.filter-tab.active[data-filter] {
+    text-decoration: none;
+    border-radius: 0.2rem;
+    padding: 0.1rem 0.35rem;
+}
+
+.filter-tab.active[data-filter="aloitus"],
+.filter-tab.active[data-filter="all"],
+.filter-tab.active[data-filter="tutkimus"],
+.filter-tab.active[data-filter="jyu"],
+.filter-tab.active[data-filter="turku"],
+.filter-tab.active[data-filter="helsinki"],
+.filter-tab.active[data-filter="lapland"],
+.filter-tab.active[data-filter="yle"],
+.filter-tab.active[data-filter="bbc"] {
+    background: #00ffff;
+    color: #000000;
+}
+
+.filter-tab.active[data-filter="uutisia"],
+.filter-tab.active[data-filter="aalto"],
+.filter-tab.active[data-filter="uef"],
+.filter-tab.active[data-filter="vaasa"] {
+    background: #00ff00;
+    color: #000000;
+}
+
+.filter-tab.active[data-filter="yritysyhteistyö"],
+.filter-tab.active[data-filter="tampere"],
+.filter-tab.active[data-filter="uniarts"] {
+    background: #ff6600;
+    color: #000000;
+}
+
+.filter-tab.active[data-filter="opintohallinto"],
+.filter-tab.active[data-filter="oulu"] {
+    background: #ff0000;
+    color: #ffffff;
+}
+
+.filter-tab.active[data-filter="hr"],
+.filter-tab.active[data-filter="atlassian"],
+.filter-tab.active[data-filter="hanken"] {
+    background: #ff00ff;
+    color: #000000;
+}
+
+.filter-tab.active[data-filter="johto"],
+.filter-tab.active[data-filter="abo-akademi"] {
+    background: #ffff00;
+    color: #000000;
+}
+
+.filter-tab.active[data-filter="tuotekehitys"] {
+    background: #0000ff;
+    color: #ffffff;
+}
+
+.filter-tab.active[data-filter="it-tuki"],
+.filter-tab.active[data-filter="lut"] {
+    background: #459785;
+    color: #000000;
+}
+
+.filter-tab.active[data-filter="turvallisuus"] {
+    background: #a81616;
+    color: #ffffff;
 }
 
 /* Alternating background colors removed */

@@ -324,6 +324,82 @@ body {
     color: #4338ca;
 }
 
+.news-category.johto {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.news-category.tuotekehitys {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.news-category.it-tuki {
+    background: #ccfbf1;
+    color: #0f766e;
+}
+
+.news-category.turvallisuus {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.news-category.jyu,
+.news-category.turku {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.news-category.atlassian {
+    background: #e0e7ff;
+    color: #4338ca;
+}
+
+.news-category.aalto,
+.news-category.uef,
+.news-category.vaasa {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.news-category.helsinki {
+    background: #cffafe;
+    color: #0e7490;
+}
+
+.news-category.tampere,
+.news-category.uniarts {
+    background: #ffedd5;
+    color: #c2410c;
+}
+
+.news-category.oulu,
+.news-category.bbc {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.news-category.lut {
+    background: #ccfbf1;
+    color: #0f766e;
+}
+
+.news-category.abo-akademi {
+    background: #ede9fe;
+    color: #7c3aed;
+}
+
+.news-category.hanken {
+    background: #ffe4e6;
+    color: #be123c;
+}
+
+.news-category.lapland,
+.news-category.yle {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
 /* Expanded news content (when clicked) */
 .news-content {
     display: none;
@@ -689,6 +765,146 @@ body {
     background: var(--primary);
     border-color: var(--primary);
     color: white;
+}
+
+.filter-tab-number {
+    margin-right: 0.35em;
+    font-weight: 700;
+}
+
+.filter-tab[data-filter="aloitus"] .filter-tab-number { color: #1d4ed8; }
+.filter-tab[data-filter="all"] .filter-tab-number { color: #0f766e; }
+.filter-tab[data-filter="uutisia"] .filter-tab-number { color: #166534; }
+.filter-tab[data-filter="tutkimus"] .filter-tab-number { color: #0369a1; }
+.filter-tab[data-filter="yritysyhteistyö"] .filter-tab-number { color: #b45309; }
+.filter-tab[data-filter="opintohallinto"] .filter-tab-number { color: #b91c1c; }
+.filter-tab[data-filter="hr"] .filter-tab-number { color: #a21caf; }
+.filter-tab[data-filter="johto"] .filter-tab-number { color: #92400e; }
+.filter-tab[data-filter="tuotekehitys"] .filter-tab-number { color: #1e40af; }
+.filter-tab[data-filter="it-tuki"] .filter-tab-number { color: #0f766e; }
+.filter-tab[data-filter="turvallisuus"] .filter-tab-number { color: #991b1b; }
+.filter-tab[data-filter="jyu"] .filter-tab-number { color: #0369a1; }
+.filter-tab[data-filter="atlassian"] .filter-tab-number { color: #4338ca; }
+.filter-tab[data-filter="aalto"] .filter-tab-number { color: #15803d; }
+.filter-tab[data-filter="helsinki"] .filter-tab-number { color: #0e7490; }
+.filter-tab[data-filter="tampere"] .filter-tab-number { color: #c2410c; }
+.filter-tab[data-filter="turku"] .filter-tab-number { color: #0369a1; }
+.filter-tab[data-filter="oulu"] .filter-tab-number { color: #b91c1c; }
+.filter-tab[data-filter="uef"] .filter-tab-number { color: #166534; }
+.filter-tab[data-filter="lut"] .filter-tab-number { color: #0f766e; }
+.filter-tab[data-filter="abo-akademi"] .filter-tab-number { color: #7c3aed; }
+.filter-tab[data-filter="hanken"] .filter-tab-number { color: #be123c; }
+.filter-tab[data-filter="lapland"] .filter-tab-number { color: #1d4ed8; }
+.filter-tab[data-filter="vaasa"] .filter-tab-number { color: #15803d; }
+.filter-tab[data-filter="uniarts"] .filter-tab-number { color: #c026d3; }
+.filter-tab[data-filter="yle"] .filter-tab-number { color: #1d4ed8; }
+.filter-tab[data-filter="bbc"] .filter-tab-number { color: #b91c1c; }
+
+.filter-tab.active[data-filter="aloitus"],
+.filter-tab.active[data-filter="lapland"],
+.filter-tab.active[data-filter="yle"] {
+    background: #1d4ed826;
+    border-color: #1d4ed8;
+    color: #1d4ed8;
+}
+
+.filter-tab.active[data-filter="all"],
+.filter-tab.active[data-filter="it-tuki"],
+.filter-tab.active[data-filter="lut"] {
+    background: #0f766e26;
+    border-color: #0f766e;
+    color: #0f766e;
+}
+
+.filter-tab.active[data-filter="uutisia"],
+.filter-tab.active[data-filter="uef"] {
+    background: #16653426;
+    border-color: #166534;
+    color: #166534;
+}
+
+.filter-tab.active[data-filter="tutkimus"],
+.filter-tab.active[data-filter="jyu"],
+.filter-tab.active[data-filter="turku"] {
+    background: #0369a126;
+    border-color: #0369a1;
+    color: #0369a1;
+}
+
+.filter-tab.active[data-filter="yritysyhteistyö"] {
+    background: #b4530926;
+    border-color: #b45309;
+    color: #b45309;
+}
+
+.filter-tab.active[data-filter="opintohallinto"],
+.filter-tab.active[data-filter="oulu"],
+.filter-tab.active[data-filter="bbc"] {
+    background: #b91c1c26;
+    border-color: #b91c1c;
+    color: #b91c1c;
+}
+
+.filter-tab.active[data-filter="hr"] {
+    background: #a21caf26;
+    border-color: #a21caf;
+    color: #a21caf;
+}
+
+.filter-tab.active[data-filter="johto"] {
+    background: #92400e26;
+    border-color: #92400e;
+    color: #92400e;
+}
+
+.filter-tab.active[data-filter="tuotekehitys"] {
+    background: #1e40af26;
+    border-color: #1e40af;
+    color: #1e40af;
+}
+
+.filter-tab.active[data-filter="turvallisuus"] {
+    background: #991b1b26;
+    border-color: #991b1b;
+    color: #991b1b;
+}
+
+.filter-tab.active[data-filter="atlassian"] {
+    background: #4338ca26;
+    border-color: #4338ca;
+    color: #4338ca;
+}
+
+.filter-tab.active[data-filter="aalto"],
+.filter-tab.active[data-filter="vaasa"] {
+    background: #15803d26;
+    border-color: #15803d;
+    color: #15803d;
+}
+
+.filter-tab.active[data-filter="helsinki"] {
+    background: #0e749026;
+    border-color: #0e7490;
+    color: #0e7490;
+}
+
+.filter-tab.active[data-filter="tampere"],
+.filter-tab.active[data-filter="uniarts"] {
+    background: #c2410c26;
+    border-color: #c2410c;
+    color: #c2410c;
+}
+
+.filter-tab.active[data-filter="abo-akademi"] {
+    background: #7c3aed26;
+    border-color: #7c3aed;
+    color: #7c3aed;
+}
+
+.filter-tab.active[data-filter="hanken"] {
+    background: #be123c26;
+    border-color: #be123c;
+    color: #be123c;
 }
 
 /* Alternating background colors for news items */

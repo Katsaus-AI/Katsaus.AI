@@ -292,6 +292,41 @@ body {
     color: var(--tt-white);
 }
 
+.news-category.johto,
+.news-category.helsinki,
+.news-category.abo-akademi,
+.news-category.uniarts,
+.news-category.yle {
+    color: var(--tt-yellow);
+}
+
+.news-category.tuotekehitys,
+.news-category.oulu {
+    color: var(--tt-blue-bright);
+}
+
+.news-category.it-tuki,
+.news-category.jyu,
+.news-category.turku,
+.news-category.lut,
+.news-category.lapland,
+.news-category.bbc {
+    color: var(--tt-cyan);
+}
+
+.news-category.turvallisuus,
+.news-category.atlassian,
+.news-category.tampere,
+.news-category.hanken {
+    color: var(--tt-magenta);
+}
+
+.news-category.aalto,
+.news-category.uef,
+.news-category.vaasa {
+    color: var(--tt-green);
+}
+
 /* Expanded news content (when clicked) */
 .news-content {
     display: none;
@@ -670,6 +705,26 @@ body {
 .filter-tab[data-filter="yritysyhteistyö"]::before { content: "130 "; color: var(--tt-cyan); }
 .filter-tab[data-filter="opintohallinto"]::before { content: "140 "; color: var(--tt-magenta); }
 .filter-tab[data-filter="hr"]::before { content: "150 "; color: var(--tt-white); }
+.filter-tab[data-filter="johto"]::before { content: "160 "; color: var(--tt-yellow); }
+.filter-tab[data-filter="tuotekehitys"]::before { content: "170 "; color: var(--tt-blue-bright); }
+.filter-tab[data-filter="it-tuki"]::before { content: "180 "; color: var(--tt-cyan); }
+.filter-tab[data-filter="turvallisuus"]::before { content: "190 "; color: var(--tt-magenta); }
+.filter-tab[data-filter="jyu"]::before { content: "210 "; color: var(--tt-cyan); }
+.filter-tab[data-filter="atlassian"]::before { content: "220 "; color: var(--tt-magenta); }
+.filter-tab[data-filter="aalto"]::before { content: "230 "; color: var(--tt-green); }
+.filter-tab[data-filter="helsinki"]::before { content: "240 "; color: var(--tt-yellow); }
+.filter-tab[data-filter="tampere"]::before { content: "250 "; color: var(--tt-magenta); }
+.filter-tab[data-filter="turku"]::before { content: "260 "; color: var(--tt-cyan); }
+.filter-tab[data-filter="oulu"]::before { content: "270 "; color: var(--tt-blue-bright); }
+.filter-tab[data-filter="uef"]::before { content: "280 "; color: var(--tt-green); }
+.filter-tab[data-filter="lut"]::before { content: "290 "; color: var(--tt-cyan); }
+.filter-tab[data-filter="abo-akademi"]::before { content: "310 "; color: var(--tt-yellow); }
+.filter-tab[data-filter="hanken"]::before { content: "320 "; color: var(--tt-magenta); }
+.filter-tab[data-filter="lapland"]::before { content: "330 "; color: var(--tt-cyan); }
+.filter-tab[data-filter="vaasa"]::before { content: "340 "; color: var(--tt-green); }
+.filter-tab[data-filter="uniarts"]::before { content: "350 "; color: var(--tt-yellow); }
+.filter-tab[data-filter="yle"]::before { content: "360 "; color: var(--tt-yellow); }
+.filter-tab[data-filter="bbc"]::before { content: "370 "; color: var(--tt-cyan); }
 
 /* Responsive - desktop adjustments */
 @media (min-width: 601px) {

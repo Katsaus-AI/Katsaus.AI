@@ -12,7 +12,13 @@
     "setup": "npm install && npm --prefix frontend install && npm --prefix functions install && npm --prefix backend install",
     "functions:build": "npm --prefix functions run build",
     "functions:serve": "npm --prefix functions run serve",
-    "deploy": "firebase deploy --only hosting,functions",
+    "news:deps": "python3 -m pip install --user -r scraper/requirements.txt || python3 -m pip install -r scraper/requirements.txt || python -m pip install --user -r scraper/requirements.txt || python -m pip install -r scraper/requirements.txt",
+    "news:prepare": "node scripts/prepare-static-news.mjs",
+    "news:prepare:fast": "node scripts/prepare-static-news.mjs --no-gemini",
+    "deploy:check": "node scripts/check-frontend-firebase-env.mjs",
+    "deploy": "npm run deploy:static",
+    "deploy:static": "npm run news:prepare:fast && npm run deploy:check && npm --prefix frontend run build && node scripts/seed-test-tenants-if-possible.mjs && ./node_modules/.bin/firebase deploy --only hosting",
+    "deploy:full": "./node_modules/.bin/firebase deploy --only hosting,functions",
     "backend:check": "node -e \"import('./backend/firebase.js').then(() => console.log('firebase init module loaded'))\""
   },
   "devDependencies": {

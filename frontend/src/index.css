@@ -39,6 +39,20 @@ body:not(.fullscreen-mode) {
     min-height: 0;
     overflow-y: auto;
   }
+
+  body:not(.fullscreen-mode):not(.viewing-mode) .app-main .filter-tabs {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    z-index: 20;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+  }
 }
 
 .auth-page {

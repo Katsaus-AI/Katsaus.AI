@@ -1,8 +1,98 @@
 import os
+import html
+import json
+from datetime import datetime, timezone
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 from dotenv import load_dotenv
+
+EXTERNAL_RSS_SOURCES = [
+    {
+        'id': 'aalto',
+        'title_prefix': 'Aalto',
+        'url': 'https://www.aalto.fi/en/news/feed',
+        'category': 'aalto',
+    },
+    {
+        'id': 'helsinki',
+        'title_prefix': 'Helsingin yliopisto',
+        'url': 'https://www.helsinki.fi/rss.xml',
+        'category': 'helsinki',
+    },
+    {
+        'id': 'tampere',
+        'title_prefix': 'Tampereen yliopisto',
+        'url': 'https://news.google.com/rss/search?q=site:tuni.fi+Tampereen+yliopisto&hl=fi&gl=FI&ceid=FI:fi',
+        'category': 'tampere',
+    },
+    {
+        'id': 'turku',
+        'title_prefix': 'Turun yliopisto',
+        'url': 'https://www.utu.fi/rss',
+        'category': 'turku',
+    },
+    {
+        'id': 'oulu',
+        'title_prefix': 'Oulun yliopisto',
+        'url': 'https://news.google.com/rss/search?q=site:oulu.fi+Oulun+yliopisto&hl=fi&gl=FI&ceid=FI:fi',
+        'category': 'oulu',
+    },
+    {
+        'id': 'uef',
+        'title_prefix': 'Itä-Suomen yliopisto',
+        'url': 'https://news.google.com/rss/search?q=site:uef.fi+It%C3%A4-Suomen+yliopisto&hl=fi&gl=FI&ceid=FI:fi',
+        'category': 'uef',
+    },
+    {
+        'id': 'lut',
+        'title_prefix': 'LUT-yliopisto',
+        'url': 'https://news.google.com/rss/search?q=site:lut.fi+LUT-yliopisto&hl=fi&gl=FI&ceid=FI:fi',
+        'category': 'lut',
+    },
+    {
+        'id': 'abo-akademi',
+        'title_prefix': 'Abo Akademi',
+        'url': 'https://www.abo.fi/en/news/feed',
+        'category': 'abo-akademi',
+    },
+    {
+        'id': 'hanken',
+        'title_prefix': 'Hanken',
+        'url': 'https://news.google.com/rss/search?q=site:hanken.fi+Hanken&hl=fi&gl=FI&ceid=FI:fi',
+        'category': 'hanken',
+    },
+    {
+        'id': 'lapland',
+        'title_prefix': 'Lapin yliopisto',
+        'url': 'https://www.ulapland.fi/feed',
+        'category': 'lapland',
+    },
+    {
+        'id': 'vaasa',
+        'title_prefix': 'Vaasan yliopisto',
+        'url': 'https://www.uwasa.fi/rss.xml',
+        'category': 'vaasa',
+    },
+    {
+        'id': 'uniarts',
+        'title_prefix': 'Taideyliopisto',
+        'url': 'https://news.google.com/rss/search?q=site:uniarts.fi+Taideyliopisto&hl=fi&gl=FI&ceid=FI:fi',
+        'category': 'uniarts',
+    },
+    {
+        'id': 'yle',
+        'title_prefix': 'YLE',
+        'url': 'https://feeds.yle.fi/uutiset/v1/majorHeadlines/YLE_UUTISET.rss',
+        'category': 'uutisia',
+    },
+    {
+        'id': 'bbc',
+        'title_prefix': 'BBC',
+        'url': 'https://feeds.bbci.co.uk/news/world/rss.xml',
+        'category': 'uutisia',
+    },
+]
 
 load_dotenv()
 """
@@ -116,14 +206,95 @@ def scrape_blog_articles(url):
 
         # Append article data to list
         article_list.append({
-            'Title': title,
+            'Title': f'JYU: {title}',
             'Date': date,
             'Description': description,
             'Link': link,
-            'Image': image_url
+            'Image': image_url,
+            'Category': 'jyu'
         })
 
     return article_list
+
+
+def scrape_external_rss_sources(limit_per_source=5):
+    collected = []
+
+    for source in EXTERNAL_RSS_SOURCES:
+        try:
+            items = scrape_rss_feed(source)
+            for item in items[:limit_per_source]:
+                collected.append(item)
+        except Exception as error:
+            print(f"Error scraping RSS source {source['id']}: {error}")
+
+    return collected
+
+
+def normalize_text(value):
+    if value is None:
+        return ''
+    text = html.unescape(str(value))
+    return ' '.join(text.replace('\u00a0', ' ').split())
+
+
+def strip_html(value):
+    soup = BeautifulSoup(value or '', 'html.parser')
+    return soup.get_text(separator=' ', strip=True)
+
+
+def scrape_rss_feed(source):
+    response = requests.get(
+        source['url'],
+        headers={
+            'User-Agent': 'KatsausAI/1.0 (+https://katsaus.ai)',
+            'Accept': 'application/rss+xml, application/atom+xml, application/xml, text/xml;q=0.9, */*;q=0.8',
+        },
+        timeout=30,
+    )
+    response.raise_for_status()
+
+    soup = BeautifulSoup(response.text, 'xml')
+    items = []
+
+    for rss_item in soup.find_all('item')[:20]:
+        title = normalize_text(rss_item.title.get_text() if rss_item.title else 'No title')
+        link = normalize_text(rss_item.link.get_text() if rss_item.link else '')
+        published = normalize_text(rss_item.pubDate.get_text() if rss_item.pubDate else '')
+        description = normalize_text(strip_html(rss_item.description.get_text() if rss_item.description else 'No description'))
+        items.append({
+            'Title': f"{source['title_prefix']}: {title}",
+            'Date': published or 'Just now',
+            'Description': description,
+            'Link': link,
+            'Image': '',
+            'Category': source['category'],
+        })
+
+    if items:
+        return items
+
+    for atom_item in soup.find_all('entry')[:20]:
+        title = normalize_text(atom_item.title.get_text() if atom_item.title else 'No title')
+        link_tag = atom_item.find('link', attrs={'rel': 'alternate'}) or atom_item.find('link')
+        link = normalize_text(link_tag.get('href') if link_tag else '')
+        published = normalize_text((atom_item.updated.get_text() if atom_item.updated else '') or (atom_item.published.get_text() if atom_item.published else ''))
+        raw_description = ''
+        if atom_item.summary:
+            raw_description = atom_item.summary.get_text()
+        elif atom_item.content:
+            raw_description = atom_item.content.get_text()
+        description = normalize_text(strip_html(raw_description or 'No description'))
+        items.append({
+            'Title': f"{source['title_prefix']}: {title}",
+            'Date': published or 'Just now',
+            'Description': description,
+            'Link': link,
+            'Image': '',
+            'Category': source['category'],
+        })
+
+    return items
 
 
 if __name__ == "__main__":
@@ -152,7 +323,6 @@ if __name__ == "__main__":
     try:
         from atlassian_fetcher import fetch_jira_projects, fetch_confluence_pages
         from gemini_summarizer import summarize_project_update
-        import json
         
         atlassian_data = [] # renamed from jira_projects to be more generic
         atlassian_cache_file = 'atlassian_raw.json'
@@ -207,14 +377,15 @@ if __name__ == "__main__":
                 print(f"Skipping summarization for {item['title']}")
                 # Use recent_activity (preview) or just a static text
                 summary = item.get('recent_activity', 'No details available.')
-                category = 'uutisia'
+                category = 'atlassian'
             else:
                 print(f"Summarizing {item['title']}...")
                 # Use full_content if available (Confluence), else recent_activity (Jira)
                 content_to_summarize = item.get('full_content') or item.get('recent_activity')
                 result_dict = summarize_project_update(item['title'], content_to_summarize)
                 summary = result_dict.get("summary", "Virhe tiivistämisessä.")
-                category = result_dict.get("category", "uutisia")
+                # Always force 'atlassian' category for Atlassian items
+                category = 'atlassian'
             
             # Link handling: Jira uses 'key' construction, Confluence provides full 'link'
             link = item.get('link')
@@ -235,6 +406,15 @@ if __name__ == "__main__":
         print(f"Skipping Atlassian integration due to missing modules: {e}")
     except Exception as e:
         print(f"Error in Atlassian integration: {e}")
+
+    print("Fetching external RSS sources...")
+    try:
+        external_items = scrape_external_rss_sources(limit_per_source=5)
+        for item in external_items:
+            articles.append(item)
+        print(f"Fetched {len(external_items)} RSS items.")
+    except Exception as e:
+        print(f"Error in RSS integration: {e}")
     
     # Convert to DataFrame for easier manipulation and export
     df = pd.DataFrame(articles)
